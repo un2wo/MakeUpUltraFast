@@ -80,11 +80,11 @@ void main() {
         exposure_col += texture2DLod(colortex1, vec2(0.25, 0.75), mipmap_level).rgb;
         exposure_col += texture2DLod(colortex1, vec2(0.75, 0.25), mipmap_level).rgb;
 
-        exposure = clamp(luma(exposure_col), 0.0005, 100.0);
+        exposure = clamp(luma(exposure_col * 0.65), 0.0005, 1.75);
 
         float prev_exposure = texture2D(gaux3, vec2(0.5)).r;
 
-        exposure = (exp(-exposure) * 3.03) + 0.6;
+        exposure = (exp(-exposure + 0.3) * 2.2) + 0.5;
         exposure = mix(exposure, prev_exposure, exp(-frameTime * 1.25));
     #else
         exposure = 1.0;
