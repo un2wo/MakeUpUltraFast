@@ -151,6 +151,21 @@ uniform int moonPhase;
     #define HORIZON_NIGHT_COLOR vec3(0.005, 0.02, 0.06) * NIGHT_BRIGHT_PHASE
 
     #define WATER_COLOR vec3(0.02, 0.15, 0.3)
+#elif COLOR_SCHEME == 9  // Surreal
+    #define OMNI_TINT 0.5
+    #define LIGHT_SUNSET_COLOR vec3(1.0, 0.74, 0.5)
+    #define LIGHT_DAY_COLOR vec3(0.9, 0.84, 0.79)
+    #define LIGHT_NIGHT_COLOR vec3(0.035, 0.04, 0.06) * NIGHT_BRIGHT_PHASE
+
+    #define ZENITH_SUNSET_COLOR vec3(0.3, 0.3, 0.5)
+    #define ZENITH_DAY_COLOR vec3(0.35, 0.55, 0.85)
+    #define ZENITH_NIGHT_COLOR vec3(0.004, 0.004, 0.02) * NIGHT_BRIGHT_PHASE
+
+    #define HORIZON_SUNSET_COLOR vec3(1, 0.71, 0.5)
+    #define HORIZON_DAY_COLOR vec3(0.71, 0.9, 1.5)
+    #define HORIZON_NIGHT_COLOR vec3(0.02, 0.022, 0.04) * NIGHT_BRIGHT_PHASE
+
+    #define WATER_COLOR vec3(0.09, 0.12, 0.15)
 #elif COLOR_SCHEME == 99 // Custom
     #define OMNI_TINT OMNI_TINT_CUSTOM
     #define LIGHT_SUNSET_COLOR vec3(LIGHT_SUNSET_COLOR_R, LIGHT_SUNSET_COLOR_G, LIGHT_SUNSET_COLOR_B)
