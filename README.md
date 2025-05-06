@@ -5,3 +5,4 @@ Differences from the original:
 - Modified exposure calculations, brighter overall (bloom strength is slightly decreased to compensate)
 - Alternate blocky cloudmap
 - Additional color palettes
+- Entity shadows toggle
