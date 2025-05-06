@@ -22,6 +22,13 @@ value.ACERCADE.0=v.9.1e
 #############################
 option.SHADOW_CASTING=Shadows
 
+option.ENTITY_SHADOW=Entity Shadows
+value.ENTITY_SHADOW.0=No
+value.ENTITY_SHADOW.1=Yes
+option.BLOCK_ENTITY_SHADOW=Block Entity Shadows
+value.BLOCK_ENTITY_SHADOW.0=No
+value.BLOCK_ENTITY_SHADOW.1=Yes
+
 option.SHADOW_DISTANCE_SLIDER=Shadow distance
 value.SHADOW_DISTANCE_SLIDER.0=Short
 value.SHADOW_DISTANCE_SLIDER.1=Medium
