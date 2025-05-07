@@ -51,18 +51,18 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define TINTED_WATER 1  // [0 1] Use the resource pack color for water.
 #define REFRACTION 1  // [0 1] Activate refractions.
 // #define DOF // Enables depth of field (high performance cost).
-#define DOF_STRENGTH 0.09  // [0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13]  Depth of field strength.
-#define AO 1  // [0 1] Turn on for enhanced ambient occlusion (medium performance cost).
+#define DOF_STRENGTH 0.06  // [0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13]  Depth of field strength.
+#define AO 0  // [0 1] Turn on for enhanced ambient occlusion (medium performance cost).
 #define AOSTEPS 4 // [4 5 6 7 8 9 10 11] How many samples are taken for AO (high performance cost).
 #define AO_STRENGTH 0.70 // [0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.66 0.70 0.75 0.80 0.85] Ambient occlusion strength (strength NOT affect performance).
 #define AA_TYPE 2 // [0 1 2 3]  No: Disable antialiasing (not recommended). Denoise only: Supersampling is only used to eliminate noise. TAA: Enable antialiasing (Recommended). Sharp TAA: A subtle sharpening effect is used on the TAA.
 //#define MOTION_BLUR // Turn on motion blur
-#define MOTION_BLUR_STRENGTH 1.0 // [0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0] Set Motion blur strength. Lower framerate -> Lower strength and vice versa is recommended.
+#define MOTION_BLUR_STRENGTH 0.5 // [0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0] Set Motion blur strength. Lower framerate -> Lower strength and vice versa is recommended.
 #define MOTION_BLUR_SAMPLES 4 // [3 4 5 6 7 8] Motion blur samples 
 #define SUN_REFLECTION 1 // [0 1] Enable sun (or moon) reflection on water and glass
 
 #define SHADOW_TYPE 1 // [0 1] Sets the shadow type
-#define SHADOW_BLUR 2.0 // [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0]  Shadow blur intensity
+#define SHADOW_BLUR 3.0 // [0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0]  Shadow blur intensity
 // #define COLORED_SHADOW // Attempts to tint the shadow of translucent objects, as well as the associated volumetric light (if active).
 #define WATER_ABSORPTION 0.10 // [0.02 0.04 0.06 0.08 0.10 0.12 0.14 0.16 0.18 0.20 0.22 0.24 0.26 0.28 0.30 0.32 0.34 0.36 0.38 0.40 0.42 0.44 0.46 0.48 0.50 0.52 0.54 0.56 0.58 0.60 0.62 0.64 0.66 0.68 0.70 0.72 0.74 0.76 0.78 0.80] Sets how much light the water absorbs. Low levels make the water more transparent. High levels make it more opaque.
 #define COLOR_SCHEME 1 // [0 1 2 3 4 5 6 7 8 9 99] Ethereal: Old default theme. New shoka: Reinterpretation of a classic. Shoka: The classic. Legacy: Very old default. Captain: A cold preset of stylish colors. Psycodelic: Remaster of old vivid scheme. Cocoa: Warm theme. Testigo: Fantasy and cute scheme. Custom: Choose your colors in advanced options. 
@@ -70,7 +70,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define AVOID_DARK_LEVEL 0.030 // [0.000 0.005 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060]  Minimal omni light intensity in caves.
 #define NIGHT_BRIGHT 0.60 // [0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70] Adjusts the brightness of the night light in exteriors.
 #define V_CLOUDS 1 // [0 1 2] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
-#define CLOUD_VOL_STYLE 0 // [0 1] Set the volumetric cloud style.
+#define CLOUD_VOL_STYLE 1 // [0 1] Set the volumetric cloud style.
 #define CLOUD_REFLECTION  // Set off-screen volumetric clouds reflection (volumetric clouds must be active).
 #define END_CLOUDS // Activates drawing of clouds in the end (only works if volumetric clouds are active)
 #define BLACK_ENTITY_FIX 0 // [0 1] Removes black entity bug in old video drivers (activate ONLY if you have problems with black entities)
@@ -159,7 +159,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define CLOUD_PLANE 319.0
 #endif
 
-#define CLOUD_STEPS_AVG 10 // [7 8 9 10 11 12 13 14 15 16] Samples per pixel (high performance impact).
+#define CLOUD_STEPS_AVG 7 // [7 8 9 10 11 12 13 14 15 16] Samples per pixel (high performance impact).
 #define CLOUD_SPEED 0 // [0 1 2] Change the speed of clouds for demo purposes.
 
 #if CLOUD_VOL_STYLE == 1
@@ -195,10 +195,10 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define COLOR_BLIND_MODE 0  // [0 1 2]  Set color blindness type
 
 // Sun rotation angle
-const float sunPathRotation = -25.0; // [-40.0 -35.0 -30.0 -25.0 -20.0 -15.0 -10.0 -5.0 0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0]
+const float sunPathRotation = -15.0; // [-40.0 -35.0 -30.0 -25.0 -20.0 -15.0 -10.0 -5.0 0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0]
 
-#define SHADOW_DISTANCE_SLIDER 1 // [0 1 2]
-#define SHADOW_QTY_SLIDER 2 // [1 2 3]
+#define SHADOW_DISTANCE_SLIDER 2 // [0 1 2]
+#define SHADOW_QTY_SLIDER 1 // [1 2 3]
 #define ENTITY_SHADOW 1 // [0 1]
 #define BLOCK_ENTITY_SHADOW 1 // [0 1]
 
