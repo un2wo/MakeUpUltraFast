@@ -48,7 +48,7 @@ void main() {
     float sup = t * TRANSITION_DH_SUP;
     float inf = t * TRANSITION_DH_INF;
     float view_dist = length(position.xyz);
-    float umbral = (view_dist - (dhNearPlane + inf)) / (far - sup - inf - dhNearPlane);
+    float umbral = (view_dist - inf) / (far - sup - inf - dhNearPlane);
     if (umbral < dither || view_dist > dhRenderDistance) {
         discard;
         return;
