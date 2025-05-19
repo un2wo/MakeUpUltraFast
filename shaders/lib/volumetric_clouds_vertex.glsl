@@ -14,7 +14,7 @@ dark_cloud_color = mix(
     dark_cloud_color,
     ZENITH_SKY_RAIN_COLOR * color_average(dark_cloud_color),
     rainStrength
-);
+) * (1.0 - rainStrength * 0.25);
 
 vec3 cloud_color_aux = mix(
     day_blend(
