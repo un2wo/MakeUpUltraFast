@@ -22,10 +22,10 @@ value.ACERCADE.0=v.9.1e
 #############################
 option.SHADOW_CASTING=Shadows
 
-option.ENTITY_SHADOW=Entity Shadows
+option.ENTITY_SHADOW=Entity shadows
 value.ENTITY_SHADOW.0=No
 value.ENTITY_SHADOW.1=Yes
-option.BLOCK_ENTITY_SHADOW=Block Entity Shadows
+option.BLOCK_ENTITY_SHADOW=Block entity shadows
 value.BLOCK_ENTITY_SHADOW.0=No
 value.BLOCK_ENTITY_SHADOW.1=Yes
 
@@ -192,13 +192,10 @@ option.AVOID_DARK_LEVEL=Cave brightness
 option.NIGHT_BRIGHT=Night brightness
 
 option.V_CLOUDS=Clouds
-value.V_CLOUDS.0=Vanilla
-value.V_CLOUDS.1=Volumetric static
-value.V_CLOUDS.2=Volumetric dyn.
-
-option.CLOUD_VOL_STYLE=Volumetric cloud style
-value.CLOUD_VOL_STYLE.0=Natural
-value.CLOUD_VOL_STYLE.1=Boxy
+value.V_CLOUDS.0=Off
+value.V_CLOUDS.1=Boxy
+value.V_CLOUDS.2=Natural
+value.V_CLOUDS.3=Natural dyn.
 
 option.CLOUD_SPEED=Clouds speed
 value.CLOUD_SPEED.0=Normal
