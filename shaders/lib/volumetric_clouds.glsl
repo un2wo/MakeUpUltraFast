@@ -64,7 +64,7 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
                 ).r;
 
 
-            #if V_CLOUDS == 3 && CLOUD_VOL_STYLE == 0
+            #if V_CLOUDS == 3
                 current_value +=
                     texture2D(
                         gaux2,
