@@ -1,8 +1,9 @@
-Personal edit of MakeUp shaders.
+Personal edit/retune of MakeUp shaders.
 
 Differences from the original:
-- Subsurface scattering added to more vanilla blocks (incl. vines, dripstone, bamboo)
-- Brighter autoexposure
-- New cloudmaps: 'blocky' style clouds are larger and denser, 'natural' style clouds are puffier
-- Additional color palettes ('Vivid' & 'Surreal')
-- Entity / Block Entity shadow toggles
+- Subsurface scattering added to more vanilla blocks (incl. vines, dripstone*, bamboo)
+- Adjusted autoexposure, brighter overall
+- New cloudmaps: 'blocky' style clouds are larger with more dense coverage, 'natural' style clouds are puffier
+- New color palettes, 'Vivid' (default) & 'Surreal'
+- Entity / block entity shadow toggles
+- Reorganized settings screen
