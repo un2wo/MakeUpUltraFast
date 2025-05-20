@@ -152,7 +152,7 @@ uniform int moonPhase;
 
     #define WATER_COLOR vec3(0.02, 0.15, 0.3)
 #elif COLOR_SCHEME == 9  // Surreal
-    #define OMNI_TINT 0.5
+    #define OMNI_TINT 0.4
     #define LIGHT_SUNSET_COLOR vec3(1.0, 0.74, 0.5)
     #define LIGHT_DAY_COLOR vec3(0.9, 0.84, 0.79)
     #define LIGHT_NIGHT_COLOR vec3(0.035, 0.045, 0.06) * NIGHT_BRIGHT_PHASE
@@ -166,6 +166,21 @@ uniform int moonPhase;
     #define HORIZON_NIGHT_COLOR vec3(0.02, 0.022, 0.04) * NIGHT_BRIGHT_PHASE
 
     #define WATER_COLOR vec3(0.09, 0.12, 0.2)
+#elif COLOR_SCHEME == 10  // Real-ish
+    #define OMNI_TINT 0.25
+    #define LIGHT_SUNSET_COLOR vec3(1.0, 0.59, 0.35)
+    #define LIGHT_DAY_COLOR vec3(1.05, 0.9, 0.85)
+    #define LIGHT_NIGHT_COLOR vec3(0.015, 0.02, 0.03) * NIGHT_BRIGHT_PHASE
+
+    #define ZENITH_SUNSET_COLOR vec3(0.25, 0.25, 0.36)
+    #define ZENITH_DAY_COLOR vec3(0.4, 0.6, 0.85)
+    #define ZENITH_NIGHT_COLOR vec3(0.004, 0.006, 0.009) * NIGHT_BRIGHT_PHASE
+
+    #define HORIZON_SUNSET_COLOR vec3(0.79, 0.6, 0.5)
+    #define HORIZON_DAY_COLOR vec3(0.8, 0.95, 1.3)
+    #define HORIZON_NIGHT_COLOR vec3(0.011, 0.015, 0.02) * NIGHT_BRIGHT_PHASE
+
+    #define WATER_COLOR vec3(0.05, 0.1, 0.11)
 #elif COLOR_SCHEME == 99 // Custom
     #define OMNI_TINT OMNI_TINT_CUSTOM
     #define LIGHT_SUNSET_COLOR vec3(LIGHT_SUNSET_COLOR_R, LIGHT_SUNSET_COLOR_G, LIGHT_SUNSET_COLOR_B)
