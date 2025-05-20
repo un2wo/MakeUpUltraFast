@@ -69,8 +69,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define WATER_TEXTURE 0 // [0 1] Enable or disable resource pack water texture. It does not work properly in 1.12. In that case the default value is recommended.
 #define AVOID_DARK_LEVEL 0.030 // [0.000 0.005 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060]  Minimal omni light intensity in caves.
 #define NIGHT_BRIGHT 0.60 // [0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70] Adjusts the brightness of the night light in exteriors.
-#define V_CLOUDS 1 // [0 1 2] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
-#define CLOUD_VOL_STYLE 1 // [0 1] Set the volumetric cloud style.
+#define V_CLOUDS 1 // [0 1 2 3] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
 #define CLOUD_REFLECTION  // Set off-screen volumetric clouds reflection (volumetric clouds must be active).
 #define END_CLOUDS // Activates drawing of clouds in the end (only works if volumetric clouds are active)
 #define BLACK_ENTITY_FIX 0 // [0 1] Removes black entity bug in old video drivers (activate ONLY if you have problems with black entities)
@@ -149,6 +148,12 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define RAYMARCH_STEPS 10
 
 // Cloud parameters
+#if V_CLOUDS == 1
+	#define CLOUD_VOL_STYLE 1
+#else
+	#define CLOUD_VOL_STYLE 0
+#endif
+
 #if CLOUD_VOL_STYLE == 1
     #define CLOUD_PLANE_SUP 380.0
     #define CLOUD_PLANE_CENTER 335.0
