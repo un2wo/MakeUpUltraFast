@@ -137,7 +137,7 @@ uniform int moonPhase;
 
     #define WATER_COLOR vec3(0.0 , 0.2, 0.44313725)
 #elif COLOR_SCHEME == 8  // Vivid
-    #define OMNI_TINT 0.75
+    #define OMNI_TINT 0.6
     #define LIGHT_SUNSET_COLOR vec3(1.0, 0.5, 0.3)
     #define LIGHT_DAY_COLOR vec3(0.9, 0.84, 0.7)
     #define LIGHT_NIGHT_COLOR vec3(0.015, 0.04, 0.07) * NIGHT_BRIGHT_PHASE
