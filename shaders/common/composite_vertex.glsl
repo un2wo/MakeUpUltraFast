@@ -96,7 +96,7 @@ void main() {
             vol_attenuation = 0.1 + (eye_bright_smooth.y * 0.002);
         }
 
-        vol_light_color = day_blend(LIGHT_SUNSET_COLOR, LIGHT_DAY_COLOR, LIGHT_NIGHT_COLOR) * 1.2 * vol_attenuation;
+        vol_light_color = day_blend(LIGHT_SUNSET_COLOR, LIGHT_DAY_COLOR, LIGHT_NIGHT_COLOR) * VOL_LIGHT_STRENGTH * vol_attenuation;
     #endif
 
     #if VOL_LIGHT == 1 && !defined NETHER
