@@ -55,8 +55,11 @@ option.COLORED_SHADOW=Colored shadows
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
-value.VOL_LIGHT.1=Depth based
+value.VOL_LIGHT.1=Depth-based
 value.VOL_LIGHT.2=Volumetric
+option.VOL_LIGHT.comment=Depth-based: Works independently from shadows, but is only visible when facing the light source. Volumetric: Reuses shadow calculations (faster and more accurate), with a large influence on sky color.
+
+option.VOL_LIGHT_STRENGTH=Godrays intensity
 
 option.DOF=Depth of field
 
@@ -67,6 +70,7 @@ option.DOF_SAMPLES_FACTOR=DoF samples factor
 option.AO=Ambient occlusion
 value.AO.0=Off
 value.AO.1=On
+option.AO.comment=Replaces the vanilla ambient occlusion.
 
 option.AOSTEPS=AO sample pairs
 
@@ -77,6 +81,7 @@ value.AA_TYPE.0=Off
 value.AA_TYPE.1=Denoise
 value.AA_TYPE.2=TAA
 value.AA_TYPE.3=Sharp TAA
+option.AA_TYPE.comment=Off: Not recommended. Denoise: Supersampling is only used to hide dithering. TAA: Standard anti-aliasing. Sharp TAA: Adds a sharpening filter to TAA.
 
 option.MOTION_BLUR=Motion blur
 option.MOTION_BLUR_STRENGTH=Motion blur strength
@@ -189,8 +194,10 @@ option.NV_COLOR_B=Night vision B multiplier
 option.OMNI_TINT_CUSTOM=Omni tint
 
 option.AVOID_DARK_LEVEL=Cave brightness
+option.AVOID_DARK_LEVEL.comment=Minimum brightness in caves.
 
 option.NIGHT_BRIGHT=Night brightness
+option.NIGHT_BRIGHT.comment=Moonlight brightness; affected by moon phase and color scheme.
 
 option.V_CLOUDS=Clouds
 value.V_CLOUDS.0=Off
@@ -278,11 +285,8 @@ screen.POST_SCREEN.comment=Set post effects options.
 screen.LIGHT_SCREEN=Light
 screen.LIGHT_SCREEN.comment=Set light options.
 
-screen.CLOUDS_SCREEN=Sun & clouds
-screen.CLOUDS_SCREEN.comment=Set sun and clouds options.
-
-screen.FOG_SCREEN=Fog
-screen.FOG_SCREEN.comment=Set fog options
+screen.FOG_SCREEN=Fog & clouds
+screen.FOG_SCREEN.comment=Set fog & clouds options
 
 screen.MOTION_BLUR_SCREEN=Motion blur
 screen.MOTION_BLUR_SCREEN.comment=Set motion blur options
