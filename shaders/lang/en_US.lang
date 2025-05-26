@@ -1,16 +1,10 @@
 #Profiles
 ############################
-profile.no_effects=No effects
-profile.shadowless_low=Shadowless Low
-profile.shadowless_medium=Shadowless Medium
-profile.shadowless_high=Shadowless High
-profile.low=Low
-profile.medium=Medium
-profile.high=High
-profile.extreme=Extreme
-profile.extremeplus=Extreme+
-
-profile.comment=The "shadowless" profiles are designed for low-performance machines, disregarding the shadows. Traditional profiles slowly add higher quality shadows and more advanced heavy effects. Please experiment with the available options and find the best combination for you.
+profile.minimum=ALL OFF
+profile.performance=Performance
+profile.default=Default
+profile.quality=Quality
+profile.maximum=ALL MAX
 
 #About
 #############################
