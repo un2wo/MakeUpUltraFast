@@ -85,13 +85,20 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     if (mc_Entity.x != ENTITY_LEAVES) {
         far_direct_light_strength = far_direct_light_strength * 0.75 + 0.25;
     }
-    if (is_foliage > .2) {  // It's foliage, light is atenuated by angle
-        #ifdef SHADOW_CASTING
-            direct_light_strength = sqrt(abs(direct_light_strength));
-        #else
-            direct_light_strength = (clamp(direct_light_strength, 0.0, 1.0) * 0.5 + 0.5) * 0.75;
-        #endif
-
+    if (is_foliage > .2) {  // It's foliage, light is attenuated by angle
+        if (mc_Entity.x == ENTITY_LEAVES) {
+            #ifdef SHADOW_CASTING
+                direct_light_strength = sqrt(abs(direct_light_strength)) * 0.8 + 0.2;
+            #else
+                direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.8 + 0.2;
+            #endif
+        } else {
+            #ifdef SHADOW_CASTING
+                direct_light_strength = (sqrt(abs(direct_light_strength)) * 0.5 + 0.5);
+            #else
+                direct_light_strength = (clamp(direct_light_strength, 0.0, 1.0) * 0.5 + 0.5);
+            #endif
+		}
         omni_strength = 1.0;
     } else {
         direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
