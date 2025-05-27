@@ -10,7 +10,8 @@
             mc_Entity.x == ENTITY_UPPERGRASS ||
             mc_Entity.x == ENTITY_SMALLGRASS ||
             mc_Entity.x == ENTITY_SMALLENTS ||
-            mc_Entity.x == ENTITY_LEAVES
+            mc_Entity.x == ENTITY_LEAVES ||
+            mc_Entity.x == ENTITY_VINES ||
         ) {
             vec3 worldpos = position.xyz + cameraPosition;
 
@@ -20,7 +21,7 @@
 
             if (mc_Entity.x == ENTITY_UPPERGRASS) {
                 weight += 1.0;
-            } else if (mc_Entity.x == ENTITY_LEAVES) {
+            } else if (mc_Entity.x == ENTITY_LEAVES || mc_Entity.x == ENTITY_VINES) {
                 weight = .3;
             } else if (mc_Entity.x == ENTITY_SMALLENTS && (weight > 0.9 || fract(worldpos.y + 0.0675) > 0.01)) {
                 weight = 1.0;
@@ -28,7 +29,7 @@
 
             weight *= lmcoord.y * lmcoord.y;  // Evitamos movimiento en cuevas
             position.xyz += wave_move(worldpos.xzy) * weight * (0.03 + (rainStrength * .05));
-        } else if (mc_Entity.x == ENTITY_SMALLENTS_NW) {
+        } else if (mc_Entity.x == ENTITY_SMALLENTS_NW || mc_Entity.x == ENTITY_LEAVES_NW) {
             is_foliage = 0.4;
         }
 
@@ -42,7 +43,9 @@
             mc_Entity.x == ENTITY_SMALLGRASS ||
             mc_Entity.x == ENTITY_SMALLENTS ||
             mc_Entity.x == ENTITY_LEAVES ||
-            mc_Entity.x == ENTITY_SMALLENTS_NW
+            mc_Entity.x == ENTITY_VINES ||
+            mc_Entity.x == ENTITY_SMALLENTS_NW ||
+            mc_Entity.x == ENTITY_LEAVES_NW
         ) {
             is_foliage = 0.4;
         }
