@@ -1,9 +1,9 @@
 Personal edit/retune of MakeUp shaders.
 
 Differences from the original:
-- Subsurface scattering added to more vanilla blocks (incl. vines, dripstone, bamboo)
+- Adjusted shading for foliage and similar blocks; should look better w/ narrower sun angles and shadowless configurations.
 - Adjusted autoexposure; brighter overall
 - New cloudmaps: 'blocky' style clouds are larger with denser coverage, 'natural' style clouds are puffier
 - New color palettes: 'Vivid' (default), 'Surreal' & 'Real-ish'
-- Entity / block entity shadow toggles
+- Entity shadow toggles
 - Reorganized settings screen
