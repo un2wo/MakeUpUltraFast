@@ -11,6 +11,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define ENTITY_SMALLENTS      10059.0  // Crops like entities
 #define ENTITY_SMALLENTS_NW   10032.0  // No waveable small ents
 #define ENTITY_LEAVES         10018.0  // Leaves
+#define ENTITY_LEAVES_NW      10033.0  // Non-waving leaf-like blocks
 #define ENTITY_VINES          10106.0  // Vines
 #define ENTITY_EMMISIVE       10089.0  // Emissors
 #define ENTITY_S_EMMISIVE     10090.0  // Emissors
