@@ -11,7 +11,7 @@
             mc_Entity.x == ENTITY_SMALLGRASS ||
             mc_Entity.x == ENTITY_SMALLENTS ||
             mc_Entity.x == ENTITY_LEAVES ||
-            mc_Entity.x == ENTITY_VINES ||
+            mc_Entity.x == ENTITY_VINES
         ) {
             vec3 worldpos = position.xyz + cameraPosition;
 
