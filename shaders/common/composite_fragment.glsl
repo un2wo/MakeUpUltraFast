@@ -225,7 +225,7 @@ void main() {
 
     #ifdef BLOOM
         // Bloom source
-        float bloom_luma = smoothstep(0.85, 1.0, luma(block_color.rgb * exposure)) * 0.5;
+        float bloom_luma = smoothstep(0.85, 1.25, luma(block_color.rgb * exposure)) * 0.4;
 
         /* DRAWBUFFERS:146 */
         gl_FragData[0] = block_color;
