@@ -136,8 +136,8 @@ value.COLOR_SCHEME.4=Captain
 value.COLOR_SCHEME.5=Cocoa
 value.COLOR_SCHEME.6=Testigo
 value.COLOR_SCHEME.7=Vivid
-value.COLOR_SCHEME.8=Surreal
-value.COLOR_SCHEME.9=Real-ish
+value.COLOR_SCHEME.8=Prairie
+value.COLOR_SCHEME.9=Azure
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects sky and lighting colors in the overworld.
 
