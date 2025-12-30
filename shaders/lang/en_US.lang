@@ -137,7 +137,8 @@ value.COLOR_SCHEME.5=Cocoa
 value.COLOR_SCHEME.6=Testigo
 value.COLOR_SCHEME.7=Vivid
 value.COLOR_SCHEME.8=Prairie
-value.COLOR_SCHEME.9=Azure
+value.COLOR_SCHEME.9=Vanillin
+value.COLOR_SCHEME.10=Pinesap
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects sky and lighting colors in the overworld.
 
