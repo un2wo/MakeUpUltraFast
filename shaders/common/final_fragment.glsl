@@ -80,6 +80,11 @@ varying float exposure;
 
 /* Utility functions */
 
+#ifdef DESATURATION
+	#include "/lib/luma.glsl"
+	#include "/lib/color_utils.glsl"
+#endif
+
 #if AA_TYPE == 3
     #include "/lib/post.glsl"
 #endif
@@ -105,6 +110,26 @@ void main() {
         #if AA_TYPE == 3
             block_color = sharpen(colortex1, block_color, texcoord);
         #endif
+    #endif
+
+    #ifdef DESATURATION
+        float actual_luma = luma(block_color);
+    		
+        // underwater tint
+        #if WATER_COLOR_SOURCE == 1
+        // the water fog currently takes from shader scheme even if resource pack color is requested; need fix?
+            #define WATER_COLOR vec3(0.05, 0.11, 0.20)
+		#endif
+		vec3 underwater_tint = clamp(2.0 * WATER_COLOR / (WATER_COLOR.x + WATER_COLOR.y + WATER_COLOR.z), 0.0, 1.0);
+		if (isEyeInWater == 1) {
+			float luma_underwater = smoothstep(0.0, 0.2, actual_luma);
+			block_color = mix(vec3(actual_luma) * luma_underwater, block_color, luma_underwater * (1 - underwater_tint) + underwater_tint);
+		}
+		
+		// pseudo-purkinje; no real logic behind it, numbers are pretty arbitrary
+		float luma_ground = smoothstep(0.0, 0.1, actual_luma);
+		block_color.r = mix(actual_luma * (luma_ground * 0.5 + 0.5), block_color.r, luma_ground * 0.4 + 0.6);
+		block_color.g = mix(actual_luma * (luma_ground * 0.5 + 0.5), block_color.g, luma_ground * 0.2 + 0.8);
     #endif
 
         block_color *= vec3(exposure);
