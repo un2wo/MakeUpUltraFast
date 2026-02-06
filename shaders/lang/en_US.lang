@@ -55,6 +55,9 @@ option.VOL_LIGHT.comment=Depth-based: Works independently from shadows, but is o
 
 option.VOL_LIGHT_STRENGTH=Godrays intensity
 
+option.DESATURATION = Low-light Desaturation
+option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
+
 option.DOF=Depth of field
 
 option.DOF_STRENGTH=DoF strength
@@ -141,8 +144,9 @@ value.COLOR_SCHEME.9=Prairie
 value.COLOR_SCHEME.10=Antique
 value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
+value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.99=Custom
-option.COLOR_SCHEME.comment=Affects sky and lighting colors in the overworld.
+option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset light R
 option.LIGHT_SUNSET_COLOR_G=Sunset light G
@@ -190,15 +194,15 @@ option.NV_COLOR_B=Night vision B multiplier
 
 option.OMNI_TINT_CUSTOM=Omni tint
 
-option.AVOID_DARK_LEVEL=Cave brightness
+option.AVOID_DARK_LEVEL=Minimum brightness
 option.AVOID_DARK_LEVEL.comment=Minimum brightness in caves.
 
-option.NIGHT_BRIGHT=Night brightness
+option.NIGHT_BRIGHT=Moonlight brightness
 option.NIGHT_BRIGHT.comment=Moonlight brightness; affected by moon phase and color scheme.
 
 option.V_CLOUDS=Clouds
 value.V_CLOUDS.0=Off
-value.V_CLOUDS.1=Boxy
+value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
 value.V_CLOUDS.3=Natural dyn.
 
