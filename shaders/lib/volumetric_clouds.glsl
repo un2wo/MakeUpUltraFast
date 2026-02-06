@@ -56,12 +56,18 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
 
         intersection_pos += (increment * dither);
 
+		#if V_CLOUDS > 1
+			float cloud_cover_mult = CLOUD_COVER;
+		#else
+			float cloud_cover_mult = 1.0;
+		#endif
+
         for (int i = 0; i < samples; i++) {
             current_value =
                 texture2D(
                     gaux2,
                     (intersection_pos.xz * 0.0002777777777777778) + (frameTimeCounter * CLOUD_HI_FACTOR)
-                ).r;
+                ).r * cloud_cover_mult;
 
 
             #if V_CLOUDS == 3
@@ -69,7 +75,7 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
                     texture2D(
                         gaux2,
                         (intersection_pos.zx * 0.0002777777777777778) + (frameTimeCounter * CLOUD_LOW_FACTOR)
-                    ).r;
+                    ).r * cloud_cover_mult;
 
                 current_value *= 0.5;
                 current_value = smoothstep(0.05, 0.95, current_value);
