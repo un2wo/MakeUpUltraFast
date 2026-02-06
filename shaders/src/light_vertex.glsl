@@ -101,10 +101,10 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
 	}
         omni_strength = 1.0;
     } else {
-        direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
+        direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.95 + 0.05;
     }
 #else
-    direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
+    direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.95 + 0.05;
 #endif
 
 // Omni light color
