@@ -67,6 +67,7 @@ const bool gaux4Clear = false;
 uniform sampler2D gaux3;
 uniform sampler2D colortex1;
 uniform float viewWidth;
+uniform int isEyeInWater;
 
 #if AA_TYPE == 3
     uniform float pixel_size_x;
