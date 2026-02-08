@@ -129,8 +129,8 @@ void main() {
 		
 		// pseudo-purkinje; no real logic behind it, numbers are pretty arbitrary
 		float luma_ground = smoothstep(0.0, 0.1, actual_luma);
-		block_color.r = mix(actual_luma * (luma_ground * 0.5 + 0.5), block_color.r, luma_ground * 0.4 + 0.6);
-		block_color.g = mix(actual_luma * (luma_ground * 0.5 + 0.5), block_color.g, luma_ground * 0.2 + 0.8);
+		actual_luma *= luma_ground * 0.5 + 0.5;
+		block_color.rgb = mix(vec3(actual_luma), block_color.rgb, luma_ground * vec3(0.4, 0.2, 0.1) + vec3(0.6, 0.8, 0.9));
     #endif
 
         block_color *= vec3(exposure);
