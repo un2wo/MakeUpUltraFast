@@ -225,7 +225,12 @@ void main() {
 
     #ifdef BLOOM
         // Bloom source
-        float bloom_luma = smoothstep(0.85, 1.25, luma(block_color.rgb * exposure)) * 0.4;
+        float bloom_luma = 0.0;
+        if (isEyeInWater == 0) {
+            bloom_luma = smoothstep(0.85, 1.0, luma(block_color.rgb * exposure)) * 0.35;
+        } else {
+            bloom_luma = smoothstep(0.0, 0.85, luma(block_color.rgb * exposure)) * 0.6;
+        }
 
         /* DRAWBUFFERS:146 */
         gl_FragData[0] = block_color;
