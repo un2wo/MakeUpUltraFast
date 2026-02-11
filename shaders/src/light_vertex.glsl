@@ -65,9 +65,6 @@ if (length(normal) != 0.0) {  // Workaround for undefined normals
         mix(-sun_light_strength, sun_light_strength, light_mix);
 #endif
 
-// Omni light intensity changes by angle
-float omni_strength = (direct_light_strength * .125) + 1.0;
-
 // Direct light color
 #ifdef UNKNOWN_DIM
     direct_light_color = texture2D(lightmap, vec2(0.0, lmcoord.y)).rgb;
@@ -78,6 +75,9 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
         LIGHT_NIGHT_COLOR
     );
 #endif
+
+// Omni light intensity changes by angle
+float omni_strength = ((direct_light_strength + 1.0) * 0.25) + 1.0;
 
 // Direct light strenght --
 #ifdef FOLIAGE_V  // This shader has foliage
@@ -124,7 +124,7 @@ float omni_strength = (direct_light_strength * .125) + 1.0;
     vec3 omni_color_min = omni_color * luma_ratio;
     omni_color = max(omni_color, omni_color_min);
     
-    omni_light = mix(omni_color_min, omni_color, visible_sky);
+    omni_light = mix(omni_color_min, omni_color, visible_sky) * omni_strength;
 #endif
 
 // Avoid flat illumination in caves for entities
