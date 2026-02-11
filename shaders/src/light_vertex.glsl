@@ -77,9 +77,9 @@ if (length(normal) != 0.0) {  // Workaround for undefined normals
 #endif
 
 // Omni light intensity changes by angle
-float omni_strength = ((direct_light_strength + 1.0) * 0.25) + 1.0;
+float omni_strength = (direct_light_strength * .125) + 1.0;
 
-// Direct light strenght --
+// Direct light strength --
 #ifdef FOLIAGE_V  // This shader has foliage
     float far_direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
     if (mc_Entity.x != ENTITY_LEAVES && mc_Entity.x != ENTITY_LEAVES_NW) {
