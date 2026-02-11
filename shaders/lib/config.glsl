@@ -55,7 +55,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define DOF_STRENGTH 0.06  // [0.06 0.07 0.08 0.09 0.10 0.11 0.12 0.13]  Depth of field strength.
 #define AO 0  // [0 1] Turn on for enhanced ambient occlusion (medium performance cost).
 #define AOSTEPS 4 // [4 5 6 7 8 9 10 11] How many samples are taken for AO (high performance cost).
-#define AO_STRENGTH 0.70 // [0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00] Ambient occlusion strength (strength NOT affect performance).
+#define AO_STRENGTH 1.00 // [0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00] Ambient occlusion strength (strength NOT affect performance).
 #define AA_TYPE 2 // [0 1 2 3]  No: Disable antialiasing (not recommended). Denoise only: Supersampling is only used to eliminate noise. TAA: Enable antialiasing (Recommended). Sharp TAA: A subtle sharpening effect is used on the TAA.
 //#define MOTION_BLUR // Turn on motion blur
 #define MOTION_BLUR_STRENGTH 0.5 // [0.5 1.0 1.5 2.0 2.5 3.0 3.5 4.0] Set Motion blur strength. Lower framerate -> Lower strength and vice versa is recommended.
@@ -69,8 +69,8 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define COLOR_SCHEME 9 // [0 1 2 3 4 5 6 7 8 9 10 11 12 13 99] Change overworld sky and lighting colors.
 #define WATER_TEXTURE 0 // [0 1] Enable or disable resource pack water texture. It does not work properly in 1.12. In that case the default value is recommended.
 #define AVOID_DARK_LEVEL 0.030 // [0.000 0.005 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060]  Minimal omni light intensity in caves.
-#define NIGHT_BRIGHT 0.60 // [0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70] Adjusts the brightness of the night light in exteriors.
-#define V_CLOUDS 1 // [0 1 2 3] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
+#define NIGHT_BRIGHT 0.60 // [0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80] Adjusts the brightness of the night light in exteriors.
+#define V_CLOUDS 2 // [0 1 2 3] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
 #define CLOUD_REFLECTION  // Set off-screen volumetric clouds reflection (volumetric clouds must be active).
 #define END_CLOUDS // Activates drawing of clouds in the end (only works if volumetric clouds are active)
 #define BLACK_ENTITY_FIX 0 // [0 1] Removes black entity bug in old video drivers (activate ONLY if you have problems with black entities)
@@ -204,7 +204,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define COLOR_BLIND_MODE 0  // [0 1 2]  Set color blindness type
 
 // Sun rotation angle
-const float sunPathRotation = -40.0; // [-40.0 -35.0 -30.0 -25.0 -20.0 -15.0 -10.0 -5.0 0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0]
+const float sunPathRotation = -25.0; // [-40.0 -35.0 -30.0 -25.0 -20.0 -15.0 -10.0 -5.0 0.0 5.0 10.0 15.0 20.0 25.0 30.0 35.0 40.0]
 
 #define SHADOW_DISTANCE_SLIDER 2 // [0 1 2]
 #define SHADOW_QTY_SLIDER 1 // [1 2 3]
