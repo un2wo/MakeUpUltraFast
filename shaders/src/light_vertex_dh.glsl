@@ -50,7 +50,7 @@ if (length(normal) != 0.0) {  // Workaround for undefined normals
 #endif
 
 // Omni light intensity changes by angle
-float omni_strength = ((direct_light_strength + 1.0) * 0.25) + 1.0;     
+float omni_strength = (direct_light_strength * .125) + 1.0;     
 
 // Calculamos color de luz directa
 #ifdef UNKNOWN_DIM
