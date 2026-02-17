@@ -145,6 +145,9 @@ void main() {
     // DEVELOPER: If your post processing effect only involves the current pixel,
     // it can be placed here. For example:
 
+	// Contrast:
+	block_color = (block_color - 0.5) * CONTRAST + 0.5;
+
     // Saturation:
     // float actual_luma = luma(block_color);
     // block_color = mix(vec3(actual_luma), block_color, 1.5);
