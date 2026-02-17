@@ -58,6 +58,8 @@ option.VOL_LIGHT_STRENGTH=Godrays intensity
 option.DESATURATION = Low-light Desaturation
 option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
+option.CONTRAST = Contrast
+
 option.DOF=Depth of field
 
 option.DOF_STRENGTH=DoF strength
