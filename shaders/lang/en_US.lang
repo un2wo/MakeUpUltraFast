@@ -60,6 +60,8 @@ option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds 
 
 option.CONTRAST = Contrast
 
+option.BRIGHTNESS = Brightness
+
 option.DOF=Depth of field
 
 option.DOF_STRENGTH=DoF strength
@@ -218,7 +220,7 @@ option.END_CLOUDS=Clouds in The End
 option.CLOUD_STEPS_AVG=Cloud samples
 
 option.CLOUD_COVER=Cloud Coverage
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky (natural styles only)
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky. Only used for natural styles.
 
 option.BLOOM=Bloom
 
