@@ -8,50 +8,51 @@ profile.maximum=ALL MAX
 
 #About
 #############################
-option.ACERCADE=MakeUp
+option.ACERCADE=MakeUp (Edit)
 option.ACERCADE.comment=Thanks for using this shader! :). Set Optifine native quality controls on normal or default values for better quality.
-value.ACERCADE.0=v.9.1e
+value.ACERCADE.0=v9.1e+
 
 #Options
 #############################
 option.SHADOW_CASTING=Shadows
 
-option.ENTITY_SHADOW=Entity shadows
+option.ENTITY_SHADOW=Entity Shadows
 value.ENTITY_SHADOW.0=No
 value.ENTITY_SHADOW.1=Yes
-option.BLOCK_ENTITY_SHADOW=Block entity shadows
+option.BLOCK_ENTITY_SHADOW=Block Entity Shadows
 value.BLOCK_ENTITY_SHADOW.0=No
 value.BLOCK_ENTITY_SHADOW.1=Yes
 
-option.SHADOW_DISTANCE_SLIDER=Shadow distance
+option.SHADOW_DISTANCE_SLIDER=Shadow Distance
 value.SHADOW_DISTANCE_SLIDER.0=Short
 value.SHADOW_DISTANCE_SLIDER.1=Medium
 value.SHADOW_DISTANCE_SLIDER.2=Far
 
-option.SHADOW_QTY_SLIDER=Shadow quality
+option.SHADOW_QTY_SLIDER=Shadow Quality
 value.SHADOW_QTY_SLIDER.0=None
 value.SHADOW_QTY_SLIDER.1=Low
 value.SHADOW_QTY_SLIDER.2=Medium
 value.SHADOW_QTY_SLIDER.3=High
 
-option.REFLECTION_SLIDER=Reflection
+option.REFLECTION_SLIDER=Reflections
 value.REFLECTION_SLIDER.0=Off
-value.REFLECTION_SLIDER.1=Flipped image
+value.REFLECTION_SLIDER.1=Flipped Image
 value.REFLECTION_SLIDER.2=Raymarching
 
-option.SHADOW_TYPE=Shadow type
+option.SHADOW_TYPE=Shadow Type
 value.SHADOW_TYPE.0=Simple
 value.SHADOW_TYPE.1=Filtered
 
-option.SHADOW_BLUR=Shadow blur intensity
+option.SHADOW_BLUR=Shadow Blur Intensity
 
-option.COLORED_SHADOW=Colored shadows
+option.COLORED_SHADOW=Colored Shadows
+option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks, such as glass.
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
 value.VOL_LIGHT.1=Depth-based
 value.VOL_LIGHT.2=Volumetric
-option.VOL_LIGHT.comment=Depth-based: Works independently from shadows, but is only visible when facing the light source. Volumetric: Reuses shadow calculations (faster and more accurate), with a large influence on sky color.
+option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color (requires shadows to be enabled).
 
 option.VOL_LIGHT_STRENGTH=Godrays intensity
 
@@ -62,40 +63,42 @@ option.CONTRAST = Contrast
 
 option.BRIGHTNESS = Brightness
 
-option.DOF=Depth of field
+option.DOF=Depth of Field
+option.DOF.comment=Blurs out-of-focus objects.
 
-option.DOF_STRENGTH=DoF strength
+option.DOF_STRENGTH=DoF Strength
 
-option.DOF_SAMPLES_FACTOR=DoF samples factor
+option.DOF_SAMPLES_FACTOR=DoF Samples Factor
 
-option.AO=Ambient occlusion
+option.AO=Ambient Occlusion
 value.AO.0=Off
 value.AO.1=On
-option.AO.comment=Replaces the vanilla ambient occlusion.
+option.AO.comment=Screen-space ambient occlusion; adds shading to the corners of blocks. Uses the vanilla AO when disabled.
 
-option.AOSTEPS=AO sample pairs
+option.AOSTEPS=AO Sample Pairs
 
-option.AO_STRENGTH=AO strength
+option.AO_STRENGTH=AO Strength
+option.AO_STRENGTH.comment=Ambient occlusion strength. Affects both SSAO and the vanilla AO.
 
-option.AA_TYPE=Temporal sampling
+option.AA_TYPE=Temporal Sampling
 value.AA_TYPE.0=Off
 value.AA_TYPE.1=Denoise
 value.AA_TYPE.2=TAA
 value.AA_TYPE.3=Sharp TAA
 option.AA_TYPE.comment=Off: Not recommended. Denoise: Supersampling is only used to hide dithering. TAA: Standard anti-aliasing. Sharp TAA: Adds a sharpening filter to TAA.
 
-option.MOTION_BLUR=Motion blur
-option.MOTION_BLUR_STRENGTH=Motion blur strength
-option.MOTION_BLUR_SAMPLES=Motion blur samples
+option.MOTION_BLUR=Motion Blur
+option.MOTION_BLUR_STRENGTH=Motion Blur Strength
+option.MOTION_BLUR_SAMPLES=Motion Blur Samples
 
-option.VANILLA_WATER=Vanilla like water
+option.VANILLA_WATER=Vanilla-like Water
 
-option.WATER_TEXTURE=Water texture
+option.WATER_TEXTURE=Water Texture
 value.WATER_TEXTURE.0=No
 value.WATER_TEXTURE.1=Yes
 
-option.WATER_COLOR_SOURCE=Water color
-value.WATER_COLOR_SOURCE.0=Shader scheme
+option.WATER_COLOR_SOURCE=Water Color
+value.WATER_COLOR_SOURCE.0=Shader Scheme
 value.WATER_COLOR_SOURCE.1=Resource Pack
 
 option.REFLECTION=Reflection
@@ -106,30 +109,33 @@ option.REFRACTION=Refraction
 value.REFRACTION.0=Off
 value.REFRACTION.1=On
 
-option.SSR_TYPE=Reflection type
-value.SSR_TYPE.0=Flipped image
+option.SSR_TYPE=Reflection Type
+value.SSR_TYPE.0=Flipped Image
 value.SSR_TYPE.1=Raymarching
 
-option.SUN_REFLECTION=Sun reflection
+option.SUN_REFLECTION=Sun Reflection
 value.SUN_REFLECTION.0=Off
 value.SUN_REFLECTION.1=On
 
-option.CLOUD_REFLECTION=Vol. clouds reflection
+option.CLOUD_REFLECTION=Vol. Clouds Reflection
+option.CLOUD_REFLECTION.comment=Makes volumetric clouds visible in reflections, even when looking downward.
 
-option.WAVING=Waving plants
+option.WAVING=Waving Plants
 value.WAVING.0=No
 value.WAVING.1=Yes
 
-option.CHROMA_ABER=Chroma aberration
+option.CHROMA_ABER=Chroma Aberration
 value.CHROMA_ABER.0=No
 value.CHROMA_ABER.1=Yes
+option.CHROMA_ABER.comment=Adds red/cyan distortion to the image.
 
-option.CHROMA_ABER_STRENGTH=Chroma aberration strength
+option.CHROMA_ABER_STRENGTH=Chroma Aberration Strength
 
-option.WATER_ABSORPTION=Water absorption index
+option.WATER_ABSORPTION=Water Absorption Index
+option.WATER_ABSORPTION.comment=Adjusts transparency of water when viewed from outside.
 
-option.WATER_TURBULENCE=Waves strength
-value.WATER_TURBULENCE.7.0=Very low
+option.WATER_TURBULENCE=Waves Strength
+value.WATER_TURBULENCE.7.0=Very Low
 value.WATER_TURBULENCE.1.75=Low
 value.WATER_TURBULENCE.0.9=Medium
 value.WATER_TURBULENCE.0.5=High
@@ -196,12 +202,12 @@ option.NV_COLOR_R=Night vision R multiplier
 option.NV_COLOR_G=Night vision G multiplier
 option.NV_COLOR_B=Night vision B multiplier
 
-option.OMNI_TINT_CUSTOM=Omni tint
+option.OMNI_TINT_CUSTOM=Omni Tint
 
-option.AVOID_DARK_LEVEL=Minimum brightness
+option.AVOID_DARK_LEVEL=Minimum Brightness
 option.AVOID_DARK_LEVEL.comment=Minimum brightness in caves.
 
-option.NIGHT_BRIGHT=Moonlight brightness
+option.NIGHT_BRIGHT=Moonlight Brightness
 option.NIGHT_BRIGHT.comment=Moonlight brightness; affected by moon phase and color scheme.
 
 option.V_CLOUDS=Clouds
@@ -210,63 +216,64 @@ value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
 value.V_CLOUDS.3=Natural dyn.
 
-option.CLOUD_SPEED=Clouds speed
+option.CLOUD_SPEED=Clouds Speed
 value.CLOUD_SPEED.0=Normal
-value.CLOUD_SPEED.1=Time lapse 1
-value.CLOUD_SPEED.2=Time lapse 2
+value.CLOUD_SPEED.1=Timelapse 1
+value.CLOUD_SPEED.2=Timelapse 2
 
 option.END_CLOUDS=Clouds in The End
 
-option.CLOUD_STEPS_AVG=Cloud samples
+option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
+option.CLOUD_COVER.0=Variable
 option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky. Only used for natural styles.
 
 option.BLOOM=Bloom
 
-option.COLOR_BLINDNESS=Color blindness
+option.COLOR_BLINDNESS=Color Blindness
 
-option.COLOR_BLIND_MODE=CB type
+option.COLOR_BLIND_MODE=CB Type
 value.COLOR_BLIND_MODE.0=Protanopia
 value.COLOR_BLIND_MODE.1=Deuteranopia
 value.COLOR_BLIND_MODE.2=Tritanopia
 
-option.DEBUG_MODE=Debug mode
+option.DEBUG_MODE=Debug Mode
 
-option.BLOOM_SAMPLES=Bloom sample pairs
+option.BLOOM_SAMPLES=Bloom Sample Pairs
 
-option.BLACK_ENTITY_FIX=Black entity BUGFIX
+option.BLACK_ENTITY_FIX=Black Entity BUGFIX
 value.BLACK_ENTITY_FIX.0=Off
 value.BLACK_ENTITY_FIX.1=On
 
-option.FOG_ACTIVE=Fog enabled
+option.FOG_ACTIVE=Fog Enabled
 
-option.FOG_ADJUST=Fog intensity
+option.FOG_ADJUST=Fog Intensity
 value.FOG_ADJUST.20.0=No fog
-value.FOG_ADJUST.10.0=Ultra low
-value.FOG_ADJUST.8.0=Very low
+value.FOG_ADJUST.10.0=Ultra Low
+value.FOG_ADJUST.8.0=Very Low
 value.FOG_ADJUST.4.0=Low
 value.FOG_ADJUST.2.0=Medium
 value.FOG_ADJUST.1.0=High
 
-option.NETHER_FOG_DISTANCE=Nether fog distance
+option.NETHER_FOG_DISTANCE=Nether Fog Distance
 value.NETHER_FOG_DISTANCE.0=Render Distance
 value.NETHER_FOG_DISTANCE.1=Vanilla
 
-option.BLOCKLIGHT_TEMP=Blocklight temp
+option.BLOCKLIGHT_TEMP=Blocklight Temp
 value.BLOCKLIGHT_TEMP.0=Warmer
 value.BLOCKLIGHT_TEMP.1=Warm
 value.BLOCKLIGHT_TEMP.2=Yellow
-value.BLOCKLIGHT_TEMP.3=Pale yellow
-value.BLOCKLIGHT_TEMP.4=White light
+value.BLOCKLIGHT_TEMP.3=Pale Yellow
+value.BLOCKLIGHT_TEMP.4=White
 
-option.sunPathRotation=Sun angle
+option.sunPathRotation=Sun Angle
 
 option.USE_BASIC_SH=Custom dimensions basic shader
 
-option.MATERIAL_GLOSS=Material gloss
+option.MATERIAL_GLOSS=Material Gloss
 
-option.DYN_HAND_LIGHT=Fake dynamic light
+option.DYN_HAND_LIGHT=Handheld Light
 
 #Screens
 screen.ADVANCED_SCREEN=Advanced options
@@ -278,16 +285,10 @@ screen.COMPATIBILITY_SCREEN.comment=Set compatibility options
 screen.SHADOWS_SCREEN=Shadows
 screen.SHADOWS_SCREEN.comment=Set shadows options
 
-screen.DOF_SCREEN=Depth of field
-screen.DOF_SCREEN.comment=Set depth of field options
-
-screen.AO_SCREEN=Ambient occlusion
-screen.AO_SCREEN.comment=Set ambient occlusion options
-
 screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
 
-screen.POST_SCREEN= Post effects
+screen.POST_SCREEN=Post Effects
 screen.POST_SCREEN.comment=Set post effects options.
 
 screen.LIGHT_SCREEN=Light
@@ -295,9 +296,6 @@ screen.LIGHT_SCREEN.comment=Set light options.
 
 screen.FOG_SCREEN=Fog & clouds
 screen.FOG_SCREEN.comment=Set fog & clouds options
-
-screen.MOTION_BLUR_SCREEN=Motion blur
-screen.MOTION_BLUR_SCREEN.comment=Set motion blur options
 
 screen.ACCESIBILITY_SCREEN=Accesibility
 screen.ACCESIBILITY_SCREEN.comment=Set accesibility options
