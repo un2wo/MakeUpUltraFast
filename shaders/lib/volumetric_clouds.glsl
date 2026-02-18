@@ -2,6 +2,8 @@
 Fast volumetric clouds - MakeUp implementation
 */
 
+uniform int worldDay;
+
 vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, vec3 base_pos, int samples, float umbral, vec3 cloud_color, vec3 dark_cloud_color) {
     float plane_distance;
     float cloud_value;
@@ -56,10 +58,14 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
 
         intersection_pos += (increment * dither);
 
+		float cloud_cover_mult = 1.0;
 		#if V_CLOUDS > 1
-			float cloud_cover_mult = CLOUD_COVER;
-		#else
-			float cloud_cover_mult = 1.0;
+			if (CLOUD_COVER == 0) {
+				cloud_cover_mult = mod(worldDay + 1, 7) + day_moment;
+				cloud_cover_mult = 0.70 + (abs(3.5 - cloud_cover_mult)) * 0.1;
+			} else {
+				cloud_cover_mult = CLOUD_COVER;
+			}
 		#endif
 
         for (int i = 0; i < samples; i++) {
