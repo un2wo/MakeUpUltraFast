@@ -89,7 +89,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define DYN_HAND_LIGHT // Toggle the fake dynamic light
 #define VOL_LIGHT_STRENGTH 1.2 // [0.5 0.6 0.7 0.8 0.9 1.0 1.1 1.2 1.3 1.4 1.5]
 #define DESATURATION // underwater tint and pseudo-purkinje effect
-#define CLOUD_COVER 0.90 // [0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10]
+#define CLOUD_COVER 0.90 // [0 0.70 0.75 0.80 0.85 0.90 0.95 1.00 1.05 1.10]
 #define CONTRAST 1.05 // [0.80 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.90 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1.00 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20]
 #define BRIGHTNESS 1.00 // [0.80 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.90 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1.00 1.01 1.02 1.03 1.04 1.05 1.06 1.07 1.08 1.09 1.10 1.11 1.12 1.13 1.14 1.15 1.16 1.17 1.18 1.19 1.20]
 
