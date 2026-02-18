@@ -8,8 +8,8 @@ profile.maximum=ALL MAX
 
 #About
 #############################
-option.ACERCADE=MakeUp (Edit)
-option.ACERCADE.comment=Thanks for using this shader! :). Set Optifine native quality controls on normal or default values for better quality.
+option.ACERCADE=MakeUp Edit
+option.ACERCADE.comment=Thanks for using this shader! :). by Javier Garduño, with modifications added by un2wo.
 value.ACERCADE.0=v9.1e+
 
 #Options
@@ -143,7 +143,7 @@ value.WATER_TURBULENCE.1.75=Low
 value.WATER_TURBULENCE.0.9=Medium
 value.WATER_TURBULENCE.0.5=High
 
-option.COLOR_SCHEME=Color scheme
+option.COLOR_SCHEME=Color Scheme
 value.COLOR_SCHEME.0=Ethereal
 value.COLOR_SCHEME.1=New shoka
 value.COLOR_SCHEME.2=Shoka
@@ -161,49 +161,49 @@ value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
-option.LIGHT_SUNSET_COLOR_R=Sunset light R
-option.LIGHT_SUNSET_COLOR_G=Sunset light G
-option.LIGHT_SUNSET_COLOR_B=Sunset light B
+option.LIGHT_SUNSET_COLOR_R=Sunset Light R
+option.LIGHT_SUNSET_COLOR_G=Sunset Light G
+option.LIGHT_SUNSET_COLOR_B=Sunset Light B
 
-option.LIGHT_DAY_COLOR_R=Day light R
-option.LIGHT_DAY_COLOR_G=Day light G
-option.LIGHT_DAY_COLOR_B=Day light B
+option.LIGHT_DAY_COLOR_R=Day Light R
+option.LIGHT_DAY_COLOR_G=Day Light G
+option.LIGHT_DAY_COLOR_B=Day Light B
 
-option.LIGHT_NIGHT_COLOR_R=Night light R
-option.LIGHT_NIGHT_COLOR_G=Night light G
-option.LIGHT_NIGHT_COLOR_B=Night light B
+option.LIGHT_NIGHT_COLOR_R=Night Light R
+option.LIGHT_NIGHT_COLOR_G=Night Light G
+option.LIGHT_NIGHT_COLOR_B=Night Light B
 
-option.ZENITH_SUNSET_COLOR_R=Zenith sunset R
-option.ZENITH_SUNSET_COLOR_G=Zenith sunset G
-option.ZENITH_SUNSET_COLOR_B=Zenith sunset B
+option.ZENITH_SUNSET_COLOR_R=Zenith Sunset R
+option.ZENITH_SUNSET_COLOR_G=Zenith Sunset G
+option.ZENITH_SUNSET_COLOR_B=Zenith Sunset B
 
-option.ZENITH_DAY_COLOR_R=Zenith day R
-option.ZENITH_DAY_COLOR_G=Zenith day G
-option.ZENITH_DAY_COLOR_B=Zenith day B
+option.ZENITH_DAY_COLOR_R=Day Zenith R
+option.ZENITH_DAY_COLOR_G=Day Zenith G
+option.ZENITH_DAY_COLOR_B=Day Zenith B
 
-option.ZENITH_NIGHT_COLOR_R=Zenith night R
-option.ZENITH_NIGHT_COLOR_G=Zenith night G
-option.ZENITH_NIGHT_COLOR_B=Zenith night B
+option.ZENITH_NIGHT_COLOR_R=Night Zenith R
+option.ZENITH_NIGHT_COLOR_G=Night Zenith G
+option.ZENITH_NIGHT_COLOR_B=Night Zenith B
 
-option.HORIZON_SUNSET_COLOR_R=Horizon sunset R
-option.HORIZON_SUNSET_COLOR_G=Horizon sunset G
-option.HORIZON_SUNSET_COLOR_B=Horizon sunset B
+option.HORIZON_SUNSET_COLOR_R=Horizon Sunset R
+option.HORIZON_SUNSET_COLOR_G=Horizon Sunset G
+option.HORIZON_SUNSET_COLOR_B=Horizon Sunset B
 
-option.HORIZON_DAY_COLOR_R=Horizon day R
-option.HORIZON_DAY_COLOR_G=Horizon day G
-option.HORIZON_DAY_COLOR_B=Horizon day B
+option.HORIZON_DAY_COLOR_R=Horizon Day R
+option.HORIZON_DAY_COLOR_G=Horizon Day G
+option.HORIZON_DAY_COLOR_B=Horizon Day B
 
-option.HORIZON_NIGHT_COLOR_R=Horizon night R
-option.HORIZON_NIGHT_COLOR_G=Horizon night G
-option.HORIZON_NIGHT_COLOR_B=Horizon night B
+option.HORIZON_NIGHT_COLOR_R=Horizon Night R
+option.HORIZON_NIGHT_COLOR_G=Horizon Night G
+option.HORIZON_NIGHT_COLOR_B=Horizon Night B
 
 option.WATER_COLOR_R=Water R
 option.WATER_COLOR_G=Water G
 option.WATER_COLOR_B=Water B
 
-option.NV_COLOR_R=Night vision R multiplier
-option.NV_COLOR_G=Night vision G multiplier
-option.NV_COLOR_B=Night vision B multiplier
+option.NV_COLOR_R=Night Vision R Multiplier
+option.NV_COLOR_G=Night Vision G Multiplier
+option.NV_COLOR_B=Night Vision B Multiplier
 
 option.OMNI_TINT_CUSTOM=Omni Tint
 
@@ -272,7 +272,7 @@ value.BLOCKLIGHT_TEMP.4=White
 
 option.sunPathRotation=Sun Angle
 
-option.USE_BASIC_SH=Custom dimensions basic shader
+option.USE_BASIC_SH=Custom Dimensions Basic Shader
 
 option.MATERIAL_GLOSS=Material Gloss
 
@@ -280,13 +280,13 @@ option.DYN_HAND_LIGHT=Handheld Light
 
 #Screens
 screen.ADVANCED_SCREEN=Advanced options
-screen.ADVANCED_SCREEN.comment=Set advanced options
+screen.ADVANCED_SCREEN.comment=Set advanced options.
 
 screen.COMPATIBILITY_SCREEN=Compatibility
-screen.COMPATIBILITY_SCREEN.comment=Set compatibility options
+screen.COMPATIBILITY_SCREEN.comment=Set compatibility options.
 
 screen.SHADOWS_SCREEN=Shadows
-screen.SHADOWS_SCREEN.comment=Set shadows options
+screen.SHADOWS_SCREEN.comment=Set shadows options.
 
 screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
@@ -297,16 +297,16 @@ screen.POST_SCREEN.comment=Set post effects options.
 screen.LIGHT_SCREEN=Light
 screen.LIGHT_SCREEN.comment=Set light options.
 
-screen.FOG_SCREEN=Fog & clouds
-screen.FOG_SCREEN.comment=Set fog & clouds options
+screen.FOG_SCREEN=Fog & Clouds
+screen.FOG_SCREEN.comment=Set fog & clouds options.
 
-screen.ACCESIBILITY_SCREEN=Accesibility
-screen.ACCESIBILITY_SCREEN.comment=Set accesibility options
+screen.ACCESIBILITY_SCREEN=Accessibility
+screen.ACCESIBILITY_SCREEN.comment=Set accessibility options.
 
-screen.CUSTOM_COLORS_SCREEN=Custom colors
+screen.CUSTOM_COLORS_SCREEN=Custom Colors
 screen.CUSTOM_COLORS_SCREEN.comment=Set custom colors
-screen.CUSTOM_COLORS_DAY=Day custom colors
-screen.CUSTOM_COLORS_SUNSET=Sunset/dawn custom colors
-screen.CUSTOM_COLORS_NIGHT=Night custom colors
-screen.CUSTOM_COLORS_WATER=Water custom color
-screen.CUSTOM_COLORS_NV=Night vision custom color
+screen.CUSTOM_COLORS_DAY=Day Custom Colors
+screen.CUSTOM_COLORS_SUNSET=Sunset/Dawn Custom Colors
+screen.CUSTOM_COLORS_NIGHT=Night Custom Colors
+screen.CUSTOM_COLORS_WATER=Water Custom Color
+screen.CUSTOM_COLORS_NV=Night Vision Custom Color
