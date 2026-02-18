@@ -81,8 +81,9 @@ varying float exposure;
 
 /* Utility functions */
 
+#include "/lib/luma.glsl"
+
 #ifdef DESATURATION
-	#include "/lib/luma.glsl"
 	#include "/lib/color_utils.glsl"
 #endif
 
@@ -145,8 +146,15 @@ void main() {
     // DEVELOPER: If your post processing effect only involves the current pixel,
     // it can be placed here. For example:
 
-	// Contrast:
-	block_color = (block_color - 0.5) * CONTRAST + 0.5;
+	// Contrast
+	#if CONTRAST <== 1
+		block_color = (block_color - 0.5) * CONTRAST + 0.5;
+	#else
+		block_color = adjustable_smoothstep(block_color, 0.5, CONTRAST);
+	#endif
+	
+	// Brightness
+	block_color *= BRIGHTNESS;
 
     // Saturation:
     // float actual_luma = luma(block_color);
