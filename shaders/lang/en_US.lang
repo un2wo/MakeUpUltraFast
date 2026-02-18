@@ -52,7 +52,7 @@ option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
 value.VOL_LIGHT.1=Depth-based
 value.VOL_LIGHT.2=Volumetric
-option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color (requires shadows to be enabled).
+option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color, but requires shadows to be enabled.
 
 option.VOL_LIGHT_STRENGTH=Godrays intensity
 
@@ -62,6 +62,9 @@ option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds 
 option.CONTRAST = Contrast
 
 option.BRIGHTNESS = Brightness
+
+option.EXPOSURE = Exposure
+option.EXPOSURE.comment = Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
 
 option.DOF=Depth of Field
 option.DOF.comment=Blurs out-of-focus objects.
@@ -118,7 +121,7 @@ value.SUN_REFLECTION.0=Off
 value.SUN_REFLECTION.1=On
 
 option.CLOUD_REFLECTION=Vol. Clouds Reflection
-option.CLOUD_REFLECTION.comment=Makes volumetric clouds visible in reflections, even when looking downward.
+option.CLOUD_REFLECTION.comment=Makes volumetric clouds visible in reflections, even when clouds are offscreen.
 
 option.WAVING=Waving Plants
 value.WAVING.0=No
