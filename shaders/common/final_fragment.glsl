@@ -152,11 +152,11 @@ void main() {
 		block_color = adjustable_smoothstep(block_color, 0.5, CONTRAST);
 	#endif
 	
+    // Saturation
+    block_color = mix(vec3(luma(block_color)), block_color, SATURATION);
+
 	// Brightness
 	block_color *= BRIGHTNESS;
-
-    // Saturation
-    block_color = mix(vec3(actual_luma), block_color, SATURATION);
 
     // Color-blindness correction
     #ifdef COLOR_BLINDNESS
