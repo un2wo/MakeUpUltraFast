@@ -114,9 +114,9 @@ void main() {
         #endif
     #endif
 
-    #ifdef DESATURATION
-        float actual_luma = luma(block_color);
-    		
+	float actual_luma = luma(block_color);
+
+    #ifdef DESATURATION    		
         // underwater tint
         #if WATER_COLOR_SOURCE == 1
         // the water fog currently takes from shader scheme even if resource pack color is requested; need fix?
@@ -130,11 +130,10 @@ void main() {
 		
 		// pseudo-purkinje; no real logic behind it, numbers are pretty arbitrary
 		float luma_ground = smoothstep(0.0, 0.1, actual_luma);
-		actual_luma *= luma_ground * 0.5 + 0.5;
-		block_color.rgb = mix(vec3(actual_luma), block_color.rgb, luma_ground * vec3(0.4, 0.2, 0.1) + vec3(0.6, 0.8, 0.9));
+		block_color.rgb = mix(vec3(actual_luma) * luma_ground, block_color.rgb, luma_ground * vec3(0.4, 0.2, 0.1) + vec3(0.6, 0.8, 0.9));
     #endif
 
-        block_color *= vec3(exposure);
+    block_color *= vec3(exposure);
 
     #if defined UNKNOWN_DIM
         block_color = custom_sigmoid_alt(block_color);
@@ -156,9 +155,8 @@ void main() {
 	// Brightness
 	block_color *= BRIGHTNESS;
 
-    // Saturation:
-    // float actual_luma = luma(block_color);
-    // block_color = mix(vec3(actual_luma), block_color, 1.5);
+    // Saturation
+    block_color = mix(vec3(actual_luma), block_color, SATURATION);
 
     // Color-blindness correction
     #ifdef COLOR_BLINDNESS
