@@ -8,9 +8,9 @@ profile.maximum=ALL MAX
 
 #About
 #############################
-option.ACERCADE=MakeUp Edit
+option.ACERCADE=MakeUp*
 option.ACERCADE.comment=Thanks for using this shader! :). by Javier Garduño, with modifications added by un2wo.
-value.ACERCADE.0=v9.1e+
+value.ACERCADE.0=9.1e Plus
 
 #Options
 #############################
@@ -54,14 +54,14 @@ value.VOL_LIGHT.1=Depth-based
 value.VOL_LIGHT.2=Volumetric
 option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color, but requires shadows to be enabled.
 
-option.VOL_LIGHT_STRENGTH=Godrays intensity
+option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
 option.DESATURATION = Low-light Desaturation
 option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
 option.CONTRAST = Contrast
-
 option.BRIGHTNESS = Brightness
+option.SATURATION = Saturation
 
 option.EXPOSURE = Exposure
 option.EXPOSURE.comment = Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
@@ -218,6 +218,7 @@ value.V_CLOUDS.0=Off
 value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
 value.V_CLOUDS.3=Natural dyn.
+option.V_CLOUDS.comment=Volumetric clouds. Natural dynamic clouds change shape over time, but are slightly less performant.
 
 option.CLOUD_SPEED=Clouds Speed
 value.CLOUD_SPEED.0=Normal
@@ -230,7 +231,7 @@ option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
 value.CLOUD_COVER.0=Variable
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky. Only used for natural styles.
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky. Only used for natural styles. The 'variable' setting will cause this value to oscillate from 0.70 to 1.05 over a 7 day period.
 
 option.BLOOM=Bloom
 
@@ -275,6 +276,7 @@ option.sunPathRotation=Sun Angle
 option.USE_BASIC_SH=Custom Dimensions Basic Shader
 
 option.MATERIAL_GLOSS=Material Gloss
+option.MATERIAL_GLOSS.comment=Adds extra sheen to blocks under sun/moonlight, depending on the material.
 
 option.DYN_HAND_LIGHT=Handheld Light
 
@@ -292,7 +294,7 @@ screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
 
 screen.POST_SCREEN=Post Effects
-screen.POST_SCREEN.comment=Set post effects options.
+screen.POST_SCREEN.comment=Set post effects and color grading options.
 
 screen.LIGHT_SCREEN=Light
 screen.LIGHT_SCREEN.comment=Set light options.
