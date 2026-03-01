@@ -8,9 +8,9 @@ profile.maximum=ALL MAX
 
 #About
 #############################
-option.ACERCADE=MakeUp*
+option.ACERCADE=MakeUp Edit
 option.ACERCADE.comment=Thanks for using this shader! :). by Javier Garduño, with modifications added by un2wo.
-value.ACERCADE.0=9.1e Plus
+value.ACERCADE.0=9.1e+
 
 #Options
 #############################
@@ -46,7 +46,7 @@ value.SHADOW_TYPE.1=Filtered
 option.SHADOW_BLUR=Shadow Blur Intensity
 
 option.COLORED_SHADOW=Colored Shadows
-option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks, such as glass.
+option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks such as glass.
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
@@ -158,6 +158,7 @@ value.COLOR_SCHEME.10=Antique
 value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
+value.COLOR_SCHEME.14=Haze
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
@@ -208,7 +209,7 @@ option.NV_COLOR_B=Night Vision B Multiplier
 option.OMNI_TINT_CUSTOM=Omni Tint
 
 option.AVOID_DARK_LEVEL=Minimum Brightness
-option.AVOID_DARK_LEVEL.comment=Minimum brightness in caves.
+option.AVOID_DARK_LEVEL.comment=Minimum brightness in caves and shaded areas at nighttime.
 
 option.NIGHT_BRIGHT=Moonlight Brightness
 option.NIGHT_BRIGHT.comment=Moonlight brightness; affected by moon phase and color scheme.
@@ -231,7 +232,7 @@ option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
 value.CLOUD_COVER.0=Variable
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky. Only used for natural styles. The 'variable' setting will cause this value to oscillate from 0.70 to 1.05 over a 7 day period.
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The 'variable' setting will cause this value to oscillate between 0.70 and 1.05 over a 7 day period.
 
 option.BLOOM=Bloom
 
@@ -307,8 +308,8 @@ screen.ACCESIBILITY_SCREEN.comment=Set accessibility options.
 
 screen.CUSTOM_COLORS_SCREEN=Custom Colors
 screen.CUSTOM_COLORS_SCREEN.comment=Set custom colors
-screen.CUSTOM_COLORS_DAY=Day Custom Colors
-screen.CUSTOM_COLORS_SUNSET=Sunset/Dawn Custom Colors
-screen.CUSTOM_COLORS_NIGHT=Night Custom Colors
-screen.CUSTOM_COLORS_WATER=Water Custom Color
-screen.CUSTOM_COLORS_NV=Night Vision Custom Color
+screen.CUSTOM_COLORS_DAY=Custom Day Colors
+screen.CUSTOM_COLORS_SUNSET=Custom Sunset/Dawn Colors
+screen.CUSTOM_COLORS_NIGHT=Custom Night Colors
+screen.CUSTOM_COLORS_WATER=Custom Water Color
+screen.CUSTOM_COLORS_NV=Night Vision Color
