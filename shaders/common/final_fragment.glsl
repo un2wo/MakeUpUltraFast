@@ -146,11 +146,11 @@ void main() {
     // it can be placed here. For example:
 
 	// Contrast
-	#if CONTRAST <= 1
+	if (CONTRAST <= 1) {
 		block_color = (block_color - 0.5) * CONTRAST + 0.5;
-	#else
+	} else {
 		block_color = adjustable_smoothstep(block_color, 0.5, CONTRAST);
-	#endif
+	}
 	
     // Saturation
     block_color = mix(vec3(luma(block_color)), block_color, SATURATION);
