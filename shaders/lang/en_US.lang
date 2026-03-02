@@ -81,14 +81,14 @@ option.AO.comment=Screen-space ambient occlusion; adds shading to the corners of
 option.AOSTEPS=AO Sample Pairs
 
 option.AO_STRENGTH=AO Strength
-option.AO_STRENGTH.comment=Ambient occlusion strength. Affects both SSAO and the vanilla AO.
+option.AO_STRENGTH.comment=Ambient occlusion strength; affects both SSAO and the vanilla AO.
 
 option.AA_TYPE=Temporal Sampling
 value.AA_TYPE.0=Off
 value.AA_TYPE.1=Denoise
 value.AA_TYPE.2=TAA
 value.AA_TYPE.3=Sharp TAA
-option.AA_TYPE.comment=Off: Not recommended. Denoise: Supersampling is only used to hide dithering. TAA: Standard anti-aliasing. Sharp TAA: Adds a sharpening filter to TAA.
+option.AA_TYPE.comment=Denoise: Supersampling is only used to hide dithering. TAA: Standard anti-aliasing. Sharp TAA: Adds a sharpening filter to TAA.
 
 option.MOTION_BLUR=Motion Blur
 option.MOTION_BLUR_STRENGTH=Motion Blur Strength
@@ -136,6 +136,13 @@ option.CHROMA_ABER_STRENGTH=Chroma Aberration Strength
 
 option.WATER_ABSORPTION=Water Absorption Index
 option.WATER_ABSORPTION.comment=Adjusts transparency of water when viewed from outside.
+
+option.WATER_FOG_ADJUST=Underwater Fog Density
+value.WATER_FOG_ADJUST.1.0=Very Low
+value.WATER_FOG_ADJUST.2.0=Low
+value.WATER_FOG_ADJUST.3.0=Medium
+value.WATER_FOG_ADJUST.4.0=Medium-High
+value.WATER_FOG_ADJUST.5.0=High
 
 option.WATER_TURBULENCE=Waves Strength
 value.WATER_TURBULENCE.7.0=Very Low
