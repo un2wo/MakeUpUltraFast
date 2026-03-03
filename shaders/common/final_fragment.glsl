@@ -156,7 +156,7 @@ void main() {
     block_color = mix(vec3(luma(block_color)), block_color, SATURATION);
 
 	// Brightness
-	block_color *= BRIGHTNESS;
+	block_color = (block_color + 0.004) * BRIGHTNESS;
 
     // Color-blindness correction
     #ifdef COLOR_BLINDNESS
