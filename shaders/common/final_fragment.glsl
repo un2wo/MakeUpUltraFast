@@ -117,11 +117,7 @@ void main() {
 	float actual_luma = luma(block_color);
 
     #ifdef DESATURATION    		
-        // underwater tint
-        #if WATER_COLOR_SOURCE == 1
-        // the water fog currently takes from shader scheme even if resource pack color is requested; need fix?
-            #define WATER_COLOR vec3(0.05, 0.11, 0.20)
-		#endif
+        // underwater tint that should probably be separate tbh
 		vec3 underwater_tint = clamp(2.0 * WATER_COLOR / (WATER_COLOR.x + WATER_COLOR.y + WATER_COLOR.z), 0.0, 1.0);
 		if (isEyeInWater == 1) {
 			float luma_underwater = smoothstep(0.0, 0.2, actual_luma);
@@ -130,7 +126,7 @@ void main() {
 		
 		// pseudo-purkinje; no real logic behind it, numbers are pretty arbitrary
 		float luma_ground = smoothstep(0.0, 0.1, actual_luma);
-		block_color.rgb = mix(vec3(actual_luma) * luma_ground, block_color.rgb, luma_ground * vec3(0.4, 0.2, 0.1) + vec3(0.6, 0.8, 0.9));
+		block_color.rgb = mix(vec3(actual_luma) * luma_ground, block_color.rgb, luma_ground * vec3(0.4, 0.25, 0.1) + vec3(0.6, 0.75, 0.9));
     #endif
 
     block_color *= vec3(exposure);
