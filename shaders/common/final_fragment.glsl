@@ -156,7 +156,7 @@ void main() {
 	block_color = (block_color + 0.004) * BRIGHTNESS;
 
     // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
-    // seems like this was already done on the sky color but not the vol lighting?? disabled that for now
+	// can't actually tell the difference between the dithers in this situation but w/e
 	block_color += 0.003921569 * dither_grad_noise(gl_FragCoord.xy) - 0.001960784;
 
     // Color-blindness correction
