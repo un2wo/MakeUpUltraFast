@@ -82,6 +82,7 @@ varying float exposure;
 /* Utility functions */
 
 #include "/lib/luma.glsl"
+#include "/lib/dither.glsl"
 
 #ifdef DESATURATION
 	#include "/lib/color_utils.glsl"
@@ -153,6 +154,10 @@ void main() {
 
 	// Brightness
 	block_color = (block_color + 0.004) * BRIGHTNESS;
+
+    // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
+    // seems like this was already done on the sky color but not the vol lighting?? disabled that for now
+	block_color += 0.003921569 * dither_grad_noise(gl_FragCoord.xy) - 0.001960784;
 
     // Color-blindness correction
     #ifdef COLOR_BLINDNESS
