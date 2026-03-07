@@ -34,29 +34,24 @@ void main() {
         vec3 block_color = ZENITH_DAY_COLOR;
     #else
 
-        // #if AA_TYPE > 0
-        //     float dither = shifted_dither13(gl_FragCoord.xy);
-        // #else
-        //     float dither = dither13(gl_FragCoord.xy);
-        // #endif
+        #if AA_TYPE > 0
+            float dither = shifted_dither13(gl_FragCoord.xy);
+        #else
+            float dither = dither13(gl_FragCoord.xy);
+        #endif
 
-        // dither = (dither - .5) * 0.0625;
+        dither = (dither - .5) * 0.0625;
 
         vec4 fragpos =
             gbufferProjectionInverse *
             (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
         vec3 nfragpos = normalize(fragpos.xyz);
-        // float n_u = clamp(dot(nfragpos, up_vec) + dither, 0.0, 1.0);
-        float n_u = clamp(dot(nfragpos, up_vec), 0.0, 1.0);
+        float n_u = clamp(dot(nfragpos, up_vec) + dither, 0.0, 1.0);
         vec3 block_color =
             mix(low_sky_color, hi_sky_color, smoothstep(0.0, 1.0, pow(n_u, 0.333)));
 
         block_color = xyz_to_rgb(block_color);
     #endif
-
-    // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
-    // seems like this was already done on the sky color but not the vol lighting?? disabled that for now
-	block_color += 0.003921569 * semiblue(gl_FragCoord.xy) - 0.001960784;
 
     #include "/src/writebuffers.glsl"
 }
