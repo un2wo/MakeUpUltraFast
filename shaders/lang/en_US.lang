@@ -138,11 +138,7 @@ option.WATER_ABSORPTION=Water Absorption Index
 option.WATER_ABSORPTION.comment=Adjusts transparency of water when viewed from outside.
 
 option.WATER_FOG_ADJUST=Underwater Fog Density
-value.WATER_FOG_ADJUST.1.0=Very Low
-value.WATER_FOG_ADJUST.2.0=Low
-value.WATER_FOG_ADJUST.3.0=Medium
-value.WATER_FOG_ADJUST.4.0=Medium-High
-value.WATER_FOG_ADJUST.5.0=High
+option.WATER_FOG_ADJUST.comment=Fog density is also affected by render distance.
 
 option.WATER_TURBULENCE=Waves Strength
 value.WATER_TURBULENCE.7.0=Very Low
@@ -168,6 +164,13 @@ value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.14=Haze
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
+
+option.END_SCHEME=End Color Scheme
+value.END_SCHEME.0=Legacy
+value.END_SCHEME.1=Nebula
+value.END_SCHEME.2=Tempest
+value.END_SCHEME.3=Lunar
+option.END_SCHEME.comment=Affects lighting and sky colors in The End.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset Light R
 option.LIGHT_SUNSET_COLOR_G=Sunset Light G
