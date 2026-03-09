@@ -56,7 +56,7 @@ uniform float night_mixer;
 	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
 
     #define WATER_COLOR vec3(0.05, 0.1, 0.1)
-#elif COLOR_SCHEME == 3  // Lunar
+#elif END_SCHEME == 3  // Lunar
 	#define OMNI_TINT 0.0
 
 	#define LIGHT_SUNSET_COLOR vec3(0.10, 0.11, 0.13)
