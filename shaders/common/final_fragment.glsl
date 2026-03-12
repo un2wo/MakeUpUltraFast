@@ -120,7 +120,7 @@ void main() {
     #ifdef DESATURATION    		
         // underwater tint that should probably be separate tbh
 		vec3 underwater_tint = WATER_COLOR / color_average(WATER_COLOR);
-		underwater_tint = smoothstep(0.0, max(underwater_tint.x, max(underwater_tint.y, underwater_tint.z)), underwater_tint);
+		underwater_tint = clamp(underwater_tint / max(underwater_tint.x, max(underwater_tint.y, underwater_tint.z)), 0.0, 1.0);
 		if (isEyeInWater == 1) {
 			float luma_underwater = smoothstep(0.0, 0.2, actual_luma);
 			block_color = mix(vec3(actual_luma) * luma_underwater, block_color, luma_underwater * (1 - underwater_tint) + underwater_tint);
