@@ -1,30 +1,30 @@
 /* MakeUp - dither.glsl
-Dither and hash functions
+// Dither and hash functions
 
-There are a multitude of dithers in MakeUp, with different variants.
+// There are a multitude of dithers in MakeUp, with different variants.
 
-There are fixed ones (that do not change over time) as well as those that change
-when temporal sampling is active. Of the latter, there are two versions:
-one that uses dither_shift (Minecraft 1.13+) and another that uses frame_mod
-to rotate the dither values.
+// There are fixed ones (that do not change over time) as well as those that change
+// when temporal sampling is active. Of the latter, there are two versions:
+// one that uses dither_shift (Minecraft 1.13+) and another that uses frame_mod
+// to rotate the dither values.
 
-There are several variants because each one performs better or worse
-depending on the situation in which it is used.
+// There are several variants because each one performs better or worse
+// depending on the situation in which it is used.
 
-The philosophy of their use is as follows:
-1) use the fastest one possible that still produces acceptable results.
-2) If multiple effects use a dithering and they are in the same step
-of the Optifine/Iris pipeline, then calculate the dithering only once
-and use it in all the effects that need it to avoid redundant calculations.
+// The philosophy of their use is as follows:
+// 1) use the fastest one possible that still produces acceptable results.
+// 2) If multiple effects use a dithering and they are in the same step
+// of the Optifine/Iris pipeline, then calculate the dithering only once
+// and use it in all the effects that need it to avoid redundant calculations.
 
-The variants that change over time have the prefix "shifted".
+// The variants that change over time have the prefix "shifted".
 
-The variants with the prefix 'eclectic' are perturbed versions of their simpler counterparts.
-They offer good results because they avoid the appearance of repetitive patterns,
-but they require the calculation of a hash to create this perturbation.
+// The variants with the prefix 'eclectic' are perturbed versions of their simpler counterparts.
+// They offer good results because they avoid the appearance of repetitive patterns,
+// but they require the calculation of a hash to create this perturbation.
 
-There is a function based on a texture, which assumes a size for the texture of 64x64 pixels,
-but there is no such texture currently.
+// There is a function based on a texture, which assumes a size for the texture of 64x64 pixels,
+// but there is no such texture currently.
 
 */
 
