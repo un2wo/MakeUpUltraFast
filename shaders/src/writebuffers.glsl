@@ -14,7 +14,12 @@
         gl_FragData[0] = block_color;
         gl_FragData[1] = block_color;
     #else
-        /* DRAWBUFFERS:1 */
-        gl_FragData[0] = block_color;
+        #if defined VOXY
+		    /* DRAWBUFFERS:18 */
+		    gl_FragData[0] = block_color;
+        #else
+            /* DRAWBUFFERS:1 */
+			gl_FragData[0] = block_color;
+        #endif
     #endif
 #endif
