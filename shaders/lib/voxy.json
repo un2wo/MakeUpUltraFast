@@ -27,7 +27,8 @@
 		"viewWidth",
 		"viewHeight",
 		"cameraPosition",
-		"near", "far"
+		"near", "far",
+		"fogColor"
 	],
 	"samplers": [
 		"noisetex",
@@ -37,7 +38,6 @@
 		"gaux4",
 		"vxDepthTexOpaque",
 		"depthtex0",
-		"depthtex1",
 		"colortex8"
 	],
 	"opaqueDrawBuffers": [1, 8],
