@@ -36,7 +36,12 @@ vec3 viewPos = viewPos_pre.xyz / viewPos_pre.w;
 vec4 worldPos = vec4(mat3(vxModelViewInv) * viewPos + vxModelViewInv[3].xyz, 1.0); // is this a gl_Vertex replacement?? (yes)
 // end of BSL code (ty again)
 
-vec2 illumination = param.lightMap;
+#if defined THE_END || defined NETHER
+    vec2 illumination = vec2(param.lightMap.x, 1.0);
+#else
+    vec2 illumination = param.lightMap;
+#endif
+
 // illumination.y = (max(illumination.y, 0.065) - 0.065) * 1.06951871657754;
 // float visible_sky = clamp(illumination.y, 0.0, 1.0);
 float visible_sky = clamp(illumination.y * 1.03, 0.0, 1.0); // arbitrary number go!
@@ -44,7 +49,11 @@ float visible_sky = clamp(illumination.y * 1.03, 0.0, 1.0); // arbitrary number 
 vec3 candle_color = CANDLE_BASELIGHT * (pow(illumination.x, 1.5) + sixth_pow(illumination.x * 1.17));
 candle_color = clamp(candle_color, vec3(0.0), vec3(4.0));
 
-vec3 sun_vec = normalize(sunPosition);
+#if defined THE_END || defined NETHER
+    vec3 sun_vec = normalize(vxModelView * vec4(0.0, 0.89442719, 0.4472136, 0.0)).xyz;
+#else
+    vec3 sun_vec = normalize(sunPosition);
+#endif
 
 float sun_light_strength;
 if (length(normal) != 0.0) {
@@ -55,7 +64,11 @@ if (length(normal) != 0.0) {
 	sun_light_strength = 1.0;
 }
 
-float direct_light_strength = mix(-sun_light_strength, sun_light_strength, light_mix);
+#if defined THE_END || defined NETHER
+    float direct_light_strength = sun_light_strength;
+#else
+	float direct_light_strength = mix(-sun_light_strength, sun_light_strength, light_mix);
+#endif
 
 float omni_strength = (direct_light_strength * .125) + 1.0;
 
@@ -87,42 +100,50 @@ if (leaves == 1) {
 }
 direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
 
-direct_light_color = mix(
-    direct_light_color,
-    ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * 0.4,
-    rainStrength
-);
+	vec3 day_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_DAY_COLOR, day_mixer_a);
+	vec3 night_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_NIGHT_COLOR, night_mixer_a);
+	vec3 hi_sky_color_rgb = mix(day_color_sky, night_color_sky, step(0.5, day_moment_a));
+	vec3 hi_sky_color = rgb_to_xyz(hi_sky_color_rgb);
 
-vec3 day_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_DAY_COLOR, day_mixer_a);
-vec3 night_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_NIGHT_COLOR, night_mixer_a);
-vec3 hi_sky_color_rgb = mix(day_color_sky, night_color_sky, step(0.5, day_moment_a));
-vec3 hi_sky_color = rgb_to_xyz(hi_sky_color_rgb);
+	vec3 day_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_DAY_COLOR, day_mixer_a);
+	vec3 night_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_NIGHT_COLOR, night_mixer_a);
+	vec3 low_sky_color_rgb = mix(day_color_horz, night_color_horz, step(0.5, day_moment_a));
+	vec3 low_sky_color = rgb_to_xyz(low_sky_color_rgb);
 
-vec3 day_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_DAY_COLOR, day_mixer_a);
-vec3 night_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_NIGHT_COLOR, night_mixer_a);
-vec3 low_sky_color_rgb = mix(day_color_horz, night_color_horz, step(0.5, day_moment_a));
-vec3 low_sky_color = rgb_to_xyz(low_sky_color_rgb);
+#if defined THE_END || defined NETHER
+    vec3 omni_light = LIGHT_DAY_COLOR;
+#else
+	direct_light_color = mix(
+		direct_light_color,
+		ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * 0.4,
+		rainStrength
+	);
 
-hi_sky_color_rgb = mix(
-    hi_sky_color_rgb,
-    ZENITH_SKY_RAIN_COLOR * luma(hi_sky_color_rgb),
-    rainStrength
-);
+	hi_sky_color_rgb = mix(
+		hi_sky_color_rgb,
+		ZENITH_SKY_RAIN_COLOR * luma(hi_sky_color_rgb),
+		rainStrength
+	);
 
-// minimal light
-vec3 omni_color = mix(hi_sky_color_rgb, direct_light_color * 0.45, OMNI_TINT);
-float omni_color_luma = color_average(omni_color);
-float luma_ratio = AVOID_DARK_LEVEL / omni_color_luma;
-vec3 omni_color_min = omni_color * luma_ratio;
-omni_color = max(omni_color, omni_color_min);
+	// minimal light
+	vec3 omni_color = mix(hi_sky_color_rgb, direct_light_color * 0.45, OMNI_TINT);
+	float omni_color_luma = color_average(omni_color);
+	float luma_ratio = AVOID_DARK_LEVEL / omni_color_luma;
+	vec3 omni_color_min = omni_color * luma_ratio;
+	omni_color = max(omni_color, omni_color_min);
 
-vec3 omni_light = mix(omni_color_min, omni_color, visible_sky) * omni_strength;
+	vec3 omni_light = mix(omni_color_min, omni_color, visible_sky) * omni_strength;
+#endif
 
-if (isEyeInWater == 0) {
-	direct_light_strength = mix(0.0, direct_light_strength, pow(visible_sky, 10.0));
-} else {
-	direct_light_strength = mix(0.0, direct_light_strength, visible_sky);
-}
+#if !defined THE_END && !defined NETHER
+	if (isEyeInWater == 0) {
+		direct_light_strength = mix(0.0, direct_light_strength, pow(visible_sky, 10.0));
+	} else {
+		direct_light_strength = mix(0.0, direct_light_strength, visible_sky);
+	}
+#else
+    direct_light_strength = mix(0.0, direct_light_strength, visible_sky);
+#endif
 
 if (emissive == 1) {
     direct_light_strength = 1.0;

@@ -25,5 +25,5 @@ float fog_frag_coord = length(position.xyz);
         mix(fog_density_coeff * 0.15, 0.25, rainStrength)
     );
 #else
-    frog_adjust = sqrt(clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0));
+    float frog_adjust = sqrt(clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0));
 #endif
