@@ -13,28 +13,14 @@
 #include "/lib/luma.glsl"
 #include "/lib/projection_utils_vx.glsl"
 #include "/lib/dither.glsl"
-// #include "/src/position_vertex_water.glsl"
-
 #include "/lib/water_vx.glsl"
 
 #define VOXY_PATCH
 
-// for reference
-// struct VoxyFragmentParameters {
-//    vec4 sampledColour;
-//    vec2 tile;
-//    vec2 uv;
-//    uint face;
-//    uint modelId;
-//    vec2 lightMap;
-//    vec4 tinting;
-//    uint customId;//Same as iris's modelId
-// };
-
 // checklist:
 // color yes
 // normals yes
-// water texture yes (but mismatched) 
+// water texture yes 
 // vanilla-like no (i never liked the look of it anyway)
 // absorption maybe?
 // reflections yes (clouds don't reflect)
@@ -51,8 +37,8 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 
 	vec4 position2 = vxModelView * worldPos;
 	vec3 fragposition = position2.xyz;
-	vec4 worldposition_pre = vxModelViewInv * position2; // also for waves?
-	vec4 worldposition = worldposition_pre + vec4(cameraPosition.xyz, 0.0); // for waves
+	vec4 worldposition = vxModelViewInv * position2;
+	worldposition += vec4(cameraPosition.xyz, 0.0); // for waves
 
     #if AA_TYPE > 0
         float dither = shifted_r_dither(gl_FragCoord.xy);
@@ -65,15 +51,12 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
     #else
         // normal_waves (original not the neutered dh one)
 		float speed = frameTimeCounter * .025;
-		vec2 wave_1 =
-		    texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.05) + vec2(speed, speed)).rg;
-		wave_1 = wave_1 - .5;
-		vec2 wave_2 =
-		    texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.03125) - speed).rg;
-		wave_2 = wave_2 - .5;
-		vec2 wave_3 =
-		    texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.125) + vec2(speed, -speed)).rg;
-		wave_3 = wave_3 - .5;
+		vec2 wave_1 = texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.05) + vec2(speed, speed)).rg;
+		wave_1 -= 0.5;
+		vec2 wave_2 = texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.03125) - speed).rg;
+		wave_2 -= 0.5;
+		vec2 wave_3 = texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.125) + vec2(speed, -speed)).rg;
+		wave_3 -= 0.5;
 		wave_3 *= 0.66;
 
 		vec2 partial_wave = wave_1 + wave_2 + wave_3;
@@ -125,7 +108,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 	//  solid_dh_water_fragment.glsl 	
 	if (water_like == 1) {
         #if WATER_TEXTURE == 1
-            float water_texture = luma(param.sampledColour.rgb); // this has different brightness from the other thing?
+            float water_texture = luma(param.sampledColour.rgb);
         #else
             float water_texture = 1.0;
         #endif
@@ -144,7 +127,10 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         block_color = vec4(refraction(fragposition, block_color.rgb, water_normal_base), 1.0);
         
         #if WATER_TEXTURE == 1
-            fresnel = clamp(fresnel * (water_texture * water_texture + 0.5), 0.0, 1.0);
+            water_texture += 0.25;
+            water_texture *= water_texture;
+            water_texture *= water_texture;
+            fresnel = clamp(fresnel * (water_texture), 0.0, 1.0);
         #endif
         
 		block_color.rgb = water_shader_vx(fragposition, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
@@ -158,9 +144,9 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 		    candle_color;
 
 		block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125);
-        //if(block_type > 1.5) {  // Glass
+        if (reflective == 1) {  // Glass
             block_color = cristal_shader(fragposition, normal, block_color, sky_color_reflect, fresnel * fresnel, visible_sky, dither, direct_light_color, param.lightMap);
-        //}
+        }
     }
     
     #include "/src/position_vertex_vx.glsl"
