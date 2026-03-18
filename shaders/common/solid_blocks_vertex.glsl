@@ -174,6 +174,8 @@ void main() {
         } else if(mc_Entity.x == ENTITY_FABRIC) {  // Fabric-like blocks
             gloss_power = 3.0;
             gloss_factor = 0.1;
+        } else if(mc_Entity.x == ENTITY_LEAVES || mc_Entity.x == ENTITY_LEAVES_NW || mc_Entity.x == ENTITY_VINES) {
+			luma_factor = 2.0;
         }
 
         flat_normal = normal;
