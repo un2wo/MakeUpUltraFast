@@ -13,23 +13,11 @@
 #include "/lib/basic_utils.glsl"
 #include "/lib/luma.glsl"
 
-#define VOXY_PATCH
-
-// for reference
-// struct VoxyFragmentParameters {
-//    vec4 sampledColour;
-//    vec2 tile;
-//    vec2 uv;
-//    uint face;
-//    uint modelId;
-//    vec2 lightMap;
-//    vec4 tinting;
-//    uint customId;//Same as iris's modelId
-// };
-
 #if defined MATERIAL_GLOSS && !defined NETHER
     #include "/lib/material_gloss_fragment.glsl"
 #endif
+
+#define VOXY_PATCH
 
 layout(location = 0) out vec4 block_color;
 
@@ -60,6 +48,8 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         } else if (fabric == 1) {  // Fabric-like blocks
             gloss_power = 3.0;
             gloss_factor = 0.1;
+        } else if (leaves == 1) {
+			luma_factor = 2.0;
         }
 
         float final_gloss_power = gloss_power;
