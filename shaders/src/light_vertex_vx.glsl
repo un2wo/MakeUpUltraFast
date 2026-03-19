@@ -2,7 +2,7 @@ vec4 tint_color = param.sampledColour * param.tinting;
 
 uint blockId = param.customId;
 float foliage = float(blockId == 10031 || blockId == 10175 || blockId == 10176 || blockId == 10059 || blockId == 10032);
-float leaves = float(blockId == 10018 || blockId == 10033 || blockId == 10106);
+float leaves = float(blockId == 10018 || blockId == 10033 || blockId == 10106); // leaves / leaves_nw / vines
 float emissive = float(blockId == 10089 || blockId == 10090);
 float water_like = float(blockId == 10008);
 float reflective = float(blockId == 10079);
@@ -38,6 +38,9 @@ vec3 viewPos = viewPos_pre.xyz / viewPos_pre.w;
 	
 vec4 worldPos = vec4(mat3(vxModelViewInv) * viewPos + vxModelViewInv[3].xyz, 1.0); // replaces gl_Vertex
 // end
+
+vec4 sub_position = vxModelView * worldPos;
+vec3 sub_position3 = sub_position.xyz; // used by translucents & material gloss
 
 #if defined THE_END || defined NETHER
     vec2 illumination = vec2(param.lightMap.x, 1.0);
