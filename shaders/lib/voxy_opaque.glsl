@@ -14,6 +14,9 @@
 #include "/lib/luma.glsl"
 
 #if defined MATERIAL_GLOSS && !defined NETHER
+	#if defined THE_END
+		mat4 gbufferModelView = vxModelView;
+	#endif
     #include "/lib/material_gloss_fragment.glsl"
 #endif
 
