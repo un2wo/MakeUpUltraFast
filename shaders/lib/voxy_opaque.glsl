@@ -31,21 +31,18 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 	float shadow_c = abs((light_mix * 2.0) - 1.0);    
 
     #if defined MATERIAL_GLOSS && !defined NETHER
-		vec4 sub_position = vxModelView * worldPos;
-		vec3 sub_position3 = sub_position.xyz;
-		
 		float gloss_factor = 1.05;
 		float gloss_power = 6.0;
 		float luma_factor = 1.0;
 		float luma_power = 2.0;
 
-        if (sand == 1) {  // Sand-like block
+        if (sand == 1) {
             luma_power = 4.0;
-        } else if (metal == 1) {  // Metal-like block
+        } else if (metal == 1) {
             luma_factor = 1.35;
             luma_power = -1.0;
             gloss_power = 100.0;
-        } else if (fabric == 1) {  // Fabric-like blocks
+        } else if (fabric == 1) {
             gloss_power = 3.0;
             gloss_factor = 0.1;
         } else if (leaves == 1) {
@@ -62,8 +59,8 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         }
 
         float material_gloss_factor = material_gloss(reflect(normalize(sub_position3), normal), param.lightMap, final_gloss_power, normal) * gloss_factor;
-
         float material = material_gloss_factor * block_luma;
+        
         vec3 real_light =
 			omni_light +
 			(shadow_c * ((direct_light_color * direct_light_strength) + (direct_light_color * material))) * (1.0 - (rainStrength * 0.75)) +

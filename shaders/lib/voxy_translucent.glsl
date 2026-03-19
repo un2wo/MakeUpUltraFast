@@ -21,9 +21,9 @@
 // color yes
 // normals yes
 // water texture yes 
-// vanilla-like no (i never liked the look of it anyway)
+// vanilla-like yes
 // absorption maybe?
-// reflections yes (clouds don't reflect)
+// reflections yes (but clouds don't reflect)
 // sun reflection yes
 
 
@@ -35,9 +35,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 	
 	vec3 real_light;
 
-	vec4 position2 = vxModelView * worldPos;
-	vec3 fragposition = position2.xyz;
-	vec4 worldposition = vxModelViewInv * position2;
+	vec4 worldposition = vxModelViewInv * sub_position;
 	worldposition += vec4(cameraPosition.xyz, 0.0); // for waves
 
     #if AA_TYPE > 0
@@ -76,7 +74,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 			tangent.z, binormal.z, normal.z
 		);
 		
-		float NdotE = abs(dot(normal, normalize(fragposition)));
+		float NdotE = abs(dot(normal, normalize(sub_position3)));
 
 		if(water_like == 1.0) {
 			water_normal_base *= vec3(NdotE) + vec3(0.0, 0.0, 1.0 - NdotE);
@@ -88,10 +86,10 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 		}
     //
 
-    float normal_dot_eye = dot(surface_normal, normalize(fragposition));
+    float normal_dot_eye = dot(surface_normal, normalize(sub_position3));
     float fresnel = square_pow(1.0 + normal_dot_eye); // 
 
-    vec3 reflect_water_vec = reflect(fragposition, surface_normal);
+    vec3 reflect_water_vec = reflect(sub_position3, surface_normal);
     vec3 norm_reflect_water_vec = normalize(reflect_water_vec);
     
     vec3 sky_color_reflect;
@@ -107,33 +105,53 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 
 	//  solid_dh_water_fragment.glsl 	
 	if (water_like == 1) {
-        #if WATER_TEXTURE == 1
-            float water_texture = luma(param.sampledColour.rgb);
-        #else
-            float water_texture = 1.0;
-        #endif
-        
-        real_light = 
-			omni_light +
-			(direct_light_strength * visible_sky * direct_light_color) * (1.0 - rainStrength * 0.75) +
-			candle_color;
-			
-        #if WATER_COLOR_SOURCE == 0
-            block_color.rgb = water_texture * real_light * WATER_COLOR;
-        #elif WATER_COLOR_SOURCE == 1
-            block_color.rgb = 0.3 * water_texture * real_light * param.tinting.rgb;
-        #endif
+        #ifdef VANILLA_WATER
+			block_color = param.sampledColour;
+			float shadow_c = abs((light_mix * 2.0) - 1.0);
 
-        block_color = vec4(refraction(fragposition, block_color.rgb, water_normal_base), 1.0);
-        
-        #if WATER_TEXTURE == 1
-            water_texture += 0.25;
-            water_texture *= water_texture;
-            water_texture *= water_texture;
-            fresnel = clamp(fresnel * (water_texture), 0.0, 1.0);
-        #endif
-        
-		block_color.rgb = water_shader_vx(fragposition, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
+			float fresnel_tex = luma(param.sampledColour.rgb);
+
+			real_light =
+				omni_light +
+				(direct_light_strength * shadow_c * direct_light_color) * (1.0 - rainStrength * 0.75) +
+				candle_color;
+
+			real_light *= (fresnel_tex * 2.0) - 0.25;
+
+			block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125) * param.tinting.rgb;
+
+			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
+
+			block_color.a = sqrt(block_color.a);
+        #else
+		    #if WATER_TEXTURE == 1
+		        float water_texture = luma(param.sampledColour.rgb);
+		    #else
+		        float water_texture = 1.0;
+		    #endif
+		    
+		    real_light = 
+				omni_light +
+				(direct_light_strength * visible_sky * direct_light_color) * (1.0 - rainStrength * 0.75) +
+				candle_color;
+				
+		    #if WATER_COLOR_SOURCE == 0
+		        block_color.rgb = water_texture * real_light * WATER_COLOR;
+		    #elif WATER_COLOR_SOURCE == 1
+		        block_color.rgb = 0.3 * water_texture * real_light * param.tinting.rgb;
+		    #endif
+
+		    block_color = vec4(refraction(sub_position3, block_color.rgb, water_normal_base), 1.0);
+		    
+		    #if WATER_TEXTURE == 1
+		        water_texture += 0.25;
+		        water_texture *= water_texture;
+		        water_texture *= water_texture;
+		        fresnel = clamp(fresnel * (water_texture), 0.0, 1.0);
+		    #endif
+		    
+			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
+		#endif
 	} else {
 		block_color = tint_color;
 		float shadow_c = abs((light_mix * 2.0) - 1.0);
@@ -145,7 +163,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 
 		block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125);
         if (reflective == 1) {  // Glass
-            block_color = cristal_shader(fragposition, normal, block_color, sky_color_reflect, fresnel * fresnel, visible_sky, dither, direct_light_color, param.lightMap);
+            block_color = cristal_shader(sub_position3, normal, block_color, sky_color_reflect, fresnel * fresnel, visible_sky, dither, direct_light_color, param.lightMap);
         }
     }
     
