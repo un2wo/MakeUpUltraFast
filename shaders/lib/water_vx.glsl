@@ -1,9 +1,6 @@
 /* MakeUp - water_dh.glsl
-Water reflection and refraction related functions (dh).
+Water reflection and refraction related functions (voxy).
 */
-
-float dhNearPlane = 16;
-float dhFarPlane = 48000;
 
 vec3 fast_raymarch(vec3 direction, vec3 hit_coord, inout float infinite, float dither) {
     vec3 dir_increment;
@@ -118,12 +115,13 @@ vec3 refraction(vec3 fragpos, vec3 color, vec3 refraction) {
 
     float water_absortion;
     if (isEyeInWater == 0) {
-        float water_distance =
-            2.0 * dhNearPlane * dhFarPlane / (dhFarPlane + dhNearPlane - (2.0 * gl_FragCoord.z - 1.0) * (dhFarPlane - dhNearPlane));
+        float water_distance = 1536000.0 / (48016.0 - (2.0 * gl_FragCoord.z - 1.0) * 47984.0);
+        // 2.0 * near * far / (far + near - (2.0 * gl_FragCoord.z - 1.0) * (far - near));
+        // vx near = 16, far = 16*3000 (static)
+        // remaining difference between vanilla & lod chunks is a shadowmap vs lightmap thing
 
         float earth_distance = texture2D(vxDepthTexOpaque, pos.xy).r;
-        earth_distance =
-            2.0 * dhNearPlane * dhFarPlane / (dhFarPlane + dhNearPlane - (2.0 * earth_distance - 1.0) * (dhFarPlane - dhNearPlane));
+        earth_distance = 1536000.0 / (48016.0 - (2.0 * earth_distance - 1.0) * 47984.0);
 
         water_absortion = (earth_distance - water_distance) * 0.5;
         water_absortion *= water_absortion;
@@ -135,11 +133,10 @@ vec3 refraction(vec3 fragpos, vec3 color, vec3 refraction) {
     return mix(texture2D(colortex8, pos.xy).rgb, color, water_absortion);
 }
 
-vec4 reflection_calc_vx(vec3 fragpos, vec3 normal, vec3 reflected, vec3 infinite_color, float dither) {
+vec4 reflection_calc_vx(vec3 fragpos, vec3 normal, vec3 reflected, vec3 infinite_color, float dither, inout float infinite) {
 	#if SSR_TYPE == 0;
 		vec3 pos = camera_to_screen(fragpos + reflected * 768.0);
     #else
-		float infinite;
 		vec3 pos = fast_raymarch(reflected, fragpos, infinite, dither);
     #endif
 
@@ -177,7 +174,7 @@ vec3 water_shader_vx(
     float infinite = 1.0;
 
     #if REFLECTION == 1
-        reflection = reflection_calc_vx(fragpos, normal, reflected, sky_reflect, dither);
+        reflection = reflection_calc_vx(fragpos, normal, reflected, sky_reflect, dither, infinite);
     #endif
 
     reflection.rgb = mix(
@@ -191,13 +188,9 @@ vec3 water_shader_vx(
     #endif
 
     #if SUN_REFLECTION == 1
-        #ifndef NETHER
-            #ifndef THE_END
-                return mix(color, reflection.rgb, fresnel * REFLEX_INDEX) +
-                    vec3(sun_reflection(reflect(normalize(fragpos), normal), lmcoord)) * light_color * infinite * visible_sky;          
-            #else
-                return mix(color, reflection.rgb, fresnel * REFLEX_INDEX);
-            #endif
+        #if !defined NETHER && !defined THE_END
+            return mix(color, reflection.rgb, fresnel * REFLEX_INDEX) +
+                vec3(sun_reflection(reflect(normalize(fragpos), normal), lmcoord)) * light_color * infinite * visible_sky;          
         #else
             return mix(color, reflection.rgb, fresnel * REFLEX_INDEX);
         #endif
@@ -215,11 +208,7 @@ vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, fl
         vec3 pos = fast_raymarch(reflected_vector, fragpos, infinite, dither);
 
         if (pos.x > 99.0) { // Fallback
-            #if defined VOXY
-                pos = camera_to_screen(fragpos + reflected_vector * 768.0);
-            #else
-                pos = camera_to_screen(fragpos + reflected_vector * 76.0);
-            #endif
+            pos = camera_to_screen(fragpos + reflected_vector * 768.0);
         }
     #endif
 
@@ -259,11 +248,10 @@ vec4 cristal_shader(
     color.rgb = mix(color.rgb, sky_reflection, fresnel);
     color.rgb = mix(color.rgb, reflection.rgb, fresnel);
 
-    color.a = mix(color.a, 1.0, fresnel * .9);
+    color.a = mix(color.a, 1.0, fresnel * 0.9);
 
     #if SUN_REFLECTION == 1
-        #ifndef NETHER
-        #ifndef THE_END
+        #if !defined NETHER && !defined THE_END
             return color + vec4(
                 mix(
                     vec3(sun_reflection(reflect(normalize(fragpos), normal), lmcoord) * light_color * infinite * visible_sky),
@@ -272,9 +260,6 @@ vec4 cristal_shader(
                 ),
                 0.0
             );
-        #else
-            return color;
-        #endif
         #else
             return color;
         #endif
