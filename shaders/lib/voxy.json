@@ -23,7 +23,8 @@
 		"blindness", "darknessFactor", "darknessLightFactor",
 		"frameTimeCounter",
 		"cameraPosition",
-		"fogColor"
+		"fogColor",
+		"dither_shift"
 	],
 	"samplers": [
 		"noisetex",

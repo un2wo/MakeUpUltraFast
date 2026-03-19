@@ -12,7 +12,7 @@
 #include "/lib/basic_utils.glsl"
 #include "/lib/luma.glsl"
 #include "/lib/projection_utils_vx.glsl"
-#include "/lib/dither.glsl"
+#include "/lib/dither_vx.glsl"
 #include "/lib/water_vx.glsl"
 
 #define VOXY_PATCH
@@ -48,7 +48,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         vec3 water_normal_base = vec3(0.0, 0.0, 1.0);
     #else
         // normal_waves (original not the neutered dh one)
-		float speed = frameTimeCounter * .025;
+		float speed = frameTimeCounter * 0.025;
 		vec2 wave_1 = texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.05) + vec2(speed, speed)).rg;
 		wave_1 -= 0.5;
 		vec2 wave_2 = texture2D(noisetex, ((worldposition.xz - worldposition.y * 0.2) * 0.03125) - speed).rg;
@@ -98,7 +98,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
     if(isEyeInWater == 0 || isEyeInWater == 2) {
         sky_color_reflect = mix(low_sky_color, hi_sky_color, sqrt(clamp(dot(norm_reflect_water_vec, up_vec), 0.0001, 1.0)));
     } else {
-        sky_color_reflect = hi_sky_color * .5 * ((eyeBrightnessSmooth.y * .8 + 48) * 0.004166666666666667);
+        sky_color_reflect = hi_sky_color * 0.5 * ((eyeBrightnessSmooth.y * 0.8 + 48) * 0.004166666666666667);
     }
 
     sky_color_reflect = xyz_to_rgb(sky_color_reflect);
@@ -108,19 +108,17 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         #ifdef VANILLA_WATER
 			block_color = param.sampledColour;
 			float shadow_c = abs((light_mix * 2.0) - 1.0);
-
 			float fresnel_tex = luma(param.sampledColour.rgb);
 
 			real_light =
 				omni_light +
 				(direct_light_strength * shadow_c * direct_light_color) * (1.0 - rainStrength * 0.75) +
 				candle_color;
-
 			real_light *= (fresnel_tex * 2.0) - 0.25;
 
-			block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125) * param.tinting.rgb;
+			block_color.rgb *= mix(real_light, vec3(1.0), nightVision * 0.125) * param.tinting.rgb;
 
-			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
+			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, dither, direct_light_color, param.lightMap);
 
 			block_color.a = sqrt(block_color.a);
         #else
@@ -150,7 +148,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 		        fresnel = clamp(fresnel * (water_texture), 0.0, 1.0);
 		    #endif
 		    
-			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, direct_light_color, param.lightMap);
+			block_color.rgb = water_shader_vx(sub_position3, surface_normal, block_color.rgb, sky_color_reflect, norm_reflect_water_vec, fresnel, visible_sky, dither, direct_light_color, param.lightMap);
 		#endif
 	} else {
 		block_color = tint_color;
@@ -161,7 +159,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
 		    (direct_light_strength * shadow_c * direct_light_color) * (1.0 - rainStrength * 0.75) +
 		    candle_color;
 
-		block_color.rgb *= mix(real_light, vec3(1.0), nightVision * .125);
+		block_color.rgb *= mix(real_light, vec3(1.0), nightVision * 0.125);
         if (reflective == 1) {  // Glass
             block_color = cristal_shader(sub_position3, normal, block_color, sky_color_reflect, fresnel * fresnel, visible_sky, dither, direct_light_color, param.lightMap);
         }

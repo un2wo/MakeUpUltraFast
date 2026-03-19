@@ -135,13 +135,11 @@ vec3 refraction(vec3 fragpos, vec3 color, vec3 refraction) {
     return mix(texture2D(colortex8, pos.xy).rgb, color, water_absortion);
 }
 
-vec4 reflection_calc_vx(vec3 fragpos, vec3 normal, vec3 reflected, vec3 infinite_color) {
-// exclusively uses the flipped image type
+vec4 reflection_calc_vx(vec3 fragpos, vec3 normal, vec3 reflected, vec3 infinite_color, float dither) {
 	#if SSR_TYPE == 0;
 		vec3 pos = camera_to_screen(fragpos + reflected * 768.0);
     #else
-    float dither = 1.0;
-    float infinite;
+		float infinite;
 		vec3 pos = fast_raymarch(reflected, fragpos, infinite, dither);
     #endif
 
@@ -171,6 +169,7 @@ vec3 water_shader_vx(
     vec3 reflected,
     float fresnel,
     float visible_sky,
+    float dither,
     vec3 light_color,
     vec2 lmcoord
 ) {
@@ -178,7 +177,7 @@ vec3 water_shader_vx(
     float infinite = 1.0;
 
     #if REFLECTION == 1
-        reflection = reflection_calc_vx(fragpos, normal, reflected, sky_reflect);
+        reflection = reflection_calc_vx(fragpos, normal, reflected, sky_reflect, dither);
     #endif
 
     reflection.rgb = mix(
