@@ -4,7 +4,6 @@ profile.minimum=ALL OFF
 profile.performance=Performance
 profile.default=Default
 profile.quality=Quality
-profile.maximum=ALL MAX
 
 #About
 #############################
@@ -184,9 +183,9 @@ option.LIGHT_NIGHT_COLOR_R=Night Light R
 option.LIGHT_NIGHT_COLOR_G=Night Light G
 option.LIGHT_NIGHT_COLOR_B=Night Light B
 
-option.ZENITH_SUNSET_COLOR_R=Zenith Sunset R
-option.ZENITH_SUNSET_COLOR_G=Zenith Sunset G
-option.ZENITH_SUNSET_COLOR_B=Zenith Sunset B
+option.ZENITH_SUNSET_COLOR_R=Sunset Zenith R
+option.ZENITH_SUNSET_COLOR_G=Sunset Zenith G
+option.ZENITH_SUNSET_COLOR_B=Sunset Zenith B
 
 option.ZENITH_DAY_COLOR_R=Day Zenith R
 option.ZENITH_DAY_COLOR_G=Day Zenith G
@@ -196,17 +195,17 @@ option.ZENITH_NIGHT_COLOR_R=Night Zenith R
 option.ZENITH_NIGHT_COLOR_G=Night Zenith G
 option.ZENITH_NIGHT_COLOR_B=Night Zenith B
 
-option.HORIZON_SUNSET_COLOR_R=Horizon Sunset R
-option.HORIZON_SUNSET_COLOR_G=Horizon Sunset G
-option.HORIZON_SUNSET_COLOR_B=Horizon Sunset B
+option.HORIZON_SUNSET_COLOR_R=Sunset Horizon R
+option.HORIZON_SUNSET_COLOR_G=Sunset Horizon G
+option.HORIZON_SUNSET_COLOR_B=Sunset Horizon B
 
-option.HORIZON_DAY_COLOR_R=Horizon Day R
-option.HORIZON_DAY_COLOR_G=Horizon Day G
-option.HORIZON_DAY_COLOR_B=Horizon Day B
+option.HORIZON_DAY_COLOR_R=Day Horizon R
+option.HORIZON_DAY_COLOR_G=Day Horizon G
+option.HORIZON_DAY_COLOR_B=Day Horizon B
 
-option.HORIZON_NIGHT_COLOR_R=Horizon Night R
-option.HORIZON_NIGHT_COLOR_G=Horizon Night G
-option.HORIZON_NIGHT_COLOR_B=Horizon Night B
+option.HORIZON_NIGHT_COLOR_R=Night Horizon R
+option.HORIZON_NIGHT_COLOR_G=Night Horizon G
+option.HORIZON_NIGHT_COLOR_B=Night Horizon B
 
 option.WATER_COLOR_R=Water R
 option.WATER_COLOR_G=Water G
@@ -229,7 +228,7 @@ value.V_CLOUDS.0=Off
 value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
 value.V_CLOUDS.3=Natural dyn.
-option.V_CLOUDS.comment=Volumetric clouds. Natural dynamic clouds change shape over time, but are slightly less performant.
+option.V_CLOUDS.comment=Natural dynamic clouds change shape as they move, but are slightly less performant.
 
 option.CLOUD_SPEED=Clouds Speed
 value.CLOUD_SPEED.0=Normal
@@ -242,7 +241,7 @@ option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
 value.CLOUD_COVER.0=Variable
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The 'variable' setting will cause this value to oscillate between 0.70 and 1.05 over a 7 day period.
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The 'variable' setting will pick a random value based on the in-game day.
 
 option.BLOOM=Bloom
 
@@ -317,7 +316,7 @@ screen.ACCESIBILITY_SCREEN=Accessibility
 screen.ACCESIBILITY_SCREEN.comment=Set accessibility options.
 
 screen.CUSTOM_COLORS_SCREEN=Custom Colors
-screen.CUSTOM_COLORS_SCREEN.comment=Set custom colors
+screen.CUSTOM_COLORS_SCREEN.comment=Set colors used by the custom color scheme.
 screen.CUSTOM_COLORS_DAY=Custom Day Colors
 screen.CUSTOM_COLORS_SUNSET=Custom Sunset/Dawn Colors
 screen.CUSTOM_COLORS_NIGHT=Custom Night Colors
