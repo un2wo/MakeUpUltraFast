@@ -174,7 +174,7 @@ vec3 get_normals(vec3 bump, vec3 fragpos) {
 
 vec4 reflection_calc(vec3 fragpos, vec3 normal, vec3 reflected, inout float infinite, float dither) {
     #if SSR_TYPE == 0  // Flipped image
-        #if defined DISTANT_HORIZONS
+        #if defined DISTANT_HORIZONS || defined VOXY
             vec3 pos = camera_to_screen(fragpos + reflected * 768.0);
         #else
             vec3 pos = camera_to_screen(fragpos + reflected * 76.0);
@@ -245,7 +245,7 @@ vec3 water_shader(
 
 vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, float dither) {
     #if SSR_TYPE == 0
-        #if defined DISTANT_HORIZONS
+        #if defined DISTANT_HORIZONS || defined VOXY
             vec3 reflected_vector = reflect(normalize(fragpos), normal) * 768.0;
         #else
             vec3 reflected_vector = reflect(normalize(fragpos), normal) * 76.0;
@@ -256,7 +256,7 @@ vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, fl
         vec3 pos = fast_raymarch(reflected_vector, fragpos, infinite, dither);
 
         if (pos.x > 99.0) { // Fallback
-            #if defined DISTANT_HORIZONS
+            #if defined DISTANT_HORIZONS || defined VOXY
                 pos = camera_to_screen(fragpos + reflected_vector * 768.0);
             #else
                 pos = camera_to_screen(fragpos + reflected_vector * 76.0);
