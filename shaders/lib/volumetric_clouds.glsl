@@ -61,8 +61,8 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
 		float cloud_cover_mult = 1.0;
 		#if V_CLOUDS > 1
 			if (CLOUD_COVER == 0) {
-				cloud_cover_mult = mod(worldDay + 1, 7) + day_moment;
-				cloud_cover_mult = 0.70 + (abs(3.5 - cloud_cover_mult)) * 0.1;
+				vec2 cloud_seed = hash22(vec2(worldDay, worldDay + 1));
+				cloud_cover_mult = mix(cloud_seed.x, cloud_seed.y, day_moment) * 0.40 + 0.70;
 			} else {
 				cloud_cover_mult = CLOUD_COVER;
 			}
