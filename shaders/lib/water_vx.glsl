@@ -118,12 +118,11 @@ vec3 refraction(vec3 fragpos, vec3 color, vec3 refraction) {
         float water_distance = 1536000.0 / (48016.0 - (2.0 * gl_FragCoord.z - 1.0) * 47984.0);
         // 2.0 * near * far / (far + near - (2.0 * gl_FragCoord.z - 1.0) * (far - near));
         // vx near = 16, far = 16*3000 (static)
-        // remaining difference between vanilla & lod chunks is a shadowmap vs lightmap thing
 
         float earth_distance = texture2D(vxDepthTexOpaque, pos.xy).r;
         earth_distance = 1536000.0 / (48016.0 - (2.0 * earth_distance - 1.0) * 47984.0);
 
-        water_absortion = (earth_distance - water_distance) * 0.5;
+        water_absortion = (earth_distance - water_distance) * 0.25;
         water_absortion *= water_absortion;
         water_absortion = (1.0 / -((water_absortion * WATER_ABSORPTION) + 1.125)) + 1.0;
     } else {
