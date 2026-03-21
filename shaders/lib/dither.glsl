@@ -34,13 +34,6 @@
 	#endif
 #endif
 
-float hash11(float p) {
-    p = fract(p * .1031);
-    p *= p + 33.33;
-    p *= p + p;
-    return fract(p);
-}
-
 float hash12(vec2 v) {
     v = 0.0002314814814814815 * v + vec2(0.25, 0.0);
     float state = fract(dot(v * v, vec2(3571.0)));
