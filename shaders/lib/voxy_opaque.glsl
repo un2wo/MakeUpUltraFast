@@ -1,6 +1,5 @@
+#define VOXY_PATCH
 #include "/lib/config.glsl"
-
-// most of the code is adapted from MakeUp's existing DH code.
 
 /* Utility functions */
 #if defined THE_END
@@ -20,7 +19,6 @@
     #include "/lib/material_gloss_fragment.glsl"
 #endif
 
-#define VOXY_PATCH
 
 layout(location = 0) out vec4 block_color;
 

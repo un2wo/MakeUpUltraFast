@@ -1,7 +1,7 @@
+#define VOXY_PATCH
 #include "/lib/config.glsl"
 
 /* Utility functions */
-
 #if defined THE_END
     #include "/lib/color_utils_end.glsl"
 #elif defined NETHER
@@ -12,10 +12,8 @@
 #include "/lib/basic_utils.glsl"
 #include "/lib/luma.glsl"
 #include "/lib/projection_utils_vx.glsl"
-#include "/lib/dither_vx.glsl"
+#include "/lib/dither.glsl"
 #include "/lib/water_vx.glsl"
-
-#define VOXY_PATCH
 
 // checklist:
 // color yes
@@ -25,7 +23,6 @@
 // absorption maybe?
 // reflections yes (but clouds don't reflect)
 // sun reflection yes
-
 
 layout(location = 0) out vec4 block_color;
 
@@ -87,7 +84,7 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
     //
 
     float normal_dot_eye = dot(surface_normal, normalize(sub_position3));
-    float fresnel = square_pow(1.0 + normal_dot_eye); // 
+    float fresnel = square_pow(1.0 + normal_dot_eye);
 
     vec3 reflect_water_vec = reflect(sub_position3, surface_normal);
     vec3 norm_reflect_water_vec = normalize(reflect_water_vec);
@@ -96,6 +93,9 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
     	vec3 up_vec = normalize(vxModelView[1].xyz);
     	
     if(isEyeInWater == 0 || isEyeInWater == 2) {
+		vec3 low_sky_color;
+		#include "/src/low_sky.glsl"
+		
         sky_color_reflect = mix(low_sky_color, hi_sky_color, sqrt(clamp(dot(norm_reflect_water_vec, up_vec), 0.0001, 1.0)));
     } else {
         sky_color_reflect = hi_sky_color * 0.5 * ((eyeBrightnessSmooth.y * 0.8 + 48) * 0.004166666666666667);

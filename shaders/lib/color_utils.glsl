@@ -4,14 +4,16 @@ Usefull data for color manipulation.
 Javier Garduño - GNU Lesser General Public License v3.0
 */
 
-uniform float day_moment;
-uniform float day_mixer;
-uniform float night_mixer;
-uniform int moonPhase;
+#ifndef VOXY_PATCH
+	uniform float day_moment;
+	uniform float day_mixer;
+	uniform float night_mixer;
+	uniform int moonPhase;
 
-#ifdef UNKNOWN_DIM
-    uniform vec3 fogColor;
-    uniform vec3 skyColor;
+	#ifdef UNKNOWN_DIM
+		uniform vec3 fogColor;
+		uniform vec3 skyColor;
+	#endif
 #endif
 
 #define NIGHT_BRIGHT_PHASE (NIGHT_BRIGHT + (NIGHT_BRIGHT * (abs(4.0 - moonPhase) * 0.25)))
@@ -225,7 +227,7 @@ uniform int moonPhase;
 
 	#define LIGHT_SUNSET_COLOR vec3(1.00, 0.53, 0.35)
     #define ZENITH_SUNSET_COLOR vec3(0.16, 0.22, 0.30)
-	#define HORIZON_SUNSET_COLOR vec3(0.65, 0.55, 0.55)
+	#define HORIZON_SUNSET_COLOR vec3(0.65, 0.56, 0.55)
     
     #define LIGHT_NIGHT_COLOR vec3(0.045, 0.049, 0.055) * NIGHT_BRIGHT_PHASE
     #define ZENITH_NIGHT_COLOR vec3(0.018, 0.027, 0.035) * NIGHT_BRIGHT_PHASE

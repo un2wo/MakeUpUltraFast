@@ -4,9 +4,11 @@ Usefull data for color manipulation.
 Javier Garduño - GNU Lesser General Public License v3.0
 */
 
-uniform float day_moment;
-uniform float day_mixer;
-uniform float night_mixer;
+#ifndef VOXY_PATCH
+	uniform float day_moment;
+	uniform float day_mixer;
+	uniform float night_mixer;
+#endif
 
 #if END_SCHEME == 0  // Legacy
     #define OMNI_TINT 0.5
@@ -24,7 +26,7 @@ uniform float night_mixer;
     #define HORIZON_NIGHT_COLOR vec3(0.0465375, 0.037485, 0.0465375)
     
     #define WATER_COLOR vec3(0.01647059, 0.13882353, 0.16470588)
-#elif END_SCHEME == 1  // Deep Purple
+#elif END_SCHEME == 1  // Nebula
 	#define OMNI_TINT 0.55
 
 	#define LIGHT_SUNSET_COLOR vec3(0.20, 0.12, 0.25)
@@ -59,19 +61,19 @@ uniform float night_mixer;
 #elif END_SCHEME == 3  // Lunar
 	#define OMNI_TINT 0.0
 
-	#define LIGHT_SUNSET_COLOR vec3(0.10, 0.11, 0.13)
-	#define LIGHT_DAY_COLOR vec3(0.10, 0.11, 0.13)
-	#define LIGHT_NIGHT_COLOR vec3(0.10, 0.11, 0.13)
+	#define LIGHT_SUNSET_COLOR vec3(0.25, 0.26, 0.35)
+	#define LIGHT_DAY_COLOR vec3(0.25, 0.26, 0.35)
+	#define LIGHT_NIGHT_COLOR vec3(0.25, 0.26, 0.35)
 
-	#define ZENITH_SUNSET_COLOR vec3(0.02, 0.02, 0.02)
-	#define ZENITH_DAY_COLOR vec3(0.02, 0.02, 0.02)
-	#define ZENITH_NIGHT_COLOR vec3(0.02, 0.02, 0.02)
+	#define ZENITH_SUNSET_COLOR vec3(0, 0, 0)
+	#define ZENITH_DAY_COLOR vec3(0, 0, 0)
+	#define ZENITH_NIGHT_COLOR vec3(0, 0, 0)
 
 	#define HORIZON_SUNSET_COLOR vec3(0, 0, 0)
 	#define HORIZON_DAY_COLOR vec3(0, 0, 0)
 	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
 
-    #define WATER_COLOR vec3(0.05, 0.1, 0.1)
+    #define WATER_COLOR vec3(0.01647059, 0.13882353, 0.16470588)
 #endif
 
 #if BLOCKLIGHT_TEMP == 0

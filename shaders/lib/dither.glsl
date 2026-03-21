@@ -1,4 +1,4 @@
-/* MakeUp - dither.glsl
+/* MakeUp - dither.glsl */
 // Dither and hash functions
 
 // There are a multitude of dithers in MakeUp, with different variants.
@@ -26,30 +26,34 @@
 // There is a function based on a texture, which assumes a size for the texture of 64x64 pixels,
 // but there is no such texture currently.
 
-*/
-
-#if MC_VERSION >= 11300
-    uniform float dither_shift;
-#else
-    uniform int frame_mod;
+#ifndef VOXY_PATCH
+	#if MC_VERSION >= 11300
+		uniform float dither_shift;
+	#else
+		uniform int frame_mod;
+	#endif
 #endif
 
-float hash12(vec2 v)
-{
+float hash11(float p) {
+    p = fract(p * .1031);
+    p *= p + 33.33;
+    p *= p + p;
+    return fract(p);
+}
+
+float hash12(vec2 v) {
     v = 0.0002314814814814815 * v + vec2(0.25, 0.0);
     float state = fract(dot(v * v, vec2(3571.0)));
     return fract(state * state * 7142.0);
 }
 
-float hash13(vec3 v)
-{
+float hash13(vec3 v) {
     v = fract(v * .1031);
     v += dot(v, v.zyx + 31.32);
     return fract((v.x + v.y) * v.z);
 }
 
-vec2 hash22(vec2 p)
-{
+vec2 hash22(vec2 p) {
 	vec3 p3 = fract(vec3(p.xyx) * vec3(.1031, .1030, .0973));
     p3 += dot(p3, p3.yzx+33.33);
     return fract((p3.xx+p3.yz)*p3.zy);
@@ -67,13 +71,11 @@ float eclectic_r_dither(vec2 frag) {
     return fract(dot(frag, vec2(0.75487766624669276, 0.569840290998)) + p4);
 }
 
-float dither13(vec2 frag)
-{
+float dither13(vec2 frag) {
     return fract(dot(frag, vec2(0.3076923076923077, 0.5384615384615384)));
 }
 
-float eclectic_dither13(vec2 frag)
-{
+float eclectic_dither13(vec2 frag) {
     vec2 v = 0.0002314814814814815 * frag + vec2(0.25, 0.0);
     float state = fract(dot(v * v, vec2(3571.0)));
     float p4 = fract(state * state * 7142.0) * 0.075;
