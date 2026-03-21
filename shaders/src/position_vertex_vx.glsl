@@ -12,8 +12,7 @@ if(water_like == 1.0) {  // Water
 #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER)
     float fog_density_coeff = FOG_DENSITY * FOG_ADJUST;
 #else
-    //float fog_density_coeff = day_blend_float(FOG_SUNSET, FOG_DAY, FOG_NIGHT) * FOG_ADJUST;
-    float fog_density_coeff = 3.0 * FOG_ADJUST;
+    float fog_density_coeff = day_blend_float(FOG_SUNSET, FOG_DAY, FOG_NIGHT) * FOG_ADJUST;
 #endif
 
 float fog_frag_coord = length(position.xyz);
