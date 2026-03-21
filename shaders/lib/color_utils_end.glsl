@@ -58,16 +58,16 @@ Javier Garduño - GNU Lesser General Public License v3.0
 	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
 
     #define WATER_COLOR vec3(0.05, 0.1, 0.1)
-#elif END_SCHEME == 3  // Lunar
-	#define OMNI_TINT 0.0
+#elif END_SCHEME == 3  // Dust
+	#define OMNI_TINT 0.5
 
-	#define LIGHT_SUNSET_COLOR vec3(0.25, 0.26, 0.35)
-	#define LIGHT_DAY_COLOR vec3(0.25, 0.26, 0.35)
-	#define LIGHT_NIGHT_COLOR vec3(0.25, 0.26, 0.35)
+	#define LIGHT_SUNSET_COLOR vec3(0.07, 0.08, 0.10)
+	#define LIGHT_DAY_COLOR vec3(0.07, 0.08, 0.10)
+	#define LIGHT_NIGHT_COLOR vec3(0.07, 0.08, 0.10)
 
-	#define ZENITH_SUNSET_COLOR vec3(0, 0, 0)
-	#define ZENITH_DAY_COLOR vec3(0, 0, 0)
-	#define ZENITH_NIGHT_COLOR vec3(0, 0, 0)
+	#define ZENITH_SUNSET_COLOR vec3(0.02, 0.02, 0.02)
+	#define ZENITH_DAY_COLOR vec3(0.02, 0.02, 0.02)
+	#define ZENITH_NIGHT_COLOR vec3(0.02, 0.02, 0.02)
 
 	#define HORIZON_SUNSET_COLOR vec3(0, 0, 0)
 	#define HORIZON_DAY_COLOR vec3(0, 0, 0)
