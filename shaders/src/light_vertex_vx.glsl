@@ -79,6 +79,9 @@ if (length(normal) != 0.0) {
 float omni_strength = direct_light_strength * 0.125 + 1.0;
 
 // these were uniforms but i had to recalc everything because it was stuck in sunset mode whyyyy
+// now i've realized that the cause of this problem was because the uniforms were defined a second time in color_utils.glsl (idk why that's a problem)
+// wrapping those with an #ifndef VOXY_PATCH fixed the issue, but for some reason, this only worked with voxy_translucent?
+// even though both trans & opaque have the same includes?? even though VOXY_PATCH was defined after the includes in both???
 float day_moment_a = hour_world * 0.04166666666666667;
 float moment_aux_a = day_moment_a - 0.25;
 float moment_aux_2_a = moment_aux_a * moment_aux_a;
@@ -95,11 +98,13 @@ vec3 direct_light_color = mix(day_color, night_color, step(0.5, day_moment_a));
 vec3 day_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_DAY_COLOR, day_mixer_a);
 vec3 night_color_sky = mix(ZENITH_SUNSET_COLOR, ZENITH_NIGHT_COLOR, night_mixer_a);
 vec3 hi_sky_color_rgb = mix(day_color_sky, night_color_sky, step(0.5, day_moment_a));
+hi_sky_color_rgb = mix(hi_sky_color_rgb, ZENITH_SKY_RAIN_COLOR * luma(hi_sky_color_rgb), rainStrength);
 vec3 hi_sky_color = rgb_to_xyz(hi_sky_color_rgb);
 
 vec3 day_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_DAY_COLOR, day_mixer_a);
 vec3 night_color_horz = mix(HORIZON_SUNSET_COLOR, HORIZON_NIGHT_COLOR, night_mixer_a);
 vec3 low_sky_color_rgb = mix(day_color_horz, night_color_horz, step(0.5, day_moment_a));
+low_sky_color_rgb = mix(low_sky_color_rgb, HORIZON_SKY_RAIN_COLOR * luma(low_sky_color_rgb), rainStrength);
 vec3 low_sky_color = rgb_to_xyz(low_sky_color_rgb);
 
 //direct_light_color = day_blend(
@@ -122,12 +127,6 @@ if (foliage == 1) {
 	direct_light_color = mix(
 		direct_light_color,
 		ZENITH_SKY_RAIN_COLOR * luma(direct_light_color) * 0.4,
-		rainStrength
-	);
-
-	hi_sky_color_rgb = mix(
-		hi_sky_color_rgb,
-		ZENITH_SKY_RAIN_COLOR * luma(hi_sky_color_rgb),
 		rainStrength
 	);
 
