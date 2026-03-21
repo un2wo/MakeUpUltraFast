@@ -55,15 +55,15 @@ option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only vis
 
 option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
-option.DESATURATION = Low-light Desaturation
-option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
+option.DESATURATION=Low-light Desaturation
+option.DESATURATION.comment=Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
-option.CONTRAST = Contrast
-option.BRIGHTNESS = Brightness
-option.SATURATION = Saturation
+option.CONTRAST=Contrast
+option.BRIGHTNESS=Brightness
+option.SATURATION=Saturation
 
-option.EXPOSURE = Exposure
-option.EXPOSURE.comment = Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
+option.EXPOSURE=Exposure
+option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
 
 option.DOF=Depth of Field
 option.DOF.comment=Blurs out-of-focus objects.
@@ -164,11 +164,11 @@ value.COLOR_SCHEME.14=Haze
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
-option.END_SCHEME=End Color Scheme
+option.END_SCHEME=End Colors
 value.END_SCHEME.0=Legacy
 value.END_SCHEME.1=Nebula
 value.END_SCHEME.2=Tempest
-value.END_SCHEME.3=Lunar
+value.END_SCHEME.3=Dust
 option.END_SCHEME.comment=Affects lighting and sky colors in The End.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset Light R
