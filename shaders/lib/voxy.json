@@ -4,6 +4,9 @@
 	",
 	"version": 1,
 	"uniforms": [
+		#if AA_TYPE > 1
+			"taa_offset",
+		#endif
 		"hour_world",
 		"light_mix",
 		"isEyeInWater",
@@ -41,6 +44,11 @@
 		-1: "off",
 		0: "SRC_ALPHA ONE_MINUS_SRC_ALPHA ONE ONE_MINUS_SRC_ALPHA"
 	},
+	#if AA_TYPE > 1
+		"taaOffset": "{
+			return taa_offset;
+		}",
+	#endif
 	"opaquePatchData": "
 		#include "/lib/voxy_opaque.glsl"
 	",
