@@ -198,7 +198,7 @@ vec3 water_shader_vx(
     #endif
 }
 
-vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, float dither) {
+vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, float dither, vec3 infinite_color) {
     #if SSR_TYPE == 0
         vec3 reflected_vector = reflect(normalize(fragpos), normal) * 768.0;
         vec3 pos = camera_to_screen(fragpos + reflected_vector);
@@ -215,7 +215,13 @@ vec4 cristal_reflection_calc(vec3 fragpos, vec3 normal, inout float infinite, fl
     float border_y = max(-fourth_pow(abs(2.0 * pos.y - 1.0)) + 1.0, 0.0);
     float border = min(border_x, border_y);
 
-    return vec4(texture2D(colortex8, pos.xy, 0.0).rgb, border);
+	vec4 final_reflex;
+    if (texture2D(depthtex0, pos.xy).r < 0.999) {
+        final_reflex = vec4(infinite_color, border);
+    } else {
+        final_reflex = vec4(texture2D(colortex8, pos.xy, 0.0).rgb, border);
+    }
+    return final_reflex;
 }
 
 vec4 cristal_shader(
@@ -233,7 +239,7 @@ vec4 cristal_shader(
     float infinite = 0.0;
 
     #if REFLECTION == 1
-        reflection = cristal_reflection_calc(fragpos, normal, infinite, dither);
+        reflection = cristal_reflection_calc(fragpos, normal, infinite, dither, sky_reflection);
     #endif
 
     sky_reflection = mix(color.rgb, sky_reflection, visible_sky * visible_sky);
