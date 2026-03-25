@@ -37,6 +37,7 @@ option.REFLECTION_SLIDER=Reflections
 value.REFLECTION_SLIDER.0=Off
 value.REFLECTION_SLIDER.1=Flipped Image
 value.REFLECTION_SLIDER.2=Raymarching
+option.REFLECTION_SLIDER.comment=Adds reflections to water and various translucent blocks, including ice and glass.
 
 option.SHADOW_TYPE=Shadow Type
 value.SHADOW_TYPE.0=Simple
@@ -45,7 +46,7 @@ value.SHADOW_TYPE.1=Filtered
 option.SHADOW_BLUR=Shadow Blur Intensity
 
 option.COLORED_SHADOW=Colored Shadows
-option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks such as glass.
+option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks, such as glass.
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
@@ -134,10 +135,10 @@ option.CHROMA_ABER.comment=Adds red/cyan distortion to the image.
 option.CHROMA_ABER_STRENGTH=Chroma Aberration Strength
 
 option.WATER_ABSORPTION=Water Absorption Index
-option.WATER_ABSORPTION.comment=Adjusts transparency of water when viewed from outside.
+option.WATER_ABSORPTION.comment=Adjusts transparency of water.
 
 option.WATER_FOG_ADJUST=Underwater Fog Density
-option.WATER_FOG_ADJUST.comment=Fog density is also affected by render distance.
+option.WATER_FOG_ADJUST.comment=Fog density is also affected by vanilla render distance.
 
 option.WATER_TURBULENCE=Waves Strength
 value.WATER_TURBULENCE.7.0=Very Low
@@ -156,7 +157,7 @@ value.COLOR_SCHEME.6=Cocoa
 value.COLOR_SCHEME.7=Testigo
 value.COLOR_SCHEME.8=Vivid
 value.COLOR_SCHEME.9=Prairie
-value.COLOR_SCHEME.10=Antique
+value.COLOR_SCHEME.10=Slate
 value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
@@ -241,7 +242,7 @@ option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
 value.CLOUD_COVER.0=Variable
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The 'variable' setting will pick a random value based on the in-game day.
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The variable setting will pick a random value based on the in-game day.
 
 option.BLOOM=Bloom
 
@@ -289,6 +290,7 @@ option.MATERIAL_GLOSS=Material Gloss
 option.MATERIAL_GLOSS.comment=Adds extra sheen to blocks under sun/moonlight, depending on the material.
 
 option.DYN_HAND_LIGHT=Handheld Light
+option.DYN_HAND_LIGHT.comment=Illuminates the surrounding environment when holding light sources in hand, such as torches.
 
 #Screens
 screen.ADVANCED_SCREEN=Advanced options
@@ -303,7 +305,7 @@ screen.SHADOWS_SCREEN.comment=Set shadows options.
 screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
 
-screen.POST_SCREEN=Post Effects
+screen.POST_SCREEN=Camera
 screen.POST_SCREEN.comment=Set post effects and color grading options.
 
 screen.LIGHT_SCREEN=Light
