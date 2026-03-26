@@ -60,13 +60,13 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
 
 		float cloud_cover_mult = 1.0;
 		#if V_CLOUDS > 1
-			#if CLOUD_COVER == 0
+			if (CLOUD_COVER == 0) {
 				float cloud_seed0 = hash12(vec2(worldDay));
 				float cloud_seed1 = hash12(vec2(worldDay + 1));
-				cloud_cover_mult = mix(cloud_seed0, cloud_seed1, day_moment) * 0.40 + 0.70;
-			#else
+				cloud_cover_mult = mix(cloud_seed0, cloud_seed1, day_moment) * 0.30 + 0.70;
+			} else {
 				cloud_cover_mult = CLOUD_COVER;
-			#endif
+			}
 		#endif
 
         for (int i = 0; i < samples; i++) {
