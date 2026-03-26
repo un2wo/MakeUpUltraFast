@@ -2,7 +2,7 @@ vec4 tint_color = param.sampledColour * param.tinting;
 
 uint blockId = param.customId;
 float foliage = float(blockId == 10031 || blockId == 10175 || blockId == 10176 || blockId == 10059 || blockId == 10032);
-float leaves = float(blockId == 10018 || blockId == 10033 || blockId == 10106); // leaves / leaves_nw / vines
+float leaves = float(blockId == 10018 || blockId == 10033 || blockId == 10106);
 float emissive = float(blockId == 10089 || blockId == 10090);
 float water_like = float(blockId == 10008);
 float reflective = float(blockId == 10079);
@@ -91,7 +91,7 @@ if (foliage == 1) {
 } else if (leaves == 1) {
     direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) + 0.2;
 } else {
-	direct_light_strength = clamp(direct_light_strength, 0.0, 1.0);
+	direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.95 + 0.05;
 }
 
 #if defined THE_END || defined NETHER
