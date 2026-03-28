@@ -165,13 +165,13 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #endif
 
 #if CLOUD_VOL_STYLE == 1
-    #define CLOUD_PLANE_SUP 380.0
-    #define CLOUD_PLANE_CENTER 335.0
-    #define CLOUD_PLANE 320.0
+    #define CLOUD_PLANE_SUP 330.0
+    #define CLOUD_PLANE_CENTER 285.0
+    #define CLOUD_PLANE 270.0
 #else
-    #define CLOUD_PLANE_SUP 910.0
-    #define CLOUD_PLANE_CENTER 650.0
-    #define CLOUD_PLANE 520.0
+    #define CLOUD_PLANE_SUP 860.0
+    #define CLOUD_PLANE_CENTER 600.0
+    #define CLOUD_PLANE 470.0
 #endif
 
 #define CLOUD_STEPS_AVG 6 // [3 4 5 6 7 8 9 10 11 12 13 14 15 16] Samples per pixel (high performance impact).

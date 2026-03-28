@@ -38,10 +38,10 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
     #endif
 
     if (view_vector.y > 0.0) {  // Over horizon
-        plane_distance = (CLOUD_PLANE - base_pos.y) * view_y_inv;
+        plane_distance = CLOUD_PLANE * view_y_inv;
         intersection_pos = (view_vector * plane_distance) + base_pos;
 
-        plane_distance = (CLOUD_PLANE_SUP - base_pos.y) * view_y_inv;
+        plane_distance = CLOUD_PLANE_SUP * view_y_inv;
         intersection_pos_sup = (view_vector * plane_distance) + base_pos;
 
         dif_sup = CLOUD_PLANE_SUP - CLOUD_PLANE_CENTER;
@@ -93,8 +93,8 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
             current_value = (current_value - umbral) / (1.0 - umbral);
 
             // Superficies inferior y superior de nubes
-            surface_inf = CLOUD_PLANE_CENTER - (current_value * dif_inf);
-            surface_sup = CLOUD_PLANE_CENTER + (current_value * dif_sup);
+            surface_inf = CLOUD_PLANE_CENTER + base_pos.y - (current_value * dif_inf);
+            surface_sup = CLOUD_PLANE_CENTER + base_pos.y + (current_value * dif_sup);
 
             if (  // Dentro de la nube
                 intersection_pos.y > surface_inf &&
