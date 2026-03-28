@@ -33,6 +33,9 @@ uniform sampler2D gaux3;
 #if AO == 1
     uniform float inv_aspect_ratio;
     uniform float fov_y_inv;
+    #ifdef VOXY
+		uniform int vxRenderDistance;
+	#endif
 #endif
 
 #if V_CLOUDS != 0 && !defined UNKNOWN_DIM
@@ -72,6 +75,7 @@ varying vec3 up_vec;  // Flat
 
 #if AO == 1
     varying float fog_density_coeff;
+    varying float frog_adjust;
 #endif
 
 /* Utility functions */ 
@@ -88,6 +92,11 @@ varying vec3 up_vec;  // Flat
 #endif
 
 #if AO == 1
+    #ifdef VOXY
+	float ld_vx(float depth) {
+		return (2.0 * near) / ((vxRenderDistance * 16) + near - depth * ((vxRenderDistance * 16) - near));
+	}
+	#endif
     #include "/lib/ao.glsl"
 #endif
 
@@ -161,25 +170,6 @@ void main() {
         #endif
     #endif
 
-    #if AO == 1
-        // AO distance attenuation
-        #if defined NETHER
-            if(NETHER_FOG_DISTANCE == 0) {
-                linear_d = sqrt(linear_d);
-            } else {
-                float screen_distance = 2.0 * near * far / (far + near - (2.0 * d - 1.0) * (far - near));
-                linear_d = screen_distance / NETHER_SIGHT;
-            }
-        #endif
-        float ao_att =
-            pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff, 1.0, rainStrength));
-
-        float final_ao = mix(dbao(dither), 1.0, ao_att);
-        block_color.rgb *= final_ao;
-        // block_color = vec4(vec3(final_ao), 1.0);
-        // block_color = vec4(vec3(linear_d), 1.0);
-    #endif
-
     #if defined THE_END || defined NETHER
         #define NIGHT_CORRECTION 1.0
     #else
@@ -189,9 +179,40 @@ void main() {
     // Underwater sky
     if(isEyeInWater == 1) {
         if(linear_d > 0.9999) {
-            block_color.rgb = mix(NIGHT_CORRECTION * WATER_COLOR * ((eye_bright_smooth.y * .8 + 48) * 0.004166666666666667), block_color.rgb, max(clamp(view_vector.y - 0.1, 0.0, 1.0), rainStrength));
+            block_color.rgb = mix(
+            		NIGHT_CORRECTION * WATER_COLOR * ((eye_bright_smooth.y * 0.8 + 48) * 0.004166666666666667), 
+            		block_color.rgb, 
+            		max(clamp(view_vector.y - 0.1, 0.0, 1.0), rainStrength)
+            	);
         }
     }
+
+    #if AO == 1
+        // AO distance attenuation
+        #ifdef VOXY
+			linear_d = ld_vx(d);
+        #endif
+        
+        #if defined NETHER
+            if (NETHER_FOG_DISTANCE == 0) {
+                linear_d = sqrt(linear_d);
+            } else {
+                float screen_distance = 2.0 * near * far / (far + near - (2.0 * d - 1.0) * (far - near));
+                linear_d = screen_distance / NETHER_SIGHT;
+            }
+        #endif
+        
+        #ifdef VOXY
+			float ao_att = pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff * 0.15, 0.25, rainStrength));
+        #else
+			float ao_att = pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff, 1.0, rainStrength));
+		#endif
+
+        float final_ao = mix(dbao(dither), 1.0, ao_att);
+        block_color.rgb *= final_ao;
+        // block_color = vec4(vec3(final_ao), 1.0);
+        // block_color = vec4(vec3(linear_d), 1.0);
+    #endif
 
     /* DRAWBUFFERS:14 */
     gl_FragData[0] = vec4(block_color.rgb, d);
