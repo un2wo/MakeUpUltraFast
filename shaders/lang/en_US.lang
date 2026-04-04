@@ -162,6 +162,7 @@ value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.14=Haze
+value.COLOR_SCHEME.15=Aurora
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
