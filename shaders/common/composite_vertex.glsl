@@ -82,7 +82,7 @@ void main() {
 
         float prev_exposure = texture2D(gaux3, vec2(0.5)).r;
 
-        exposure = exp(-luma(exposure_col * 0.8)) * 2.5 + EXPOSURE;
+        exposure = exp(-luma(exposure_col * 0.75)) * 2.0 + EXPOSURE;
         exposure = clamp(mix(exposure, prev_exposure, exp(-frameTime * 1.25)), EXPOSURE, 10);
     #else
         exposure = 1.0;
