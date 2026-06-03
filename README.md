@@ -6,11 +6,11 @@ Differences from the original:
 - Adjusted shading for foliage and similar blocks; should look better w/ narrower sun angles and shadowless configurations
 - Misc. changes to lighting & color grading; overall brighter w/ more contrast
 - Different cloudmaps; 'blocky' style clouds are larger with denser coverage, 'natural' style clouds are puffier
-- Additional color palettes; +7 for the overworld, +3 for The End
+- Additional color palettes; +8 for the overworld, +3 for The End
 - Entity shadow toggles
 - Reorganized settings screen
 - Reduced color banding
-
-This branch has experimental support for voxy. It does not work with all configurations of this shader.
+- Voxy support (different implementation from 9.5) [^2]
 
 [^1]: Some changes from the newer versions were ported, but I'm too lazy to fully keep up with it.
+[^2]: Differences include voxy chunks having SSAO and raymarched reflections (though not perfect).
