@@ -161,9 +161,9 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define ZENITH_DAY_COLOR vec3(0.40, 0.62, 0.85)
     #define HORIZON_DAY_COLOR vec3(0.70, 0.95, 1.10)
 	
-	#define LIGHT_SUNSET_COLOR vec3(1.00, 0.55, 0.30)
-    #define ZENITH_SUNSET_COLOR vec3(0.14, 0.19, 0.29)
-    #define HORIZON_SUNSET_COLOR vec3(0.55, 0.51, 0.50)
+	#define LIGHT_SUNSET_COLOR vec3(1.00, 0.68, 0.38)
+    #define ZENITH_SUNSET_COLOR vec3(0.14, 0.21, 0.29)
+    #define HORIZON_SUNSET_COLOR vec3(0.55, 0.54, 0.50)
     
     #define LIGHT_NIGHT_COLOR vec3(0.035, 0.044, 0.060) * NIGHT_BRIGHT_PHASE
     #define ZENITH_NIGHT_COLOR vec3(0.010, 0.017, 0.025) * NIGHT_BRIGHT_PHASE
