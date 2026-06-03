@@ -4,9 +4,11 @@ Usefull data for color manipulation.
 Javier Garduño - GNU Lesser General Public License v3.0
 */
 
-uniform float day_moment;
-uniform float day_mixer;
-uniform float night_mixer;
+#ifndef VOXY_PATCH
+	uniform float day_moment;
+	uniform float day_mixer;
+	uniform float night_mixer;
+#endif
 
 #define OMNI_TINT 0.5
 #define LIGHT_SUNSET_COLOR vec3(0.06885294, 0.06297058, 0.04879411)

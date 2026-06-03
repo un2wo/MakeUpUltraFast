@@ -13,7 +13,12 @@ float dbao(float dither) {
 
     float d = texture2D(depthtex0, texcoord.xy).r;
     float hand_check = d < 0.56 ? 1024.0 : 1.0;
-    d = ld(d);
+    #ifdef VOXY
+		d = ld_vx(d);
+    		float far = vxRenderDistance * 16;
+    #else
+		d = ld(d);
+    #endif
 
     float sd = 0.0;
     float angle = 0.0;
@@ -27,13 +32,21 @@ float dbao(float dither) {
         dither_x = (i + dither);
         n = fract(dither_x * 1.6180339887) * 3.141592653589793;
         offset = vec2(cos(n), sin(n)) * dither_x * scale_factor;
-
-        sd = ld(texture2D(depthtex0, texcoord.xy + offset).r);
+		
+		#ifdef VOXY
+        		sd = ld_vx(texture2D(depthtex0, texcoord.xy + offset).r);
+        #else
+        		sd = ld(texture2D(depthtex0, texcoord.xy + offset).r);
+        #endif
         sample_d = (d - sd) * far_and_check;
         angle = clamp(0.5 - sample_d, 0.0, 1.0);
         dist = clamp(0.25 * sample_d - 1.0, 0.0, 1.0);
 
-        sd = ld(texture2D(depthtex0, texcoord.xy - offset).r);
+		#ifdef VOXY
+        		sd = ld_vx(texture2D(depthtex0, texcoord.xy - offset).r);
+        #else
+        		sd = ld(texture2D(depthtex0, texcoord.xy - offset).r);
+        #endif
         sample_d = (d - sd) * far_and_check;
         angle += clamp(0.5 - sample_d, 0.0, 1.0);
         dist += clamp(0.25 * sample_d - 1.0, 0.0, 1.0);

@@ -4,7 +4,6 @@ profile.minimum=ALL OFF
 profile.performance=Performance
 profile.default=Default
 profile.quality=Quality
-profile.maximum=ALL MAX
 
 #About
 #############################
@@ -38,6 +37,7 @@ option.REFLECTION_SLIDER=Reflections
 value.REFLECTION_SLIDER.0=Off
 value.REFLECTION_SLIDER.1=Flipped Image
 value.REFLECTION_SLIDER.2=Raymarching
+option.REFLECTION_SLIDER.comment=Adds reflections to water and various translucent blocks, including ice and glass.
 
 option.SHADOW_TYPE=Shadow Type
 value.SHADOW_TYPE.0=Simple
@@ -46,7 +46,7 @@ value.SHADOW_TYPE.1=Filtered
 option.SHADOW_BLUR=Shadow Blur Intensity
 
 option.COLORED_SHADOW=Colored Shadows
-option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks such as glass.
+option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through transparent blocks, such as glass.
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
@@ -56,15 +56,15 @@ option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only vis
 
 option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
-option.DESATURATION = Low-light Desaturation
-option.DESATURATION.comment = Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
+option.DESATURATION=Low-light Desaturation
+option.DESATURATION.comment=Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
-option.CONTRAST = Contrast
-option.BRIGHTNESS = Brightness
-option.SATURATION = Saturation
+option.CONTRAST=Contrast
+option.BRIGHTNESS=Brightness
+option.SATURATION=Saturation
 
-option.EXPOSURE = Exposure
-option.EXPOSURE.comment = Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
+option.EXPOSURE=Exposure
+option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
 
 option.DOF=Depth of Field
 option.DOF.comment=Blurs out-of-focus objects.
@@ -135,10 +135,10 @@ option.CHROMA_ABER.comment=Adds red/cyan distortion to the image.
 option.CHROMA_ABER_STRENGTH=Chroma Aberration Strength
 
 option.WATER_ABSORPTION=Water Absorption Index
-option.WATER_ABSORPTION.comment=Adjusts transparency of water when viewed from outside.
+option.WATER_ABSORPTION.comment=Adjusts transparency of water.
 
 option.WATER_FOG_ADJUST=Underwater Fog Density
-option.WATER_FOG_ADJUST.comment=Fog density is also affected by render distance.
+option.WATER_FOG_ADJUST.comment=Fog density is also affected by vanilla render distance.
 
 option.WATER_TURBULENCE=Waves Strength
 value.WATER_TURBULENCE.7.0=Very Low
@@ -157,7 +157,7 @@ value.COLOR_SCHEME.6=Cocoa
 value.COLOR_SCHEME.7=Testigo
 value.COLOR_SCHEME.8=Vivid
 value.COLOR_SCHEME.9=Prairie
-value.COLOR_SCHEME.10=Antique
+value.COLOR_SCHEME.10=Slate
 value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
@@ -166,11 +166,11 @@ value.COLOR_SCHEME.15=Aurora
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
 
-option.END_SCHEME=End Color Scheme
+option.END_SCHEME=End Colors
 value.END_SCHEME.0=Legacy
 value.END_SCHEME.1=Nebula
 value.END_SCHEME.2=Tempest
-value.END_SCHEME.3=Lunar
+value.END_SCHEME.3=Dust
 option.END_SCHEME.comment=Affects lighting and sky colors in The End.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset Light R
@@ -185,9 +185,9 @@ option.LIGHT_NIGHT_COLOR_R=Night Light R
 option.LIGHT_NIGHT_COLOR_G=Night Light G
 option.LIGHT_NIGHT_COLOR_B=Night Light B
 
-option.ZENITH_SUNSET_COLOR_R=Zenith Sunset R
-option.ZENITH_SUNSET_COLOR_G=Zenith Sunset G
-option.ZENITH_SUNSET_COLOR_B=Zenith Sunset B
+option.ZENITH_SUNSET_COLOR_R=Sunset Zenith R
+option.ZENITH_SUNSET_COLOR_G=Sunset Zenith G
+option.ZENITH_SUNSET_COLOR_B=Sunset Zenith B
 
 option.ZENITH_DAY_COLOR_R=Day Zenith R
 option.ZENITH_DAY_COLOR_G=Day Zenith G
@@ -197,17 +197,17 @@ option.ZENITH_NIGHT_COLOR_R=Night Zenith R
 option.ZENITH_NIGHT_COLOR_G=Night Zenith G
 option.ZENITH_NIGHT_COLOR_B=Night Zenith B
 
-option.HORIZON_SUNSET_COLOR_R=Horizon Sunset R
-option.HORIZON_SUNSET_COLOR_G=Horizon Sunset G
-option.HORIZON_SUNSET_COLOR_B=Horizon Sunset B
+option.HORIZON_SUNSET_COLOR_R=Sunset Horizon R
+option.HORIZON_SUNSET_COLOR_G=Sunset Horizon G
+option.HORIZON_SUNSET_COLOR_B=Sunset Horizon B
 
-option.HORIZON_DAY_COLOR_R=Horizon Day R
-option.HORIZON_DAY_COLOR_G=Horizon Day G
-option.HORIZON_DAY_COLOR_B=Horizon Day B
+option.HORIZON_DAY_COLOR_R=Day Horizon R
+option.HORIZON_DAY_COLOR_G=Day Horizon G
+option.HORIZON_DAY_COLOR_B=Day Horizon B
 
-option.HORIZON_NIGHT_COLOR_R=Horizon Night R
-option.HORIZON_NIGHT_COLOR_G=Horizon Night G
-option.HORIZON_NIGHT_COLOR_B=Horizon Night B
+option.HORIZON_NIGHT_COLOR_R=Night Horizon R
+option.HORIZON_NIGHT_COLOR_G=Night Horizon G
+option.HORIZON_NIGHT_COLOR_B=Night Horizon B
 
 option.WATER_COLOR_R=Water R
 option.WATER_COLOR_G=Water G
@@ -230,7 +230,7 @@ value.V_CLOUDS.0=Off
 value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
 value.V_CLOUDS.3=Natural dyn.
-option.V_CLOUDS.comment=Volumetric clouds. Natural dynamic clouds change shape over time, but are slightly less performant.
+option.V_CLOUDS.comment=Natural dynamic clouds change shape as they move, but are slightly less performant.
 
 option.CLOUD_SPEED=Clouds Speed
 value.CLOUD_SPEED.0=Normal
@@ -243,7 +243,7 @@ option.CLOUD_STEPS_AVG=Cloud Samples
 
 option.CLOUD_COVER=Cloud Coverage
 value.CLOUD_COVER.0=Variable
-option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The 'variable' setting will cause this value to oscillate between 0.70 and 1.05 over a 7 day period.
+option.CLOUD_COVER.comment=Adjusts the amount of clouds in the overworld sky; only used for natural styles. The variable setting will pick a random value based on the in-game day.
 
 option.BLOOM=Bloom
 
@@ -291,6 +291,7 @@ option.MATERIAL_GLOSS=Material Gloss
 option.MATERIAL_GLOSS.comment=Adds extra sheen to blocks under sun/moonlight, depending on the material.
 
 option.DYN_HAND_LIGHT=Handheld Light
+option.DYN_HAND_LIGHT.comment=Illuminates the surrounding environment when holding light sources in hand, such as torches.
 
 #Screens
 screen.ADVANCED_SCREEN=Advanced options
@@ -305,7 +306,7 @@ screen.SHADOWS_SCREEN.comment=Set shadows options.
 screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
 
-screen.POST_SCREEN=Post Effects
+screen.POST_SCREEN=Camera
 screen.POST_SCREEN.comment=Set post effects and color grading options.
 
 screen.LIGHT_SCREEN=Light
@@ -318,7 +319,7 @@ screen.ACCESIBILITY_SCREEN=Accessibility
 screen.ACCESIBILITY_SCREEN.comment=Set accessibility options.
 
 screen.CUSTOM_COLORS_SCREEN=Custom Colors
-screen.CUSTOM_COLORS_SCREEN.comment=Set custom colors
+screen.CUSTOM_COLORS_SCREEN.comment=Set colors used by the custom color scheme.
 screen.CUSTOM_COLORS_DAY=Custom Day Colors
 screen.CUSTOM_COLORS_SUNSET=Custom Sunset/Dawn Colors
 screen.CUSTOM_COLORS_NIGHT=Custom Night Colors

@@ -11,4 +11,6 @@ Differences from the original:
 - Reorganized settings screen
 - Reduced color banding
 
+This branch has experimental support for voxy. It does not work with all configurations of this shader.
+
 [^1]: Some changes from the newer versions were ported, but I'm too lazy to fully keep up with it.

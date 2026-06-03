@@ -1,0 +1,58 @@
+{
+	"unusedString": "
+		#include "/lib/config.glsl"
+	",
+	"version": 1,
+	"uniforms": [
+		#if AA_TYPE > 1
+			"taa_offset",
+		#endif
+		"hour_world",
+		"light_mix",
+		"isEyeInWater",
+		"nightVision",
+		"rainStrength",
+		"eyeBrightnessSmooth",
+		"sunPosition",
+		"moonPosition",
+		"worldTime",
+		
+		"vxRenderDistance",
+		"vxModelView", "vxModelViewInv",
+		"vxProj", "vxProjInv",
+
+		"pixel_size_x", "pixel_size_y",
+		"viewWidth", "viewHeight",
+		"blindness", "darknessFactor", "darknessLightFactor",
+		"frameTimeCounter",
+		"cameraPosition",
+		"fogColor",
+		"dither_shift",
+		"day_moment", "day_mixer", "night_mixer", "moonPhase"
+	],
+	"samplers": [
+		"noisetex",
+		"gaux1",
+		"gaux4",
+		"depthtex0",
+		"vxDepthTexOpaque",
+		"colortex8"
+	],
+	"opaqueDrawBuffers": [1, 8],
+	"translucentDrawBuffers": [1],
+	"blending": {
+		-1: "off",
+		0: "SRC_ALPHA ONE_MINUS_SRC_ALPHA ONE ONE_MINUS_SRC_ALPHA"
+	},
+	#if AA_TYPE > 1
+		"taaOffset": "{
+			return taa_offset;
+		}",
+	#endif
+	"opaquePatchData": "
+		#include "/lib/voxy_opaque.glsl"
+	",
+	"translucentPatchData": "
+		#include "/lib/voxy_translucent.glsl"
+	"
+}
