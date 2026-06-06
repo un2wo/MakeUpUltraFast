@@ -28,6 +28,9 @@ varying float direct_light_strength;
 varying vec3 omni_light;
 varying vec4 position;
 varying float frog_adjust;
+varying float frog_adjust2;
+varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 
 /* Utility functions */
 

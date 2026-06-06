@@ -41,6 +41,9 @@ varying float direct_light_strength;
 varying vec3 omni_light;
 varying vec4 position;
 varying float frog_adjust;
+varying float frog_adjust2;
+varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 
 /* Utility functions */
 
@@ -56,7 +59,6 @@ varying float frog_adjust;
 void main() {
     vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
     float visible_sky;
-    vec3 hi_sky_color;
 
     #include "/src/basiccoords_vertex_dh.glsl"
     #include "/src/position_vertex_dh.glsl"

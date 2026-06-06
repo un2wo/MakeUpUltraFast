@@ -21,6 +21,7 @@ uniform float rainStrength;
 
 varying vec3 up_vec;
 varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 varying vec3 low_sky_color;
 
 /* Utility functions */

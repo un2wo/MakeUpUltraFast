@@ -21,6 +21,7 @@ uniform float near;
 uniform float blindness;
 uniform float rainStrength;
 uniform sampler2D gaux3;
+uniform float fogEnd;
 
 #if V_CLOUDS != 0
     uniform sampler2D gaux2;
@@ -202,11 +203,7 @@ void main() {
             }
         #endif
         
-        #ifdef VOXY
-			float ao_att = pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff * 0.15, 0.25, rainStrength));
-        #else
-			float ao_att = pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff, 1.0, rainStrength));
-		#endif
+		float ao_att = pow(clamp(linear_d * 1.6, 0.0, 1.0), mix(fog_density_coeff * 0.25, 0.25, rainStrength));
 
         float final_ao = mix(dbao(dither), 1.0, ao_att);
         block_color.rgb *= final_ao;

@@ -77,6 +77,7 @@ varying vec3 tangent;
 varying vec3 binormal;
 varying vec3 water_normal;
 varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 varying vec3 low_sky_color;
 varying vec3 up_vec;
 varying float visible_sky;

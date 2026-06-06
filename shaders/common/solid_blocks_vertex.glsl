@@ -21,6 +21,7 @@ uniform float far;
 uniform float rainStrength;
 uniform ivec2 eyeBrightnessSmooth;
 uniform mat4 gbufferProjectionInverse;
+uniform float fogEnd;
 
 #ifdef DISTANT_HORIZONS
     uniform int dhRenderDistance;
@@ -68,10 +69,13 @@ uniform mat4 gbufferProjectionInverse;
 varying vec2 texcoord;
 varying vec4 tint_color;
 varying float frog_adjust;
+varying float frog_adjust2;
 varying vec3 direct_light_color;
 varying vec3 candle_color;
 varying float direct_light_strength;
 varying vec3 omni_light;
+varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 
 #if defined GBUFFER_TERRAIN || defined GBUFFER_HAND
     varying float emmisive_type;
@@ -126,7 +130,6 @@ varying vec3 omni_light;
 
 void main() {
     vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
-    vec3 hi_sky_color;
     float visible_sky;
 
     #include "/src/basiccoords_vertex.glsl"
@@ -174,8 +177,6 @@ void main() {
         } else if(mc_Entity.x == ENTITY_FABRIC) {  // Fabric-like blocks
             gloss_power = 3.0;
             gloss_factor = 0.1;
-        } else if(mc_Entity.x == ENTITY_LEAVES || mc_Entity.x == ENTITY_LEAVES_NW || mc_Entity.x == ENTITY_VINES) {
-			luma_factor = 2.0;
         }
 
         flat_normal = normal;

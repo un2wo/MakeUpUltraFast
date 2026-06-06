@@ -69,10 +69,13 @@ uniform float blindness;
 varying vec2 texcoord;
 varying vec4 tint_color;
 varying float frog_adjust;
+varying float frog_adjust2;
 varying vec3 direct_light_color;
 varying vec3 candle_color;
 varying float direct_light_strength;
 varying vec3 omni_light;
+varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 
 #if defined GBUFFER_TERRAIN || defined GBUFFER_HAND
     varying float emmisive_type;

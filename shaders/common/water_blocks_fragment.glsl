@@ -78,6 +78,7 @@ varying vec2 texcoord;
 varying vec2 lmcoord;
 varying vec4 tint_color;
 varying float frog_adjust;
+varying float frog_adjust2;
 varying vec3 water_normal;
 varying float block_type;
 varying vec4 worldposition;
@@ -91,6 +92,7 @@ varying vec3 omni_light;
 varying float visible_sky;
 varying vec3 up_vec;
 varying vec3 hi_sky_color;
+varying vec3 hi_sky_color_rgb;
 varying vec3 low_sky_color;
 
 #if defined SHADOW_CASTING && !defined NETHER
