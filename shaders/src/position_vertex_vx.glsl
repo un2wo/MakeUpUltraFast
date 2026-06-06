@@ -27,4 +27,5 @@ float fog_frag_coord = length(position.xyz);
 	); 
 #else
     float frog_adjust = sqrt(clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0));
+    float frog_adjust2;
 #endif
