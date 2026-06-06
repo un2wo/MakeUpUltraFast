@@ -78,6 +78,7 @@ if (length(normal) != 0.0) {
 float omni_strength = direct_light_strength * 0.125 + 1.0;
 
 vec3 hi_sky_color;
+vec3 hi_sky_color_rgb;
 #include "/src/hi_sky.glsl"
 
 vec3 direct_light_color = day_blend(

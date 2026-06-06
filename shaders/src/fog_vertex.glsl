@@ -1,3 +1,12 @@
+float sight;
+#if defined DISTANT_HORIZONS
+    sight = dhRenderDistance;
+#elif defined VOXY
+	sight = vxRenderDistance * 16; 
+#else
+    sight = far;
+#endif
+
 #if !defined THE_END && !defined NETHER
 
     // Fog intensity calculation
@@ -13,44 +22,18 @@
 
     float fog_intensity_coeff = eye_bright_smooth.y * 0.004166666666666667;
 
-    #ifdef DISTANT_HORIZONS
-        frog_adjust = pow(
-            clamp(gl_FogFragCoord / dhRenderDistance, 0.0, 1.0) * fog_intensity_coeff,
-            mix(fog_density_coeff * 0.15, 0.25, rainStrength)
-        );
-    #elif defined VOXY
-		frog_adjust = pow(
-		    clamp(gl_FogFragCoord / (vxRenderDistance * 16), 0.0, 1.0) * fog_intensity_coeff,
-		    mix(fog_density_coeff * 0.15, 0.25, rainStrength)
-		);
-    #else
-        frog_adjust = pow(
-            clamp(gl_FogFragCoord / far, 0.0, 1.0) * fog_intensity_coeff,
-            mix(fog_density_coeff, 1.0, rainStrength)
-        );
-    #endif
-
+	float frog_adjust_base = clamp(gl_FogFragCoord / sight, 0.0, 1.0) * fog_intensity_coeff;
+    frog_adjust = pow(
+		frog_adjust_base,
+        mix(fog_density_coeff * 0.25, 0.25, rainStrength)
+    ); // regular fog
+	frog_adjust2 = pow(
+	    frog_adjust_base,
+        mix(fog_density_coeff, 1.0, rainStrength)
+	); // border fog
 #else
-    #if defined NETHER
-        #if NETHER_FOG_DISTANCE == 1
-            float sight = NETHER_SIGHT;
-        #else
-            #if defined DISTANT_HORIZONS
-                float sight = dhRenderDistance;
-            #elif defined VOXY
-                float sight = vxRenderDistance * 16;
-            #else
-                float sight = NETHER_SIGHT;
-            #endif
-        #endif
-    #else
-        #if defined DISTANT_HORIZONS
-            float sight = dhRenderDistance;
-        #elif defined VOXY
-			float sight = vxRenderDistance * 16; 
-        #else
-            float sight = far;
-        #endif
+    #if defined NETHER && NETHER_FOG_DISTANCE == 1
+        sight = NETHER_SIGHT;
     #endif
     frog_adjust = sqrt(clamp(gl_FogFragCoord / sight, 0.0, 1.0));
 #endif
