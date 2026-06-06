@@ -46,8 +46,6 @@ void voxy_emitFragment(VoxyFragmentParameters param) {
         } else if (fabric == 1) {
             gloss_power = 3.0;
             gloss_factor = 0.1;
-        } else if (leaves == 1) {
-			luma_factor = 2.0;
         }
 
         float final_gloss_power = gloss_power;

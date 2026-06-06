@@ -26,7 +26,7 @@
 		"blindness", "darknessFactor", "darknessLightFactor",
 		"frameTimeCounter",
 		"cameraPosition",
-		"fogColor",
+		"fogColor", "fogEnd",
 		"dither_shift",
 		"day_moment", "day_mixer", "night_mixer", "moonPhase"
 	],
