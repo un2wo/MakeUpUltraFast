@@ -22,7 +22,7 @@
 	        if(isEyeInWater == 0 && entityId != 10101 && FOG_ADJUST < 15.0) {  // In the air
 				block_color.rgb = mix(
 					block_color.rgb,
-					mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5), fog_texture, frog_adjust2),
+					mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5 + 0.25), fog_texture, frog_adjust2),
 					frog_adjust
 				);
 	        }
@@ -30,7 +30,7 @@
 	        if(isEyeInWater == 0) {  // In the air
 				block_color.rgb = mix(
 					block_color.rgb,
-					mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5), fog_texture, frog_adjust2),
+					mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5 + 0.25), fog_texture, frog_adjust2),
 					frog_adjust
 				);
 	        }

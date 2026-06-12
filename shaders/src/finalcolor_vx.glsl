@@ -5,11 +5,11 @@
         block_color.rgb = mix(block_color.rgb, mix(fogColor * 0.1, vec3(1.0), 0.04), frog_adjust);
     #endif
 #else
-	#if defined FOG_ACTIVE || defined THE_END // original forces fog in the end for some reason
+	#if defined FOG_ACTIVE // original forces fog in the end for some reason
 		vec3 fog_texture = texture2D(gaux4, gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y)).rgb;
 		block_color.rgb = mix(
 			block_color.rgb,
-			mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5), fog_texture, frog_adjust2),
+			mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * 0.5 + 0.25), fog_texture, frog_adjust2),
 			frog_adjust
 		);
     #endif
