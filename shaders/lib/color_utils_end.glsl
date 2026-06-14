@@ -29,33 +29,33 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #elif END_SCHEME == 1  // Nebula
 	#define OMNI_TINT 0.55
 
-	#define LIGHT_SUNSET_COLOR vec3(0.20, 0.12, 0.25)
-	#define LIGHT_DAY_COLOR vec3(0.20, 0.12, 0.25)
-	#define LIGHT_NIGHT_COLOR vec3(0.20, 0.12, 0.25)
+	#define LIGHT_SUNSET_COLOR vec3(0.30, 0.20, 0.35)
+	#define LIGHT_DAY_COLOR vec3(0.30, 0.20, 0.35)
+	#define LIGHT_NIGHT_COLOR vec3(0.30, 0.20, 0.35)
 
 	#define ZENITH_SUNSET_COLOR vec3(0.04, 0.015, 0.05)
 	#define ZENITH_DAY_COLOR vec3(0.04, 0.015, 0.05)
 	#define ZENITH_NIGHT_COLOR vec3(0.04, 0.015, 0.05)
 
-	#define HORIZON_SUNSET_COLOR vec3(0, 0, 0)
-	#define HORIZON_DAY_COLOR vec3(0, 0, 0)
-	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
+	#define HORIZON_SUNSET_COLOR vec3(0.0)
+	#define HORIZON_DAY_COLOR vec3(0.0)
+	#define HORIZON_NIGHT_COLOR vec3(0.0)
 
-	#define WATER_COLOR vec3(0.01647059, 0.13882353, 0.16470588)
+	#define WATER_COLOR vec3(0.05, 0.11, 0.20)
 #elif END_SCHEME == 2  // Tempest
 	#define OMNI_TINT 0.25
 
-	#define LIGHT_SUNSET_COLOR vec3(0.007, 0.010, 0.010)
-	#define LIGHT_DAY_COLOR vec3(0.007, 0.010, 0.010)
-	#define LIGHT_NIGHT_COLOR vec3(0.007, 0.010, 0.010)
+	#define LIGHT_SUNSET_COLOR vec3(0.010, 0.016, 0.015)
+	#define LIGHT_DAY_COLOR LIGHT_SUNSET_COLOR
+	#define LIGHT_NIGHT_COLOR LIGHT_SUNSET_COLOR
 
-	#define ZENITH_SUNSET_COLOR vec3(0.025, 0.04, 0.04)
-	#define ZENITH_DAY_COLOR vec3(0.025, 0.04, 0.04)
-	#define ZENITH_NIGHT_COLOR vec3(0.025, 0.04, 0.04)
+	#define ZENITH_SUNSET_COLOR vec3(0.025, 0.042, 0.04)
+	#define ZENITH_DAY_COLOR ZENITH_SUNSET_COLOR
+	#define ZENITH_NIGHT_COLOR ZENITH_SUNSET_COLOR
 
-	#define HORIZON_SUNSET_COLOR vec3(0, 0, 0)
-	#define HORIZON_DAY_COLOR vec3(0, 0, 0)
-	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
+	#define HORIZON_SUNSET_COLOR vec3(0.0)
+	#define HORIZON_DAY_COLOR vec3(0.0)
+	#define HORIZON_NIGHT_COLOR vec3(0.0)
 
     #define WATER_COLOR vec3(0.05, 0.1, 0.1)
 #elif END_SCHEME == 3  // Dust
@@ -69,11 +69,43 @@ Javier Garduño - GNU Lesser General Public License v3.0
 	#define ZENITH_DAY_COLOR vec3(0.02, 0.02, 0.02)
 	#define ZENITH_NIGHT_COLOR vec3(0.02, 0.02, 0.02)
 
-	#define HORIZON_SUNSET_COLOR vec3(0, 0, 0)
-	#define HORIZON_DAY_COLOR vec3(0, 0, 0)
-	#define HORIZON_NIGHT_COLOR vec3(0, 0, 0)
+	#define HORIZON_SUNSET_COLOR vec3(0.0)
+	#define HORIZON_DAY_COLOR vec3(0.0)
+	#define HORIZON_NIGHT_COLOR vec3(0.0)
 
-    #define WATER_COLOR vec3(0.01647059, 0.13882353, 0.16470588)
+    #define WATER_COLOR vec3(0.05, 0.05, 0.05)
+#elif END_SCHEME == 4  // Eternal
+	#define OMNI_TINT 0.25
+
+	#define LIGHT_SUNSET_COLOR vec3(0.30)
+	#define LIGHT_DAY_COLOR vec3(0.30)
+	#define LIGHT_NIGHT_COLOR vec3(0.30)
+
+	#define ZENITH_SUNSET_COLOR vec3(1.50)
+	#define ZENITH_DAY_COLOR vec3(1.50)
+	#define ZENITH_NIGHT_COLOR vec3(1.50)
+
+	#define HORIZON_SUNSET_COLOR vec3(0.0)
+	#define HORIZON_DAY_COLOR vec3(0.0)
+	#define HORIZON_NIGHT_COLOR vec3(0.0)
+
+	#define WATER_COLOR vec3(0.04, 0.09, 0.10)
+#elif END_SCHEME == 5  // Vanillin
+	#define OMNI_TINT 0.25
+
+	#define LIGHT_SUNSET_COLOR vec3(0.100, 0.113, 0.110)
+	#define LIGHT_DAY_COLOR vec3(0.100, 0.113, 0.110)
+	#define LIGHT_NIGHT_COLOR vec3(0.100, 0.113, 0.110)
+
+	#define ZENITH_SUNSET_COLOR vec3(0.040, 0.030, 0.045)
+	#define ZENITH_DAY_COLOR vec3(0.040, 0.030, 0.045)
+	#define ZENITH_NIGHT_COLOR vec3(0.040, 0.030, 0.045)
+
+	#define HORIZON_SUNSET_COLOR vec3(0.0)
+	#define HORIZON_DAY_COLOR vec3(0.0)
+	#define HORIZON_NIGHT_COLOR vec3(0.0)
+
+	#define WATER_COLOR vec3(0.05, 0.11, 0.20)
 #endif
 
 #if BLOCKLIGHT_TEMP == 0
