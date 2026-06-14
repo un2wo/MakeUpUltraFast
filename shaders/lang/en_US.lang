@@ -171,6 +171,8 @@ value.END_SCHEME.0=Legacy
 value.END_SCHEME.1=Nebula
 value.END_SCHEME.2=Tempest
 value.END_SCHEME.3=Dust
+value.END_SCHEME.4=Eternal
+value.END_SCHEME.5=Vanillin
 option.END_SCHEME.comment=Affects lighting and sky colors in The End.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset Light R
@@ -271,6 +273,7 @@ value.FOG_ADJUST.8.0=Very Low
 value.FOG_ADJUST.4.0=Low
 value.FOG_ADJUST.2.0=Medium
 value.FOG_ADJUST.1.0=High
+value.FOG_ADJUST.0.5=Extra Thick
 
 option.NETHER_FOG_DISTANCE=Nether Fog Distance
 value.NETHER_FOG_DISTANCE.0=Render Distance
