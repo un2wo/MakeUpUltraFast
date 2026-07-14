@@ -1,5 +1,15 @@
 #include "/lib/config.glsl"
 
+/* Color utils */
+
+#if defined THE_END
+    #include "/lib/color_utils_end.glsl"
+#elif defined NETHER
+    #include "/lib/color_utils_nether.glsl"
+#else
+    #include "/lib/color_utils.glsl"
+#endif
+
 /* Uniforms */
 
 uniform float light_mix;
