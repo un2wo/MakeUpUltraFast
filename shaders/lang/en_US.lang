@@ -37,7 +37,7 @@ option.REFLECTION_SLIDER=Reflections
 value.REFLECTION_SLIDER.0=Off
 value.REFLECTION_SLIDER.1=Flipped Image
 value.REFLECTION_SLIDER.2=Raymarching
-option.REFLECTION_SLIDER.comment=Adds reflections to water and various translucent blocks, including ice and glass.
+option.REFLECTION_SLIDER.comment=Adds reflections to water and various translucent blocks, such as ice and glass.
 
 option.SHADOW_TYPE=Shadow Type
 value.SHADOW_TYPE.0=Simple
@@ -50,9 +50,9 @@ option.COLORED_SHADOW.comment=Tints shadow color when sunlight passes through tr
 
 option.VOL_LIGHT=Godrays
 value.VOL_LIGHT.0=Disabled
-value.VOL_LIGHT.1=Depth-based
+value.VOL_LIGHT.1=Depth-Based
 value.VOL_LIGHT.2=Volumetric
-option.VOL_LIGHT.comment=Depth-based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color, but requires shadows to be enabled.
+option.VOL_LIGHT.comment=Depth-Based: Godrays are more defined, but are only visible when facing the sun/moon. Volumetric: Bloomy with a large influence on sky color, but requires shadows to be enabled.
 
 option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
@@ -74,8 +74,8 @@ option.DOF_STRENGTH=DoF Strength
 option.DOF_SAMPLES_FACTOR=DoF Samples Factor
 
 option.AO=Ambient Occlusion
-value.AO.0=Off
-value.AO.1=On
+value.AO.0=Vanilla
+value.AO.1=SSAO
 option.AO.comment=Screen-space ambient occlusion; adds shading to the corners of blocks. Uses the vanilla AO when disabled.
 
 option.AOSTEPS=AO Sample Pairs
@@ -94,7 +94,7 @@ option.MOTION_BLUR=Motion Blur
 option.MOTION_BLUR_STRENGTH=Motion Blur Strength
 option.MOTION_BLUR_SAMPLES=Motion Blur Samples
 
-option.VANILLA_WATER=Vanilla-like Water
+option.VANILLA_WATER=Vanilla-Like Water
 
 option.WATER_TEXTURE=Water Texture
 value.WATER_TEXTURE.0=No
@@ -121,7 +121,7 @@ value.SUN_REFLECTION.0=Off
 value.SUN_REFLECTION.1=On
 
 option.CLOUD_REFLECTION=Vol. Clouds Reflection
-option.CLOUD_REFLECTION.comment=Makes volumetric clouds visible in reflections, even when clouds are offscreen.
+option.CLOUD_REFLECTION.comment=Makes offscreen volumetric clouds visible in reflections.
 
 option.WAVING=Waving Plants
 value.WAVING.0=No
@@ -231,7 +231,7 @@ option.V_CLOUDS=Clouds
 value.V_CLOUDS.0=Off
 value.V_CLOUDS.1=Blocky
 value.V_CLOUDS.2=Natural
-value.V_CLOUDS.3=Natural dyn.
+value.V_CLOUDS.3=Natural Dyn.
 option.V_CLOUDS.comment=Natural dynamic clouds change shape as they move, but are slightly less performant.
 
 option.CLOUD_SPEED=Clouds Speed
@@ -271,7 +271,9 @@ value.FOG_ADJUST.20.0=No fog
 value.FOG_ADJUST.10.0=Ultra Low
 value.FOG_ADJUST.8.0=Very Low
 value.FOG_ADJUST.4.0=Low
+value.FOG_ADJUST.3.0=Medium Low
 value.FOG_ADJUST.2.0=Medium
+value.FOG_ADJUST.1.5=Medium High
 value.FOG_ADJUST.1.0=High
 value.FOG_ADJUST.0.5=Extra Thick
 
