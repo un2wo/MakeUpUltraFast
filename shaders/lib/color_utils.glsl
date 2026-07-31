@@ -222,8 +222,8 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define OMNI_TINT 0.45
     
     #define LIGHT_DAY_COLOR vec3(1.00, 0.90, 0.78)
-    #define ZENITH_DAY_COLOR vec3(0.18, 0.43, 0.75)
-	#define HORIZON_DAY_COLOR vec3(0.55, 0.84, 1.10)
+    #define ZENITH_DAY_COLOR vec3(0.14, 0.40, 0.75)
+	#define HORIZON_DAY_COLOR vec3(0.55, 0.90, 1.30)
 
 	#define LIGHT_SUNSET_COLOR vec3(1.00, 0.54, 0.35)
     #define ZENITH_SUNSET_COLOR vec3(0.16, 0.22, 0.30)
@@ -254,7 +254,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define OMNI_TINT 0.50
     
     #define LIGHT_DAY_COLOR vec3(0.90, 0.85, 0.75)
-    #define ZENITH_DAY_COLOR vec3(0.05, 0.25, 0.70)
+    #define ZENITH_DAY_COLOR vec3(0.10, 0.32, 0.70)
 	#define HORIZON_DAY_COLOR vec3(0.50, 0.78, 1.10)
 
 	#define LIGHT_SUNSET_COLOR vec3(0.90, 0.45, 0.30)

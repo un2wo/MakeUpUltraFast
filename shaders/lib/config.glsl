@@ -69,7 +69,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #define COLOR_SCHEME 13 // [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 99] Change overworld sky and lighting colors.
 #define END_SCHEME 0 // [0 1 2 3 4 5]
 #define WATER_TEXTURE 0 // [0 1] Enable or disable resource pack water texture. It does not work properly in 1.12. In that case the default value is recommended.
-#define AVOID_DARK_LEVEL 0.040 // [0.000 0.005 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060 0.065 0.070 0.075 0.080 0.085 0.090 0.095 0.100]  Minimal omni light intensity in caves.
+#define AVOID_DARK_LEVEL 0.050 // [0.000 0.005 0.010 0.015 0.020 0.025 0.030 0.035 0.040 0.045 0.050 0.055 0.060 0.065 0.070 0.075 0.080 0.085 0.090 0.095 0.100]  Minimal omni light intensity in caves.
 #define NIGHT_BRIGHT 0.60 // [0.05 0.10 0.15 0.20 0.25 0.30 0.35 0.40 0.45 0.50 0.55 0.60 0.65 0.70 0.75 0.80 0.85 0.90 0.95 1.00] Adjusts the brightness of the night light in exteriors.
 #define V_CLOUDS 2 // [0 1 2 3] Volumetric static: The clouds move, but they keep their shape. Volumetric dynamic: Clouds change shape over time, a different cloud landscape every time (medium performance hit). Vanilla: Original vanilla clouds.
 // #define CLOUD_REFLECTION  // Set off-screen volumetric clouds reflection (volumetric clouds must be active).
@@ -83,7 +83,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 // #define VANILLA_WATER // Establishes the appearance of water as vanilla.
 #define WATER_COLOR_SOURCE 0 // [0 1] Select the water color source. It does not work properly in 1.12. In that case the default value is recommended.
 #define WATER_TURBULENCE 0.9 // [7.0 1.75 0.9 0.5] Set the water waves strength.
-#define FOG_ADJUST 2.0 // [10.0 8.0 4.0 2.0 1.0 0.5] Sets the fog strength
+#define FOG_ADJUST 2.0 // [10.0 8.0 4.0 3.0 2.0 1.5 1.0 0.5] Sets the fog strength
 #define WATER_FOG_ADJUST 4.0 // [1.0 2.0 3.0 4.0 5.0] Underwater fog strength
 // #define DEBUG_MODE // Set debug mode.
 #define BLOCKLIGHT_TEMP 1 // [0 1 2 3 4] Set blocklight temperature
@@ -165,9 +165,9 @@ Javier Garduño - GNU Lesser General Public License v3.0
 #endif
 
 #if CLOUD_VOL_STYLE == 1
-    #define CLOUD_PLANE_SUP 330.0
-    #define CLOUD_PLANE_CENTER 285.0
-    #define CLOUD_PLANE 270.0
+    #define CLOUD_PLANE_SUP 430.0
+    #define CLOUD_PLANE_CENTER 385.0
+    #define CLOUD_PLANE 370.0
 #else
     #define CLOUD_PLANE_SUP 860.0
     #define CLOUD_PLANE_CENTER 600.0
