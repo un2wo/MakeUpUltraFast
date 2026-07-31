@@ -9,7 +9,7 @@
 		vec3 fog_texture = texture2D(gaux4, gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y)).rgb;
 		block_color.rgb = mix(
 			block_color.rgb,
-			mix(mix(fog_texture, hi_sky_color_rgb, frog_adjust * day_blend_float(0.0, 0.75, 0.75) + 0.25), fog_texture, frog_adjust2),
+			mix(mix(fog_texture, hi_sky_color_rgb * (1.0 + luma(fog_texture) - luma(hi_sky_color_rgb)), frog_adjust * day_blend_float(0.0, 0.75, 0.75) + 0.25), fog_texture, frog_adjust2),
 			frog_adjust
 		);
     #endif
