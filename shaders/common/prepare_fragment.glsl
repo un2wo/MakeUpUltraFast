@@ -47,9 +47,9 @@ void main() {
             gbufferProjectionInverse *
             (vec4(gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y), gl_FragCoord.z, 1.0) * 2.0 - 1.0);
         vec3 nfragpos = normalize(fragpos.xyz);
+        nfragpos.y += 0.1;
         float n_u = clamp(dot(nfragpos, up_vec) + dither, 0.0, 1.0);
-        vec3 block_color =
-            mix(low_sky_color, hi_sky_color, smoothstep(0.0, 1.0, pow(n_u, 0.333)));
+        vec3 block_color = mix(low_sky_color, hi_sky_color, smoothstep(0.0, 1.0, pow(n_u, 0.5)));
 
         block_color = xyz_to_rgb(block_color);
     #endif
