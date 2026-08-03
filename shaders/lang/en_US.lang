@@ -56,7 +56,7 @@ option.VOL_LIGHT.comment=Depth-Based: Godrays are more defined, but are only vis
 
 option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
-option.DESATURATION=Low-light Desaturation
+option.DESATURATION=Low-Light Desaturation
 option.DESATURATION.comment=Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
 option.CONTRAST=Contrast
@@ -73,9 +73,9 @@ option.DOF_STRENGTH=DoF Strength
 
 option.DOF_SAMPLES_FACTOR=DoF Samples Factor
 
-option.AO=Ambient Occlusion
-value.AO.0=Vanilla
-value.AO.1=SSAO
+option.AO=SSAO
+value.AO.0=Off
+value.AO.1=On
 option.AO.comment=Screen-space ambient occlusion; adds shading to the corners of blocks. Uses the vanilla AO when disabled.
 
 option.AOSTEPS=AO Sample Pairs
@@ -148,7 +148,7 @@ value.WATER_TURBULENCE.0.5=High
 
 option.COLOR_SCHEME=Color Scheme
 value.COLOR_SCHEME.0=Ethereal
-value.COLOR_SCHEME.1=New shoka
+value.COLOR_SCHEME.1=New Shoka
 value.COLOR_SCHEME.2=Shoka
 value.COLOR_SCHEME.3=Legacy
 value.COLOR_SCHEME.4=Captain
@@ -162,9 +162,10 @@ value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.14=Haze
-value.COLOR_SCHEME.15=Aurora
+value.COLOR_SCHEME.15=Polar
+value.COLOR_SCHEME.16=Basalt
 value.COLOR_SCHEME.99=Custom
-option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld.
+option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld. All color schemes from 'Vivid' onward are new to this edit.
 
 option.END_SCHEME=End Colors
 value.END_SCHEME.0=Legacy
@@ -267,19 +268,21 @@ value.BLACK_ENTITY_FIX.1=On
 option.FOG_ACTIVE=Fog Enabled
 
 option.FOG_ADJUST=Fog Intensity
-value.FOG_ADJUST.20.0=No fog
-value.FOG_ADJUST.10.0=Ultra Low
+value.FOG_ADJUST.16.0=Ultra Low
 value.FOG_ADJUST.8.0=Very Low
 value.FOG_ADJUST.4.0=Low
-value.FOG_ADJUST.3.0=Medium Low
+value.FOG_ADJUST.3.0=Medium-Low
 value.FOG_ADJUST.2.0=Medium
-value.FOG_ADJUST.1.5=Medium High
+value.FOG_ADJUST.1.5=Medium-High
 value.FOG_ADJUST.1.0=High
+value.FOG_ADJUST.0.75=Very High
 value.FOG_ADJUST.0.5=Extra Thick
 
 option.NETHER_FOG_DISTANCE=Nether Fog Distance
 value.NETHER_FOG_DISTANCE.0=Render Distance
 value.NETHER_FOG_DISTANCE.1=Vanilla
+
+option.CAVE_FOG=Cave Fog
 
 option.BLOCKLIGHT_TEMP=Blocklight Temp
 value.BLOCKLIGHT_TEMP.0=Warmer
@@ -307,6 +310,14 @@ screen.COMPATIBILITY_SCREEN.comment=Set compatibility options.
 
 screen.SHADOWS_SCREEN=Shadows
 screen.SHADOWS_SCREEN.comment=Set shadows options.
+
+option.SHADOW_LOCK=Pixelated Shadows
+value.SHADOW_LOCK.0=Off
+value.SHADOW_LOCK.16=16x16
+value.SHADOW_LOCK.32=32x32
+value.SHADOW_LOCK.64=64x64
+value.SHADOW_LOCK.128=128x128
+value.SHADOW_LOCK.256=256x256
 
 screen.WATER_SCREEN=Water
 screen.WATER_SCREEN.comment=Set water options.
