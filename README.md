@@ -1,13 +1,13 @@
-Personal edit/retune of MakeUp Ultra Fast 9.1e.[^1] A gameplay-friendly shader with a more subjective take on "semi-realistic."  
+Personal edit/retune of MakeUp Ultra Fast 9.1e.[^1] A gameplay-friendly shader with a semi-realistic style.  
 
-## Differences From the Original
+## Differences from the original
 - Adjusted shading for foliage and similar blocks; should look better w/ narrower sun angles and shadowless configurations
 - Misc. changes to lighting & color grading; overall brighter w/ more contrast
   - Sliders for saturation, contrast, brightness, & exposure also included
 - Different cloudmaps; 'blocky' style clouds are larger with denser coverage, 'natural' style clouds are puffier
   - Natural clouds also have variable coverage, based on the in-game day; can be manually overridden
 - Adjustments to fog density & color
-- Additional color palettes; +8 for the Overworld, +5 for The End
+- Additional color palettes; +9 for the Overworld, +4 for The End
 - Entity shadow toggles
 - Reorganized settings screen
 - Reduced color banding
