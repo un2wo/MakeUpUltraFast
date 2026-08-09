@@ -25,7 +25,7 @@ gl_Position = dhProjection * gbufferModelView * position;
 gl_FogFragCoord = length(position.xyz);
 
 #if !defined THE_END && !defined NETHER
-    float fog_intensity_coeff = eye_bright_smooth.y * 0.004166666666666667;
+    float fog_intensity_coeff = clamp(eye_bright_smooth.y + 1.0, 0.0, 240.0) * 0.004166666666666667;
 	float frog_adjust_base = clamp(fog_frag_coord / dhRenderDistance, 0.0, 1.0) * fog_intensity_coeff;
     frog_adjust = pow(
         frog_adjust_base,

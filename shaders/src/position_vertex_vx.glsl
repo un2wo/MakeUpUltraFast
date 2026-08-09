@@ -14,7 +14,7 @@ if(water_like == 1.0) {  // Water
 float fog_frag_coord = length(position.xyz);
 
 #if !defined THE_END && !defined NETHER
-    float fog_intensity_coeff = eyeBrightnessSmooth.y * 0.004166666666666667;
+    float fog_intensity_coeff = clamp(eyeBrightnessSmooth.y + 1.0, 0.0, 240.0) * 0.004166666666666667;
     
 	float frog_adjust_base = clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0) * fog_intensity_coeff;
     float frog_adjust = pow(
