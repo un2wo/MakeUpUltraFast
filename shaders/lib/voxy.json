@@ -12,7 +12,7 @@
 		"isEyeInWater",
 		"nightVision",
 		"rainStrength",
-		"eyeBrightnessSmooth",
+		"eyeBrightnessSmooth", "cave_detection",
 		"sunPosition",
 		"moonPosition",
 		"worldTime",
