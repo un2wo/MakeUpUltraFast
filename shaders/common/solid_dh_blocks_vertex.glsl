@@ -12,7 +12,6 @@
 
 /* Uniforms */
 
-uniform ivec2 eyeBrightnessSmooth;
 uniform mat4 dhProjection;
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
@@ -22,6 +21,7 @@ uniform float light_mix;
 uniform float far;
 uniform float rainStrength;
 uniform mat4 gbufferProjectionInverse;
+uniform float cave_detection;
 
 #ifdef DISTANT_HORIZONS
     uniform int dhRenderDistance;
@@ -57,7 +57,6 @@ varying vec3 hi_sky_color_rgb;
 // MAIN FUNCTION ------------------
 
 void main() {
-    vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
     float visible_sky;
 
     #include "/src/basiccoords_vertex_dh.glsl"

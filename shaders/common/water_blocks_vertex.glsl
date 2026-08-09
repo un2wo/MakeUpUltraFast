@@ -17,13 +17,13 @@ uniform int isEyeInWater;
 uniform float light_mix;
 uniform float far;
 uniform float nightVision;
-uniform ivec2 eyeBrightnessSmooth;
 uniform mat4 gbufferModelView;
 uniform mat4 gbufferModelViewInverse;
 uniform vec3 cameraPosition;
 uniform float rainStrength;
 uniform mat4 gbufferProjectionInverse;
 uniform float fogEnd;
+uniform float cave_detection;
 
 #ifdef DISTANT_HORIZONS
     uniform int dhRenderDistance;
@@ -104,8 +104,6 @@ attribute vec4 at_tangent;
 // MAIN FUNCTION ------------------
 
 void main() {
-    vec2 eye_bright_smooth = vec2(eyeBrightnessSmooth);
-
     #include "/src/basiccoords_vertex.glsl"
     #include "/src/position_vertex_water.glsl"
 
