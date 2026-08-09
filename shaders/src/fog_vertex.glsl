@@ -20,9 +20,7 @@ float sight;
         ) * FOG_ADJUST;
     #endif
 
-    float fog_intensity_coeff = clamp(eye_bright_smooth.y + 1.0, 0.0, 240.0) * 0.004166666666666667;
-
-	float frog_adjust_base = clamp(gl_FogFragCoord / sight, 0.0, 1.0) * fog_intensity_coeff;
+	float frog_adjust_base = clamp(gl_FogFragCoord / sight, 0.0, 1.0) * cave_detection;
     frog_adjust = pow(
 		frog_adjust_base,
         mix(fog_density_coeff * 0.25, 0.25, rainStrength)
