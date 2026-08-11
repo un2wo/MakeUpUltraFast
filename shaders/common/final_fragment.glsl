@@ -147,14 +147,14 @@ void main() {
 	if (CONTRAST <= 1) {
 		block_color = (block_color - 0.5) * CONTRAST + 0.5;
 	} else {
-		block_color = adjustable_smoothstep(block_color, 0.5, CONTRAST);
+		block_color = adjustable_smoothstep(block_color, CONTRAST_P, CONTRAST);
 	}
 	
     // Saturation
     block_color = mix(vec3(luma(block_color)), block_color, SATURATION);
 
 	// Brightness
-	block_color = (block_color + 0.004) * BRIGHTNESS;
+	block_color *= BRIGHTNESS;
 
     // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
 	// can't actually tell the difference between the dithers in this situation but w/e
