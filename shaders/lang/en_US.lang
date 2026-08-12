@@ -8,7 +8,7 @@ profile.quality=Quality
 #About
 #############################
 option.ACERCADE=MakeUp Edit
-option.ACERCADE.comment=Thanks for using this shader! :). by Javier Garduño, with modifications added by un2wo.
+option.ACERCADE.comment=Thanks for using this shader! :). by Javier Garduño, with modifications by un2wo.
 value.ACERCADE.0=9.1e+
 
 #Options
@@ -60,16 +60,31 @@ option.DESATURATION=Low-Light Desaturation
 option.DESATURATION.comment=Pseudo Purkinje effect; reduces intensity of reds in low light. Also adds tint underwater.
 
 option.CONTRAST=Contrast
+option.CONTRAST_P=Contrast Inf. Point
+option.CONTRAST_P.comment=Sets the inflection point for the contrast curve, where x = n and y = 1 - n.
 option.BRIGHTNESS=Brightness
 option.SATURATION=Saturation
 
 option.EXPOSURE=Exposure
-option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value.
+option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value, unless the 'manual exposure override' is enabled.
+option.MANUAL_EXPOSURE=Manual Exposure Override
+option.MANUAL_EXPOSURE.comment=Overrides the autoexposure and locks it to the user-defined value.
+
+option.MULTIPLY_TOGGLE=Multiply Blend
+option.MULTIPLY_R=Multiply R
+option.MULTIPLY_G=Multiply G
+option.MULTIPLY_B=Multiply B
+option.MULTIPLY_TOGGLE.comment=Multiplies light colors with the user-defined setting; effectively replaces white (1,1,1).
+option.SCREEN_TOGGLE=Screen Blend
+option.SCREEN_R=Screen R
+option.SCREEN_G=Screen G
+option.SCREEN_B=Screen B
+option.SCREEN_TOGGLE.comment=Multiplies dark colors with the user-defined setting; effectively replaces black (0,0,0).
 
 option.DOF=Depth of Field
 option.DOF.comment=Blurs out-of-focus objects.
 
-option.DOF_STRENGTH=DoF Strength
+option.DOF_STRENGTH=Depth of Field Strength
 
 option.DOF_SAMPLES_FACTOR=DoF Samples Factor
 
@@ -162,7 +177,7 @@ value.COLOR_SCHEME.11=Vanillin
 value.COLOR_SCHEME.12=Pinesap
 value.COLOR_SCHEME.13=Outside
 value.COLOR_SCHEME.14=Haze
-value.COLOR_SCHEME.15=Polar
+value.COLOR_SCHEME.15=Starry
 value.COLOR_SCHEME.16=Basalt
 value.COLOR_SCHEME.99=Custom
 option.COLOR_SCHEME.comment=Affects lighting and sky colors in the overworld. All color schemes from 'Vivid' onward are new to this edit.
@@ -268,7 +283,7 @@ value.BLACK_ENTITY_FIX.1=On
 option.FOG_ACTIVE=Fog Enabled
 
 option.FOG_ADJUST=Fog Intensity
-value.FOG_ADJUST.16.0=Ultra Low
+value.FOG_ADJUST.16.0=Lowest
 value.FOG_ADJUST.8.0=Very Low
 value.FOG_ADJUST.4.0=Low
 value.FOG_ADJUST.3.0=Medium-Low
@@ -302,7 +317,7 @@ option.DYN_HAND_LIGHT=Handheld Light
 option.DYN_HAND_LIGHT.comment=Illuminates the surrounding environment when holding light sources in hand, such as torches.
 
 #Screens
-screen.ADVANCED_SCREEN=Advanced options
+screen.ADVANCED_SCREEN=Advanced Options
 screen.ADVANCED_SCREEN.comment=Set advanced options.
 
 screen.COMPATIBILITY_SCREEN=Compatibility
@@ -324,6 +339,9 @@ screen.WATER_SCREEN.comment=Set water options.
 
 screen.POST_SCREEN=Camera
 screen.POST_SCREEN.comment=Set post effects and color grading options.
+
+screen.COLOR_GRADING=Color Grading
+screen.COLOR_GRADING.comment=Bonus color grading options.
 
 screen.LIGHT_SCREEN=Light
 screen.LIGHT_SCREEN.comment=Set light options.
