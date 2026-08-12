@@ -175,7 +175,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     
     #define LIGHT_DAY_COLOR vec3(0.80, 0.67, 0.60)
     #define ZENITH_DAY_COLOR vec3(0.18, 0.29, 0.44)
-    #define HORIZON_DAY_COLOR vec3(0.52, 0.65, 0.85)
+    #define HORIZON_DAY_COLOR vec3(0.45, 0.55, 0.75)
     
     #define LIGHT_SUNSET_COLOR vec3(0.90, 0.62, 0.40)
     #define ZENITH_SUNSET_COLOR vec3(0.18, 0.21, 0.25)
