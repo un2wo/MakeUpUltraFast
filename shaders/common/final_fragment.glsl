@@ -155,6 +155,16 @@ void main() {
 
 	// Brightness
 	block_color *= BRIGHTNESS;
+	
+	// Multiply
+	#ifdef MULTIPLY_TOGGLE
+		block_color.rgb *= vec3(MULTIPLY_R, MULTIPLY_G, MULTIPLY_B);
+	#endif
+	
+	// Screen
+	#ifdef SCREEN_TOGGLE
+		block_color.rgb = 1.0 - (1.0 - block_color.rgb) * (1.0 - vec3(SCREEN_R, SCREEN_G, SCREEN_B));
+	#endif
 
     // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
 	// can't actually tell the difference between the dithers in this situation but w/e

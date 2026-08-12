@@ -71,22 +71,26 @@ void main() {
     direct_light_color = mix(direct_light_color, ZENITH_SKY_RAIN_COLOR * luma(direct_light_color), rainStrength);
 
     // Exposure
-    #if !defined UNKNOWN_DIM
-        float mipmap_level = log2(min(viewWidth, viewHeight)) - 1.0;
+    #ifndef MANUAL_EXPOSURE
+		#if !defined UNKNOWN_DIM
+		    float mipmap_level = log2(min(viewWidth, viewHeight)) - 1.0;
 
-        vec3 exposure_col = texture2DLod(colortex1, vec2(0.5), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.25), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.75), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.25, 0.75), mipmap_level).rgb;
-        exposure_col += texture2DLod(colortex1, vec2(0.75, 0.25), mipmap_level).rgb;
+		    vec3 exposure_col = texture2DLod(colortex1, vec2(0.5), mipmap_level).rgb;
+		    exposure_col += texture2DLod(colortex1, vec2(0.25), mipmap_level).rgb;
+		    exposure_col += texture2DLod(colortex1, vec2(0.75), mipmap_level).rgb;
+		    exposure_col += texture2DLod(colortex1, vec2(0.25, 0.75), mipmap_level).rgb;
+		    exposure_col += texture2DLod(colortex1, vec2(0.75, 0.25), mipmap_level).rgb;
 
-        float prev_exposure = texture2D(gaux3, vec2(0.5)).r;
+		    float prev_exposure = texture2D(gaux3, vec2(0.5)).r;
 
-        exposure = exp(-luma(exposure_col * 0.75)) * 2.0 + EXPOSURE;
-        exposure = clamp(mix(exposure, prev_exposure, exp(-frameTime * 1.25)), EXPOSURE, 10);
-    #else
-        exposure = 1.0;
-    #endif
+		    exposure = exp(-luma(exposure_col * 0.75)) * 2.0 + EXPOSURE;
+		    exposure = clamp(mix(exposure, prev_exposure, exp(-frameTime * 1.25)), EXPOSURE, 10);
+		#else
+		    exposure = 1.0;
+		#endif
+	#else
+		exposure = EXPOSURE;
+	#endif
 
     #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER)
         float vol_attenuation;
