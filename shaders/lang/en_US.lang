@@ -66,20 +66,21 @@ option.BRIGHTNESS=Brightness
 option.SATURATION=Saturation
 
 option.EXPOSURE=Exposure
-option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value, unless the 'manual exposure override' is enabled.
+option.EXPOSURE.comment=Adjusts the camera exposure, affecting brightness and bloom. Added on top of the autoexposure value, unless 'manual exposure override' is enabled.
 option.MANUAL_EXPOSURE=Manual Exposure Override
 option.MANUAL_EXPOSURE.comment=Overrides the autoexposure and locks it to the user-defined value.
 
 option.MULTIPLY_TOGGLE=Multiply Blend
+option.MULTIPLY_TOGGLE.comment=Multiply blend mode; effectively replaces white (1,1,1) with the user-defined color.
 option.MULTIPLY_R=Multiply R
 option.MULTIPLY_G=Multiply G
 option.MULTIPLY_B=Multiply B
-option.MULTIPLY_TOGGLE.comment=Multiplies light colors with the user-defined setting; effectively replaces white (1,1,1).
+
 option.SCREEN_TOGGLE=Screen Blend
+option.SCREEN_TOGGLE.comment=Screen blend mode; effectively replaces black (0,0,0) with the user-defined color.
 option.SCREEN_R=Screen R
 option.SCREEN_G=Screen G
 option.SCREEN_B=Screen B
-option.SCREEN_TOGGLE.comment=Multiplies dark colors with the user-defined setting; effectively replaces black (0,0,0).
 
 option.DOF=Depth of Field
 option.DOF.comment=Blurs out-of-focus objects.
@@ -94,6 +95,7 @@ value.AO.1=On
 option.AO.comment=Screen-space ambient occlusion; adds shading to the corners of blocks. Uses the vanilla AO when disabled.
 
 option.AOSTEPS=AO Sample Pairs
+option.AOSTEPS.comment=Affects SSAO quality.
 
 option.AO_STRENGTH=AO Strength
 option.AO_STRENGTH.comment=Ambient occlusion strength; affects both SSAO and the vanilla AO.
@@ -341,7 +343,7 @@ screen.POST_SCREEN=Camera
 screen.POST_SCREEN.comment=Set post effects and color grading options.
 
 screen.COLOR_GRADING=Color Grading
-screen.COLOR_GRADING.comment=Bonus color grading options.
+screen.COLOR_GRADING.comment=Set color grading options.
 
 screen.LIGHT_SCREEN=Light
 screen.LIGHT_SCREEN.comment=Set light options.
