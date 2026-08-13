@@ -19,7 +19,7 @@
 		
 		"vxRenderDistance",
 		"vxModelView", "vxModelViewInv",
-		"vxProj", "vxProjInv",
+		"vxProj", "vxViewProjInv",
 
 		"pixel_size_x", "pixel_size_y",
 		"viewWidth", "viewHeight",
