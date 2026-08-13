@@ -9,35 +9,19 @@ float reflective = float(blockId == 10079);
 float sand = float(blockId == 10410);
 float metal = float(blockId == 10400);
 float fabric = float(blockId == 10440);
+uint face = param.face;
 
-vec3 normal = vec3(0.0); // this snippet is taken from BSL. thank you BSL. (sorry BSL)
-switch (uint(param.face) >> 1u) {
-	case 0u:
-	normal = vxModelView[1].xyz;
-	break;
-	case 1u:
-	normal = vxModelView[2].xyz;
-	break;
-	case 2u:
-	normal = vxModelView[0].xyz;
-	break;
-}
-if ((param.face & 1) == 0) {
-	normal = -normal;
-};
+vec3 normal = vec3(uint((face>>1)==2), uint((face>>1)==0), uint((face>>1)==1)) * (float(int(face)&1)*2-1);
+normal = mat3(vxModelView) * normal;
 
-vec3 screenPos = vec3(gl_FragCoord.xy / vec2(viewWidth, viewHeight), gl_FragCoord.z);
-vec4 iProjDiag = vec4(
-	vxProjInv[0].x,
-	vxProjInv[1].y,
-	vxProjInv[2].zw
-);
-vec3 p3 = screenPos * 2.0 - 1.0;
-vec4 viewPos_pre = iProjDiag * p3.xyzz + vxProjInv[3];
-vec3 viewPos = viewPos_pre.xyz / viewPos_pre.w;
-	
-vec4 worldPos = vec4(mat3(vxModelViewInv) * viewPos + vxModelViewInv[3].xyz, 1.0); // replaces gl_Vertex
-// end
+// 1. Reconstruir posición en clip space
+vec2 ndc = (gl_FragCoord.xy / vec2(viewWidth, viewHeight)) * 2.0 - 1.0;
+float depth = gl_FragCoord.z * 2.0 - 1.0;
+vec4 clipPos = vec4(ndc, depth, 1.0);
+
+// 2. Pasar a world space
+vec4 worldPos = vxViewProjInv * clipPos;
+worldPos /= worldPos.w; // replaces gl_Vertex
 
 vec4 sub_position = vxModelView * worldPos;
 vec3 sub_position3 = sub_position.xyz; // used by translucents & material gloss
