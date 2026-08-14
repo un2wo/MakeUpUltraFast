@@ -32,7 +32,7 @@ gl_FogFragCoord = length(position.xyz);
     );
 	frog_adjust2 = pow(
 	    frog_adjust_base,
-        mix(fog_density_coeff, 1.0, rainStrength)
+        mix(fog_density_coeff * 0.5, 1.0, rainStrength)
 	); 
 #else
     frog_adjust = sqrt(clamp(gl_FogFragCoord / dhRenderDistance, 0.0, 1.0));

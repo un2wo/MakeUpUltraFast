@@ -27,7 +27,7 @@ float sight;
     ); // regular fog
 	frog_adjust2 = pow(
 	    frog_adjust_base,
-        mix(fog_density_coeff, 1.0, rainStrength)
+        mix(fog_density_coeff * 0.5, 1.0, rainStrength)
 	); // border fog
 #else
     #if defined NETHER && NETHER_FOG_DISTANCE == 1

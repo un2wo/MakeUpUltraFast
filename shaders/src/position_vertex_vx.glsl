@@ -1,9 +1,3 @@
-vec4 position = vxModelViewInv * vxModelView * worldPos;
-
-if(water_like == 1.0) {  // Water
-    position.y -= 0.125;
-}
-
 // Fog intensity calculation
 #if (VOL_LIGHT == 1 && !defined NETHER) || (VOL_LIGHT == 2 && defined SHADOW_CASTING && !defined NETHER)
     float fog_density_coeff = FOG_DENSITY * FOG_ADJUST;
@@ -11,7 +5,7 @@ if(water_like == 1.0) {  // Water
     float fog_density_coeff = day_blend_float(FOG_SUNSET, FOG_DAY, FOG_NIGHT) * FOG_ADJUST;
 #endif
 
-float fog_frag_coord = length(position.xyz);
+float fog_frag_coord = length(worldPos.xyz);
 
 #if !defined THE_END && !defined NETHER
 	float frog_adjust_base = clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0) * cave_detection;
@@ -21,7 +15,7 @@ float fog_frag_coord = length(position.xyz);
     );
 	float frog_adjust2 = pow(
 	    frog_adjust_base,
-        mix(fog_density_coeff, 1.0, rainStrength)
+        mix(fog_density_coeff * 0.5, 1.0, rainStrength)
 	); 
 #else
     float frog_adjust = sqrt(clamp(fog_frag_coord / (vxRenderDistance * 16), 0.0, 1.0));
