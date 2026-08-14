@@ -1,9 +1,9 @@
 #if defined THE_END
-    if(isEyeInWater == 0 && FOG_ADJUST < 15.0) {  // In the air
+    if(isEyeInWater == 0) {  // In the air
         block_color.rgb = mix(block_color.rgb, ZENITH_DAY_COLOR, frog_adjust);
     }
 #elif defined NETHER
-    if(isEyeInWater == 0 && FOG_ADJUST < 15.0) {  // In the air
+    if(isEyeInWater == 0) {  // In the air
         block_color.rgb = mix(block_color.rgb, mix(fogColor * 0.1, vec3(1.0), 0.04), frog_adjust);
     }
 #else
@@ -19,7 +19,7 @@
             vec3 fog_texture = texture2D(gaux4, gl_FragCoord.xy * vec2(pixel_size_x, pixel_size_y)).rgb;
         #endif
 	    #if defined GBUFFER_ENTITIES
-	        if(isEyeInWater == 0 && entityId != 10101 && FOG_ADJUST < 15.0) {  // In the air
+	        if(isEyeInWater == 0 && entityId != 10101) {  // In the air
 				block_color.rgb = mix(
 					block_color.rgb,
 					mix(mix(fog_texture, hi_sky_color_rgb * (1.0 + luma(fog_texture) - luma(hi_sky_color_rgb)), frog_adjust * day_blend_float(0.25, 1.0, 1.0) + 0.25), fog_texture, frog_adjust2),
