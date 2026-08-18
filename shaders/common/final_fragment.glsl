@@ -83,10 +83,7 @@ varying float exposure;
 
 #include "/lib/luma.glsl"
 #include "/lib/dither.glsl"
-
-#ifdef DESATURATION
-	#include "/lib/color_utils.glsl"
-#endif
+#include "/lib/color_utils.glsl"
 
 #if AA_TYPE == 3
     #include "/lib/post.glsl"
@@ -116,20 +113,21 @@ void main() {
     #endif
 
 	float actual_luma = luma(block_color);
-
-    #ifdef DESATURATION    		
-        // underwater tint that should probably be separate tbh
-		vec3 underwater_tint = WATER_COLOR / color_average(WATER_COLOR);
+	
+	vec3 underwater_tint;
+	float luma_underwater;
+	if (isEyeInWater == 1) {
+		underwater_tint = WATER_COLOR / color_average(WATER_COLOR);
 		underwater_tint = clamp(underwater_tint / max(underwater_tint.x, max(underwater_tint.y, underwater_tint.z)), 0.0, 1.0);
-		if (isEyeInWater == 1) {
-			float luma_underwater = smoothstep(0.0, 0.2, actual_luma);
-			block_color = mix(vec3(actual_luma) * luma_underwater, block_color, luma_underwater * (1 - underwater_tint) + underwater_tint);
-		}
+		luma_underwater = smoothstep(-0.25, 0.5, actual_luma);
+		block_color *= mix(underwater_tint, vec3(1.0), luma_underwater);
+	}
 		
-		// pseudo-purkinje; no real logic behind it, numbers are pretty arbitrary
-		float luma_ground = smoothstep(0.0, 0.1, actual_luma);
-		block_color.rgb = mix(vec3(actual_luma) * luma_ground, block_color.rgb, luma_ground * vec3(0.4, 0.25, 0.1) + vec3(0.6, 0.75, 0.9));
-    #endif
+	float luma_ground;
+	if (DESATURATION > 0.0) { // pseudo-purkinje; numbers are pretty arbitrary
+		luma_ground = smoothstep(0.0, 0.1, actual_luma);
+		block_color = mix(vec3(actual_luma) * vec3(0.75, 0.85, 1.25), block_color.rgb, luma_ground * DESATURATION + (1.0 - DESATURATION));
+    }
 
     block_color *= vec3(exposure);
 
@@ -143,31 +141,21 @@ void main() {
     // DEVELOPER: If your post processing effect only involves the current pixel,
     // it can be placed here. For example:
 
-	// Contrast
-	if (CONTRAST <= 1) {
+	if (CONTRAST <= 1.0) {
 		block_color = (block_color - 0.5) * CONTRAST + 0.5;
 	} else {
 		block_color = adjustable_smoothstep(block_color, CONTRAST_P, CONTRAST);
 	}
-	
-    // Saturation
     block_color = mix(vec3(luma(block_color)), block_color, SATURATION);
-
-	// Brightness
 	block_color *= BRIGHTNESS;
 	
-	// Multiply
 	#ifdef MULTIPLY_TOGGLE
 		block_color.rgb *= vec3(MULTIPLY_R, MULTIPLY_G, MULTIPLY_B);
-	#endif
-	
-	// Screen
-	#ifdef SCREEN_TOGGLE
 		block_color.rgb = 1.0 - (1.0 - block_color.rgb) * (1.0 - vec3(SCREEN_R, SCREEN_G, SCREEN_B));
 	#endif
 
     // color banding reduction w/ dithering; ty to https://blog.frost.kiwi/GLSL-noise-and-radial-gradient/
-	// can't actually tell the difference between the dithers in this situation but w/e
+	// I used grad noise since it's standard, but I can't actually tell the difference between the dithers tbh
 	block_color += 0.003921569 * dither_grad_noise(gl_FragCoord.xy) - 0.001960784;
 
     // Color-blindness correction
