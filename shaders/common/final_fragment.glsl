@@ -125,7 +125,7 @@ void main() {
 		
 	float luma_ground;
 	if (DESATURATION > 0.0) { // pseudo-purkinje; numbers are pretty arbitrary
-		luma_ground = smoothstep(0.0, 0.1, actual_luma);
+		luma_ground = smoothstep(0.0, 0.15, actual_luma);
 		block_color = mix(vec3(actual_luma) * vec3(0.75, 0.85, 1.25), block_color.rgb, luma_ground * DESATURATION + (1.0 - DESATURATION));
     }
 
@@ -176,9 +176,7 @@ void main() {
         } else {
             block_color = vec3(0.5);
         }
-
         gl_FragData[0] = vec4(block_color, 1.0);
-
     #else
         gl_FragData[0] = vec4(block_color, 1.0);
     #endif
