@@ -57,7 +57,7 @@ option.VOL_LIGHT.comment=Depth-Based: Godrays are more defined, but are only vis
 option.VOL_LIGHT_STRENGTH=Godrays Intensity
 
 option.DESATURATION=Low-Light Desaturation
-option.DESATURATION.comment=Pseudo Purkinje effect; reduces saturation and adds a bluish tint to dark surfaces.
+option.DESATURATION.comment=Pseudo Purkinje effect; reduces saturation and adds a bluish tint in low light. Do note that the color schemes are tuned with this value at the default setting (0.50).
 
 option.CONTRAST=Contrast
 option.CONTRAST_P=Contrast Inf. Point
@@ -182,9 +182,9 @@ value.END_SCHEME.0=Legacy
 value.END_SCHEME.1=Nebula
 value.END_SCHEME.2=Tempest
 value.END_SCHEME.3=Dust
-value.END_SCHEME.4=Eternal
+value.END_SCHEME.4=Lunar
 value.END_SCHEME.5=Vanillin
-option.END_SCHEME.comment=Affects lighting and sky colors in The End.
+option.END_SCHEME.comment=Affects lighting and sky colors in The End. Certain effects (i.e godrays and clouds) may be force-disabled with certain color schemes.
 
 option.LIGHT_SUNSET_COLOR_R=Sunset Light R
 option.LIGHT_SUNSET_COLOR_G=Sunset Light G
