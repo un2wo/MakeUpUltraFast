@@ -72,7 +72,8 @@ vec3 direct_light_color = day_blend(
 );
 
 if (foliage == 1) {
-	direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.3 + 0.5;
+	// direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) * 0.3 + 0.5;
+	direct_light_strength = 0.45;
 } else if (leaves == 1) {
     direct_light_strength = clamp(direct_light_strength, 0.0, 1.0) + 0.2;
 } else {
