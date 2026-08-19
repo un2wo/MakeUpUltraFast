@@ -25,8 +25,7 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
     float dist_aux_coeff_blur;
 
     #if VOL_LIGHT == 0
-        block_color.rgb *=
-            clamp(bright + ((dither - .5) * .1), 0.0, 1.0) * .3 + 1.0;
+        block_color.rgb *= clamp(bright + ((dither - 0.5) * 0.1), 0.0, 1.0) * 0.3 + 1.0;
     #endif
 
     #if defined DISTANT_HORIZONS && defined DEFERRED_SHADER
@@ -63,30 +62,27 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
 			if (CLOUD_COVER == 0) {
 				float cloud_seed0 = hash12(vec2(worldDay));
 				float cloud_seed1 = hash12(vec2(worldDay + 1));
-				cloud_cover_mult = mix(cloud_seed0, cloud_seed1, day_moment) * 0.30 + 0.70;
+				cloud_cover_mult = mix(cloud_seed0, cloud_seed1, day_moment) * 0.40 + 0.60;
 			} else {
 				cloud_cover_mult = CLOUD_COVER;
 			}
+			cloud_cover_mult = mix(cloud_cover_mult, 1.0, rainStrength);
 		#endif
 
         for (int i = 0; i < samples; i++) {
-            current_value =
-                texture2D(
-                    gaux2,
-                    (intersection_pos.xz * 0.0002777777777777778) + (frameTimeCounter * CLOUD_HI_FACTOR)
-                ).r * cloud_cover_mult;
-
+            current_value = texture2D(
+                gaux2,
+                (intersection_pos.xz * 0.0002777777777777778) + (frameTimeCounter * CLOUD_HI_FACTOR)
+            ).r * cloud_cover_mult;
 
             #if V_CLOUDS == 3
-                current_value +=
-                    texture2D(
-                        gaux2,
-                        (intersection_pos.zx * 0.0002777777777777778) + (frameTimeCounter * CLOUD_LOW_FACTOR)
-                    ).r * cloud_cover_mult;
+                current_value += texture2D(
+                    gaux2,
+                    (intersection_pos.zx * 0.0002777777777777778) + (frameTimeCounter * CLOUD_LOW_FACTOR)
+                ).r * cloud_cover_mult;
 
                 current_value *= 0.5;
                 current_value = smoothstep(0.05, 0.95, current_value);
-
             #endif
 
             // Ajuste por umbral
@@ -96,18 +92,13 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
             surface_inf = CLOUD_PLANE_CENTER + base_pos.y - (current_value * dif_inf);
             surface_sup = CLOUD_PLANE_CENTER + base_pos.y + (current_value * dif_sup);
 
-            if (  // Dentro de la nube
-                intersection_pos.y > surface_inf &&
-                intersection_pos.y < surface_sup
-                ) {
-                    cloud_value += min(increment_dist, surface_sup - surface_inf);
+            if (intersection_pos.y > surface_inf && intersection_pos.y < surface_sup) {  // Dentro de la nube
+                cloud_value += min(increment_dist, surface_sup - surface_inf);
 
-                    if (first_contact) {
-                        first_contact = false;
-                        density =
-                        (surface_sup - intersection_pos.y) /
-                        (CLOUD_PLANE_SUP - CLOUD_PLANE);
-                    }
+                if (first_contact) {
+                    first_contact = false;
+                    density = (surface_sup - intersection_pos.y) / (CLOUD_PLANE_SUP - CLOUD_PLANE);
+                }
             }
             else if (surface_inf < surface_sup && i > 0) {  // Fuera de la nube
                 distance_aux = min(
@@ -116,23 +107,19 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
                 );
 
                 if (distance_aux < dist_aux_coeff_blur) {
-                    cloud_value += min(
-                        (clamp(dist_aux_coeff_blur - distance_aux, 0.0, dist_aux_coeff_blur) / dist_aux_coeff_blur) * increment_dist,
-                        surface_sup - surface_inf
-                    );
+		            cloud_value += min(
+		                (clamp(dist_aux_coeff_blur - distance_aux, 0.0, dist_aux_coeff_blur) / dist_aux_coeff_blur) * increment_dist,
+		                surface_sup - surface_inf
+		            );
 
                     if (first_contact) {
                         first_contact = false;
-                        density =
-                        (surface_sup - intersection_pos.y) /
-                        (CLOUD_PLANE_SUP - CLOUD_PLANE);
+                        density = (surface_sup - intersection_pos.y) / (CLOUD_PLANE_SUP - CLOUD_PLANE);
                     }
                 }
             }
-
             intersection_pos += increment;
         }
-
         cloud_value = clamp(cloud_value / opacity_dist, 0.0, 1.0);
         density = clamp(density, 0.0001, 1.0);
 
@@ -145,8 +132,11 @@ vec3 get_cloud(vec3 view_vector, vec3 block_color, float bright, float dither, v
         #endif
 
         // Halo brillante de contra al sol
-        cloud_color =
-            mix(cloud_color, cloud_color * 13.0, (1.0 - pow(cloud_value, 0.2)) * bright * bright * (1.0 - rainStrength));
+        cloud_color = mix(
+            cloud_color,
+            cloud_color * 13.0,
+            (1.0 - pow(cloud_value, 0.2)) * bright * bright * (1.0 - rainStrength)
+        );
 
         block_color = mix(
             block_color,
