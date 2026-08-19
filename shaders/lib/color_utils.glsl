@@ -169,7 +169,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define ZENITH_NIGHT_COLOR vec3(0.010, 0.017, 0.025) * NIGHT_BRIGHT_PHASE
     #define HORIZON_NIGHT_COLOR vec3(0.022, 0.033, 0.042) * NIGHT_BRIGHT_PHASE
 
-    #define WATER_COLOR vec3(0.04, 0.10, 0.12)
+    #define WATER_COLOR vec3(0.06, 0.15, 0.18)
 #elif COLOR_SCHEME == 10  // Slate
     #define OMNI_TINT 0.25
     
@@ -185,7 +185,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define ZENITH_NIGHT_COLOR vec3(0.009, 0.012, 0.015) * NIGHT_BRIGHT_PHASE
     #define HORIZON_NIGHT_COLOR vec3(0.022, 0.025, 0.030) * NIGHT_BRIGHT_PHASE
 
-    #define WATER_COLOR vec3(0.04, 0.09, 0.10)
+    #define WATER_COLOR vec3(0.07, 0.14, 0.15)
 #elif COLOR_SCHEME == 11  // Vanillin
     #define OMNI_TINT 0.75
     
@@ -217,7 +217,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define ZENITH_NIGHT_COLOR vec3(0.012, 0.024, 0.030) * NIGHT_BRIGHT_PHASE
     #define HORIZON_NIGHT_COLOR vec3(0.032, 0.045, 0.042) * NIGHT_BRIGHT_PHASE
 
-    #define WATER_COLOR vec3(0.05, 0.14, 0.15)
+    #define WATER_COLOR vec3(0.07, 0.19, 0.20)
 #elif COLOR_SCHEME == 13  // Outside
     #define OMNI_TINT 0.45
     
@@ -233,7 +233,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define ZENITH_NIGHT_COLOR vec3(0.018, 0.027, 0.035) * NIGHT_BRIGHT_PHASE
     #define HORIZON_NIGHT_COLOR vec3(0.055, 0.054, 0.051) * NIGHT_BRIGHT_PHASE
 
-    #define WATER_COLOR vec3(0.04, 0.12, 0.16)
+    #define WATER_COLOR vec3(0.05, 0.15, 0.20)
 #elif COLOR_SCHEME == 14  // Haze
     #define OMNI_TINT 0.30
     
@@ -250,7 +250,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
     #define HORIZON_NIGHT_COLOR vec3(0.100, 0.085, 0.065) * NIGHT_BRIGHT_PHASE
 
     #define WATER_COLOR vec3(0.08, 0.22, 0.25)
-#elif COLOR_SCHEME == 15  // Polar
+#elif COLOR_SCHEME == 15  // Starry
     #define OMNI_TINT 0.55
     
     #define LIGHT_DAY_COLOR vec3(0.90, 0.86, 0.78)
@@ -281,7 +281,7 @@ Javier Garduño - GNU Lesser General Public License v3.0
 	#define ZENITH_NIGHT_COLOR vec3(0.006, 0.010, 0.015) * NIGHT_BRIGHT_PHASE
 	#define HORIZON_NIGHT_COLOR vec3(0.020, 0.024, 0.030) * NIGHT_BRIGHT_PHASE
 
-	#define WATER_COLOR vec3(0.04, 0.09, 0.10)
+	#define WATER_COLOR vec3(0.05, 0.09, 0.10)
 #elif COLOR_SCHEME == 99 // Custom
     #define OMNI_TINT OMNI_TINT_CUSTOM
     
