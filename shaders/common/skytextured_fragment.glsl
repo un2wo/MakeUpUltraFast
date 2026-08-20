@@ -42,10 +42,8 @@ void main() {
         // Toma el color puro del bloque
         vec4 block_color = texture2D(tex, texcoord) * tint_color;
         
-        // sky_luma_correction ignores sun halo (referenced: AuroraLite by FlowerBC)
-        float tex_luma = max(max(block_color.r, block_color.g), block_color.b);
-        vec3 mask = block_color.rgb * step(0.30, tex_luma);
-        block_color.rgb += mask * sky_luma_correction - mask;
+        // sky_luma_correction has less impact on sun halo
+        block_color.rgb *= sky_luma_correction * (smoothstep(0.0, 1.0, luma(block_color.rgb) * 0.75 + 0.25));
     #endif
 
     #include "/src/writebuffers.glsl"
