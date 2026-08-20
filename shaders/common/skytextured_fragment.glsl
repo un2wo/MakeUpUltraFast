@@ -24,6 +24,10 @@ varying vec2 texcoord;
 varying vec4 tint_color;
 varying float sky_luma_correction;  // Flat
 
+/* Utility Functions */
+
+#include "/lib/luma.glsl"
+
 // MAIN FUNCTION ------------------
 
 void main() {
